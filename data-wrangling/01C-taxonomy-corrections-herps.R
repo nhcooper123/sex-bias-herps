@@ -12,75 +12,1769 @@ ds3 <- ds2 %>%
 # Where I coudn't find the species I replaced it with NA_character_
 # and it will drop out of the analysis
 #-------------------------------------------------------------------
-  mutate(binomial = str_replace(binomial, 'Philautus williamsii', 'Philautus surdus')) %>%
+mutate(binomial = str_replace(binomial, 'Aelurophryne brevipes', 'Scutiger brevipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Aelurophryne glandulata', 'Scutiger glandulatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Aelurophryne maculata', 'Scutiger maculatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Aelurophryne tainingensis', 'Scutiger boulengeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Afrixalus brachyenemis', 'Afrixalus stuhlmanni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Albericus darlingtoni', 'Choerophryne darlingtoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Albericus exclamitans', 'Choerophryne exclamitans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Albericus fafniri', 'Choerophryne fafniri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Albericus swanhildae', 'Choerophryne swanhildae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Albericus tuberculus', 'Choerophryne tubercula')) %>% 
+  mutate(binomial = str_replace(binomial, 'Albericus variegatus', 'Choerophryne variegata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Allobates rufulus', 'Anomaloglossus rufulus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Allobates spumaponens', 'Allobates sumtuosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Alsodes laevis', 'Telmatobius laevis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ambystoma fluvinatum', 'Ambystoma rosaceum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ambystoma lacustris', 'Ambystoma velasci')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ambystoma lermaensis', 'Ambystoma lermaense')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ambystoma subsalsum', 'Ambystoma velasci')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus asmarae', 'Sclerophrys asmarae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus blanfordii', 'Sclerophrys blanfordii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus brauni', 'Sclerophrys brauni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus buchneri', 'Sclerophrys buchneri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus camerunensis', 'Sclerophrys camerunensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus cristiglans', 'Sclerophrys cristiglans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus funereus', 'Sclerophrys funerea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus garmani', 'Sclerophrys garmani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus gracilipes', 'Sclerophrys gracilipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus gutturalis', 'Sclerophrys gutturalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus kassasii', 'Sclerophrys kassasii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus kerinyagae', 'Sclerophrys kerinyagae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus kisoloensis', 'Sclerophrys kisoloensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus langanoensis', 'Sclerophrys langanoensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus latifrons', 'Sclerophrys latifrons')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus lemairii', 'Sclerophrys lemairii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus maculatus', 'Sclerophrys maculata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus mauritanicus', 'Sclerophrys mauritanica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus pantherinus', 'Sclerophrys pantherina')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus pardalis', 'Sclerophrys pardalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus perreti', 'Sclerophrys perreti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus poweri', 'Sclerophrys poweri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus rangeri', 'Sclerophrys capensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus reesi', 'Sclerophrys reesi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus regularis', 'Sclerophrys regularis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus steindachneri', 'Sclerophrys steindachneri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus superciliaris', 'Sclerophrys superciliaris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus togoensis', 'Sclerophrys togoensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus tuberosus', 'Sclerophrys tuberosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus turkanae', 'Sclerophrys turkanae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus urunguensis', 'Sclerophrys urunguensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus villiersi', 'Sclerophrys villiersi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus vittatus', 'Sclerophrys vittata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amietophrynus xeros', 'Sclerophrys xeros')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amolops afghana', 'Amolops afghanus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amolops kangtingensis', 'Amolops xinduqiao')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amolops kinabaluensis', 'Meristogenys kinabaluensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amolops macrorhynchus', 'Amolops medogensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amolops phaeomerus', 'Meristogenys phaeomerus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Amolops poecilus', 'Meristogenys poecilus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Anomaloglossus atopoglossus', 'Ectopoglossus atopoglossus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Anomaloglossus confusus', 'Ectopoglossus confusus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Anomaloglossus isthminus', 'Ectopoglossus isthminus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Anomaloglossus lacrimosus', 'Ectopoglossus lacrimosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ansonia longidigitata', 'Ansonia longidigita')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ansonia ornata', 'Ghatophryne ornata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis bequaerti', 'Leptopelis bequaerti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis globosa', 'Arthroleptis xenochirus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis graueri', 'Phrynobatrachus graueri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis gutturosus', 'Phrynobatrachus gutturosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis ogoensis', 'Phrynobatrachus ogoensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis parvulus', 'Phrynobatrachus parvulus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis rouxi', 'Phrynobatrachus rouxi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis schebeni', 'Cacosternum boettgeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis scheffleri', 'Phrynobatrachus scheffleri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis ukingensis', 'Phrynobatrachus ukingensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Arthroleptis werneri', 'Phrynobatrachus werneri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Atelognathus ceii', 'Atelognathus nitoi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Atelognathus grandisonae', 'Chaltenobatrachus grandisonae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Atelopus gracilis', 'Atelopus elegans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Atylodes genei', 'Hydromantes ambrosii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Babina adenopleura', 'Nidirana adenopleura')) %>% 
+  mutate(binomial = str_replace(binomial, 'Babina caldwelli', 'Nidirana adenopleura')) %>% 
+  mutate(binomial = str_replace(binomial, 'Babina chapaensis', 'Nidirana chapaensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Babina daunchina', 'Nidirana daunchina')) %>% 
+  mutate(binomial = str_replace(binomial, 'Babina okinavana', 'Nidirana okinavana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Babina pleuraden', 'Nidirana pleuraden')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachophrynus brachydactylus', 'Telmatobius brachydactylus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachophrynus macrostomus', 'Telmatobius macrostomus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachoseps caudatus', 'Batrachoseps attenuatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachuperus sinensis', 'Batrachuperus pinchonii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachylodes elegans', 'Cornufer elegans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachylodes mediodiscus', 'Cornufer mediodiscus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachylodes minutus', 'Cornufer minutus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachylodes montanus', 'Cornufer montanus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachylodes trossulus', 'Cornufer trossulus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachylodes vertebralis', 'Cornufer vertebralis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Batrachylodes wolfi', 'Cornufer wolfi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa arborea', 'Chiropterotriton arboreus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa cephalica', 'Aquiloeurycea cephalica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa chondrostega', 'Chiropterotriton chondrostega')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa cochranae', 'Pseudoeurycea cochranae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa dimidiata', 'Chiropterotriton dimidiatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa galeanae', 'Aquiloeurycea galeanae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa moreleti', 'Bolitoglossa mulleri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa nigromaculata', 'Pseudoeurycea nigromaculata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa terrestris', 'Chiropterotriton terrestris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa unguidentis', 'Chiropterotriton terrestris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa xolocalcae', 'Dendrotriton xolocalcae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bolitoglossa yucatanicus', 'Bolitoglossa yucatana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Boophis andringitrensis', 'Boophis laurenti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Boophis boettgeri', 'Boophis microtympanum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Boophis femoralis', 'Boophis idae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Boophis hillenii', 'Boophis idae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Borneophrys edwardinae', 'Pelobatrachus edwardinae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Breviceps usambaricus', 'Probreviceps macrodactylus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo arabicus', 'Sclerophrys arabica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo atukoralei', 'Duttaphrynus atukoralei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo beddomii', 'Duttaphrynus beddomii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo bisidanae', 'Sclerophrys garmani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo compactilus', 'Anaxyrus compactilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo danatensis', 'Bufotes oblongus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo dhufarensis', 'Duttaphrynus dhufarensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo dodsoni', 'Sclerophrys dodsoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo dunni', 'Peltophryne dunni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo fergusonii', 'Duttaphrynus scaber')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo formosus', 'Bufo japonicus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo granti', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo hololius', 'Duttaphrynus hololius')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo lentiginosus', 'Anaxyrus terrestris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo mauritanicus', 'Peltophryne dunni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo minshanicus', 'Bufo gargarizans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo nayaritensis', 'Incilius mazatlanensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo ockendeni', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo olivaceus', 'Duttaphrynus olivaceus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo orientalis', 'Rhinella vellardi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo osgoodi', 'Altiphrynoides osgoodi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo parietalis', 'Duttaphrynus parietalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo pentoni', 'Sclerophrys pentoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo pisinnus', 'Incilius pisinnus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo polycerus', 'Sclerophrys tuberosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo quadripunctatus', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo scaber', 'Duttaphrynus scaber')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo signifer', 'Incilius signifer	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo stomaticus', 'Duttaphrynus stomaticus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo stuarti', 'Duttaphrynus stuarti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo sulphureus', 'Xanthophryne koynayensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo tibetanus', 'Bufo gargarizans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo valhallae', 'Duttaphrynus valhallae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Bufo vulgaris', 'Bufo bufo')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cacosternum magnaglandiferus', 'Cacosternum nanum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Caecilia natans', 'Typhlonectes natans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Calluella brooksii', 'Glyphoglossus brooksii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Calluella flava', 'Glyphoglossus flavus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Calluella guttulata', 'Glyphoglossus guttulatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Calluella ocellata', 'Glyphoglossus yunnanensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Calluella smithi', 'Glyphoglossus smithi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Calluella volzi', 'Glyphoglossus volzi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Calluella yunnanensis', 'Glyphoglossus yunnanensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Callulops eurydactylus', 'Pseudocallulops eurydactylus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Callulops slateri', 'Metamagnusia slateri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cardioglossa aureoli', 'Arthroleptis aureoli')) %>% 
+  mutate(binomial = str_replace(binomial, 'Caudacaecilia asplenia', 'Ichthyophis asplenius')) %>% 
+  mutate(binomial = str_replace(binomial, 'Caudacaecilia larutensis', 'Ichthyophis larutensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Caudacaecilia nigroflava', 'Ichthyophis nigroflavus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Centrolene altitudinalis', 'Centrolene altitudinale')) %>% 
+  mutate(binomial = str_replace(binomial, 'Centrolene antioquiensis', 'Centrolene antioquiense	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Centrolene audax', 'Espadarana audax')) %>% 
+  mutate(binomial = str_replace(binomial, 'Centrolene balionotum', 'Cochranella balionota')) %>% 
+  mutate(binomial = str_replace(binomial, 'Centrolene fernandoi', 'Espadarana audax')) %>% 
+  mutate(binomial = str_replace(binomial, 'Centrolene grandisonae', 'Nymphargus grandisonae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Centrolene ilex', 'Sachatamia ilex')) %>% 
+  mutate(binomial = str_replace(binomial, 'Centrolene prosoblepon', 'Espadarana prosoblepon')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ceratobatrachus guentheri', 'Cornufer guentheri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ceratobatrachus guntheri', 'Cornufer guentheri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Chaperina punctata', 'Austrochaperina macrorhyncha')) %>% 
+  mutate(binomial = str_replace(binomial, 'Chiasmocleis jimi', 'Chiasmocleis hudsoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Chiasmocleis panamensis', 'Elachistocleis panamensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Chiasmocleis spinulosus', 'Chiasmocleis leucosticta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Chiromantis hansenae', 'Feihyla hansenae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Chiromantis laevis', 'Theloderma laeve')) %>% 
+  mutate(binomial = str_replace(binomial, 'Chiromantis vittatus', 'Feihyla vittata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Chiropterotriton bromeliacea', 'Dendrotriton bromeliacius')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella albomaculata', 'Sachatamia albomaculata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella flavopunctata', 'Rulyrana flavopunctata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella midas', 'Teratohyla midas')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella ocellata', 'Nymphargus ocellatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella oyampiensis', 'Vitreorana ritae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella pulverata', 'Teratohyla pulverata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella ritae', 'Vitreorana ritae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella spiculata', 'Rulyrana spiculata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cochranella spinosa', 'Teratohyla spinosa	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Colostethus citreicola', 'Hyloxalus nexipus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Colostethus fugax', 'Leucostethus fugax')) %>% 
+  mutate(binomial = str_replace(binomial, 'Colostethus jacobuspetersi', 'Hyloxalus jacobuspetersi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Colostethus panamansis', 'Colostethus panamensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Colostethus parcus', 'Hyloxalus parcus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Colostethus tergogranularis', 'Hyloxalus pulchellus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Colostethus torrenticola', 'Hyloxalus jacobuspetersi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Colostethus trinitatus', 'Mannophryne herminae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cophixalus variegatus', 'Choerophryne variegata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cornufer beauforti', 'Platymantis punctatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Crepidophryne epiotica', 'Incilius epioticus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Crinia laevis', 'Geocrinia laevis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Crinia michaelseni', 'Geocrinia leai')) %>% 
+  mutate(binomial = str_replace(binomial, 'Crinia victoriana', 'Geocrinia victoriana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cyclorhamphus culeus', 'Telmatobius culeus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cyclorhamphus dubius', 'Cycloramphus dubius')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cyclorhamphus duseni', 'Cycloramphus duseni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cyclorhamphus eleutherodactylus', 'Cycloramphus eleutherodactylus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Cyclorhamphus neglectus', 'Cycloramphus asper')) %>% 
+  mutate(binomial = str_replace(binomial, 'Dendrobates ebenaui', 'Mantella ebenaui')) %>% 
+  mutate(binomial = str_replace(binomial, 'Dendrobates galindoi', 'Oophaga pumilio')) %>% 
+  mutate(binomial = str_replace(binomial, 'Dendrobates silverstonei', 'Ameerega silverstonei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Dendrophryniscus minutus', 'Amazophrynella minuta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Dendropsophus allenorum', 'Dendropsophus timbeba')) %>% 
+  mutate(binomial = str_replace(binomial, 'Dermophis balboai', 'Dermophis glandulosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Dermophis sechellensis', 'Grandisonia sechellensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Desmognathus aureatagulus', 'Desmognathus imitator')) %>% 
+  mutate(binomial = str_replace(binomial, 'Desmognathus chermocki', 'Desmognathus aeneus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Discodeles bufoniformis', 'Cornufer bufoniformis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Discodeles malakuna', 'Cornufer malukuna')) %>% 
+  mutate(binomial = str_replace(binomial, 'Discodeles malukuna', 'Cornufer malukuna')) %>% 
+  mutate(binomial = str_replace(binomial, 'Discodeles opisthodon', 'Cornufer opisthodon')) %>% 
+  mutate(binomial = str_replace(binomial, 'Discoglossus jeanneae', 'Discoglossus galganoi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ecnomiohyla tuberculosa', 'Tepuihyla tuberculosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylidae octavioi', 'Ischnocnema octavioi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus amydrotus', 'Pristimantis amydrotus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus bipunctatus', 'Pristimantis bipunctatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus carrioni', 'Pristimantis lymani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus conspicuus', 'Craugastor alfredi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus dennisi', 'Eleutherodactylus longipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus gehrmanni', 'Eleutherodactylus eileenae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus hidalgoensis', 'Craugastor decoratus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus natator', 'Craugastor berkenbuschii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus phalaroinguinis', 'Pristimantis phalaroinguinis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus rhodopsis', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus robustus', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus ruthi', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus sonans', 'Eleutherodactylus auriculatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus vermiculatus', 'Pristimantis petrobardus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eleutherodactylus wrightmanae', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Engystoma microps', 'Myersiella microps')) %>% 
+  mutate(binomial = str_replace(binomial, 'Epipedobates zaparo', 'Allobates zaparo')) %>% 
+  mutate(binomial = str_replace(binomial, 'Euparkerella braziliensis', 'Euparkerella brasiliensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Eupsophus juninensis', 'Phrynopus juninensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Exerodonta juanitae', 'Charadrahyla juanitae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Exerodonta pinorum', 'Charadrahyla pinorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya brevipalmata', 'Minervarya brevipalmata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya greenii', 'Minervarya greenii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya keralensis', 'Minervarya keralensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya kirtisinghei', 'Minervarya kirtisinghei	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya nepalensis', 'Minervarya nepalensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya nicobariensis', 'Minervarya nicobariensis	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya nilagirica', 'Minervarya nilagirica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya pierrei', 'Minervarya pierrei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya raja', 'Fejervarya cancrivora')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya rufescens', 'Minervarya rufescens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya syhadrensis', 'Minervarya syhadrensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Fejervarya teraiensis', 'Minervarya teraiensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Flectonotus fissilis', 'Fritziana fissilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Flectonotus goeldii', 'Fritziana goeldii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Flectonotus ohausi', 'Fritziana ohausi	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Gastrophryne usta', 'Hypopachus ustus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Gastrophrynoides borneense', 'Gastrophrynoides borneensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Gastrotheca medemi', 'Gastrotheca nicefori')) %>% 
+  mutate(binomial = str_replace(binomial, 'Grandisonia brevis', 'Hypogeophis brevis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Grandisonia diminutiva', 'Grandisonia sechellensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Gymnopis braziliensis', 'Brasilotyphlus braziliensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Gyrinophilus danielsi', 'Gyrinophilus porphyriticus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hildebrandtia budgetti', 'Hildebrandtia ornata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyalinobatrachium crurifasciatum', 'Hyalinobatrachium cappellei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyalinobatrachium eccentricum', 'Hyalinobatrachium cappellei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyalinobatrachium eurygnathum', 'Vitreorana eurygnatha')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyalinobatrachium nouraguense', 'Hyalinobatrachium iaspidiense')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyalinobatrachium uranoscopum', 'Vitreorana uranoscopa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hydromantoides brunus', 'Hydromantes brunus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla alleei', 'Duellmanohyla uranochroa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla altae', 'Scinax altae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla aluminiata', 'Dendropsophus rhodopeplus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla aurea', 'Litoria aurea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla blairi', 'Scinax blairi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla boesmani', 'Scinax boesemani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla bromeliana', 'Charadrahyla taeniopus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla carri', 'Osteocephalus carri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla catharinae', 'Scinax catharinae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla chica', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla coerulea', 'Litoria caerulea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla copii', 'Pseudacris ornata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla cuspidata', 'Scinax cuspidatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla depressiceps', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla epacrorhina', 'Scinax garbei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla evelynae', 'Scinax squalirostris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla exigua', 'Scinax exiguus')) %>% 
   mutate(binomial = str_replace(binomial, 'Hyla freycineti', 'Litoria freycineti')) %>%
-  mutate(binomial = str_replace(binomial, 'Rana johnstoni', 'Amietia johnstoni')) %>%
+  mutate(binomial = str_replace(binomial, 'Hyla glandulosa', 'Plectrohyla glandulosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla guibei', 'Boana pellucens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla hayii', 'Scinax hayii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla helenae', 'Osteocephalus helenae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla inframaculata', 'Dryaderces inframaculata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla lafrentzi', 'Hyla plicata')) %>% 
   mutate(binomial = str_replace(binomial, 'Hyla lateralis', 'Hyla cinerea')) %>%
-  mutate(binomial = str_replace(binomial, 'Hyla stadelmanni', 'Tlalocohyla loquax')) %>%
-  mutate(binomial = str_replace(binomial, 'Pipa americana', 'Pipa pipa')) %>%
-  mutate(binomial = str_replace(binomial, 'Rana macrognathus', 'Limnonectes macrognathus')) %>%  
+  mutate(binomial = str_replace(binomial, 'Hyla leptoscelis', 'Boana calcarata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla louisiadensis', 'Litoria louisiadensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla macrotympanum', 'Ptychohyla macrotympanum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla madeirae', 'Scinax madeirae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla marianae', 'Osteopilus marianae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla multiplica', 'Litoria multiplica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla napaea', 'Litoria napaea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla nasus', 'Hylodes nasus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla nigripes', 'Smilisca sordida')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla paramica', 'Hyloscirtus platydactylus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla parkeri', 'Gastrotheca fulvorufa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla phrynoderma', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla pseudo', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla raddiana', 'Boana joaquini')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla richardi', 'Litoria richardsi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla rickardsi', 'Tlalocohyla godmani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla roraimae', 'Boana roraima')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla rufioculis', 'Duellmanohyla rufioculis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla sanguinolenta', 'Litoria sanguinolenta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla similis', 'Scinax similis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla spegazzinii', 'Boana raniceps')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla stadelmanni', 'Tlalocohyla loquax')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla underwoodi', 'Dendropsophus microcephalus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla variabilis', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla vilsoniana', 'Dendropsophus meridensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla warreni', 'Tepuihyla warreni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyla wilderi', 'Osteopilus wilderi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana albolabris', 'Amnirana albolabris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana albotuberculata', 'Sanguirana mearnsi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana amnicola', 'Amnirana amnicola')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana arfaki', 'Papurana arfaki')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana asperrima', 'Amnirana asperrima')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana aurantiaca', 'Indosylvirana aurantiaca')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana banjarana', 'Pulchrana banjarana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana baramica', 'Pulchrana baramica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana chalconota', 'Chalcorana chalconota')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana crassiovis', 'Sumaterana crassiovis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana cubitalis', 'Sylvirana cubitalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana daemeli', 'Papurana daemeli	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana darlingi', 'Amnirana darlingi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana elberti', 'Papurana elberti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana everetti', 'Sanguirana everetti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana faber', 'Sylvirana faber')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana florensis', 'Papurana florensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana galamensis', 'Amnirana galamensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana garritor', 'Papurana garritor')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana glandulosa', 'Pulchrana glandulosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana gracilis', 'Hydrophylax gracilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana grandocula', 'Pulchrana grandocula')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana grisea', 'Papurana grisea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana guentheri', 'Sylvirana guentheri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana igorota', 'Sanguirana igorota')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana jimiensis', 'Papurana jimiensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana kreffti', 'Papurana kreffti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana laterimaculata', 'Pulchrana laterimaculata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana lemairei', 'Amnirana lemairei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana leptoglossa', 'Hydrophylax leptoglossa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana lepus', 'Amnirana lepus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana longipes', 'Amnirana longipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana luctuosa', 'Abavorana luctuosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana luzonensis', 'Sanguirana luzonensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana macrops', 'Chalcorana macrops')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana malabarica', 'Hydrophylax malabaricus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana mangyanum', 'Pulchrana mangyanum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana maosonensis', 'Sylvirana maosonensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana menglaensis', 'Chalcorana megalonesa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana milleti', 'Indosylvirana milleti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana milneana', 'Papurana milneana	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana moellendorffi', 'Pulchrana moellendorffi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana moluccana', 'Papurana moluccana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana mortenseni', 'Sylvirana mortenseni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana nicobariensis', 'Amnirana nicobariensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana nigrovittata', 'Sylvirana nigrovittata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana novaeguineae', 'Papurana novaeguineae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana occidentalis', 'Amnirana occidentalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana papua', 'Papurana papua')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana parkeriana', 'Amnirana parkeriana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana picturata', 'Pulchrana picturata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana raniceps', 'Chalcorana raniceps')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana rufipes', 'Chalcorana rufipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana semelvella', 'Papurana papua')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana siberu', 'Pulchrana siberu')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana signata', 'Pulchrana signata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana similis', 'Pulchrana similis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana spinulosa', 'Sylvirana spinulosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana supragrisea', 'Papurana supragrisea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana temporalis', 'Indosylvirana temporalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylarana tipanan', 'Sanguirana tipanan')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylodes alfredi', 'Craugastor alfredi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylodes duidensis', 'Dischidodactylus duidensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylomantis buckleyi', 'Agalychnis buckleyi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylomantis lemur', 'Agalychnis lemur')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hylomantis psilopygion', 'Agalychnis psilopygion')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyloxalus beebei', 'Anomaloglossus beebei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyloxalus panamensis', 'Colostethus panamensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hynobius shihi', 'Liua shihi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius alticola', 'Hyperolius discodactylus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius aylmeri', 'Hyperolius fusciventris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius granulatus', 'Hyperolius adspersus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius guttatus', 'Hyperolius concolor')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius hieroglyphicus', 'Hyperolius riggenbachi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius koehli', 'Hyperolius viridiflavus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius liberiensis', 'Hyperolius guttulatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius mertensi', 'Hyperolius quinquevittatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius milnei', 'Hyperolius pusillus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius mossambicus', 'Hyperolius tuberilinguis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius multicolor', 'Hyperolius viridiflavus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius punctulatus', 'Hyperolius nasutus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius rosaceus', 'Hyperolius fusciventris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius sordidus', 'Hyperolius concolor')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius spurrelli', 'Hyperolius concolor')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius stuhlmanni', 'Hyperolius viridiflavus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius taeniatus', 'Hyperolius marmoratus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius translucens', 'Hyperolius pusillus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius tritaeniatus', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Hyperolius undulatus', 'Hyperolius marginatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypodactylus babax', 'Niceforonia babax')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypodactylus brunneus', 'Niceforonia brunnea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypodactylus dolops', 'Niceforonia dolops')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypodactylus elassodiscus', 'Niceforonia elassodisca')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypodactylus lucida', 'Niceforonia lucida')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypodactylus mantipus', 'Niceforonia mantipa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypodactylus nigrovittatus', 'Niceforonia nigrovittata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypodactylus peraccai', 'Niceforonia peraccai')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypogeophis guentheri', 'Hypogeophis rostratus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus alboventer', 'Hypopachus variolosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus aquae', 'Hypopachus barberi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus caprimimus', 'Hypopachus variolosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus championi', 'Hypopachus variolosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus cuneus', 'Hypopachus variolosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus globulosus', 'Hypopachus variolosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus maculatus', 'Hypopachus variolosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus ovis', 'Hypopachus variolosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypopachus ustum', 'Hypopachus ustus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas albomarginatus', 'Boana albomarginata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas alboniger', 'Boana albonigra')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas albopunctatus', 'Boana albopunctata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas andinus', 'Boana riojana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas balzani', 'Boana balzani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas benitezi', 'Boana benitezi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas bischoffi', 'Boana bischoffi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas boans', 'Boana boans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas calcaratus', 'Boana calcarata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas callipleura', 'Boana callipleura')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas cinerascens', 'Boana cinerascens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas cipoensis', 'Boana cipoensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas cordobae', 'Boana cordobae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas crepitans', 'Boana crepitans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas dentei', 'Boana dentei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas faber', 'Boana faber')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas fasciatus', 'Boana fasciata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas geographicus', 'Boana geographica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas guentheri', 'Boana guentheri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas heilprini', 'Boana heilprini')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas hobbsi', 'Boana hobbsi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas hypselops', 'Boana hypselops')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas lanciformis', 'Boana lanciformis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas latistriatus', 'Boana latistriata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas lemai', 'Boana lemai')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas lundii', 'Boana lundii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas maculateralis', 'Boana maculateralis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas marginatus', 'Boana marginata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas marianitae', 'Boana marianitae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas melanopleura', 'Boana melanopleura')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas microderma', 'Boana microderma')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas multifasciatus', 'Boana multifasciata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas nympha', 'Boana nympha')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas ornatissimus', 'Boana ornatissima')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas pardalis', 'Boana pardalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas pellucens', 'Boana pellucens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas picturatus', 'Boana picturata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas polytaenius', 'Boana polytaenia')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas prasinus', 'Boana prasina')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas pugnax', 'Boana pugnax')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas pulchellus', 'Boana pulchella')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas pulidoi', 'Boana pulidoi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas punctatus', 'Boana punctata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas raniceps', 'Boana raniceps')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas riojanus', 'Boana riojana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas roraima', 'Boana roraima')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas rosenbergi', 'Boana rosenbergi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas rubracylus', 'Boana rubracyla')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas rufitelus', 'Boana rufitela')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas semilineatus', 'Boana semilineata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas sibleszi', 'Boana sibleszi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Hypsiboas wavrini', 'Boana wavrini')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ichthyophis taprobanicensis', 'Ichthyophis orthoplicatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Indirana diplosticta', 'Sallywalkerana diplosticta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ingerana tasanae', 'Alcalus tasanae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ischnocnema ramagii', 'Pristimantis ramagii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ischnocnema vinhai', 'Pristimantis vinhai')) %>% 
+  mutate(binomial = str_replace(binomial, 'Isthmohyla melacaena', 'Bromeliohyla melacaena')) %>% 
+  mutate(binomial = str_replace(binomial, 'Kaloula macropicta', 'Kaloula verrucosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Kaloula macroptica', 'Kaloula verrucosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Kaloula taprobanica', 'Uperodon taprobanicus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Kassina ingeri', 'Kassina kuvangensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Kassina maculata', 'Kassina cochranae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Kassina obscura', 'Paracassina obscura')) %>% 
+  mutate(binomial = str_replace(binomial, 'Kassina wealii', 'Semnodactylus wealii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Kurixalus carinensis', 'Gracixalus carinensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptobrachium minimum', 'Leptobrachella minima')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus amazonicus', 'Leptodactylus mystacinus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus andreae', 'Adenomera andreae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus bokermanni', 'Adenomera bokermanni	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus darlingtoni', 'Eleutherodactylus jugans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus heyeri', 'Adenomera heyeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus hylaedactylus', 'Adenomera hylaedactyla')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus lineatus', 'Lithodytes lineatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus lutzi', 'Adenomera lutzi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus marmoratus', 'Adenomera marmorata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus martinezi', 'Adenomera martinezi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus nanus', 'Adenomera nana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptodactylus ocellatus', 'Leptodactylus macrosternum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax bourreti', 'Leptobrachella bourreti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax dringi', 'Leptobrachella dringi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax gracilis', 'Leptobrachella gracilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax hamidi', 'Leptobrachella hamidi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax heteropus', 'Leptobrachella heteropus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax lateralis', 'Leptobrachella lateralis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax marmoratus', 'Leptobrachella marmorata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax maurus', 'Leptobrachella maura')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax melanolecus', 'Leptobrachella melanoleuca')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax oshanensis', 'Leptobrachella oshanensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax pelodytoides', 'Leptobrachella pelodytoides')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax pictus', 'Leptobrachella picta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax pluvialis', 'Leptobrachella pluvialis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax sungi', 'Leptobrachella sungi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax tuberosus', 'Leptobrachella tuberosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptolalax ventripunctatus', 'Leptobrachella ventripunctata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptopelis barbouri', 'Leptopelis grandiceps')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptopelis cristyi', 'Leptopelis christyi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptopelis johnstoni', 'Leptopelis flavomaculatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptopelis omissus', 'Leptopelis aubryioides')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptopelis poensis', 'Leptopelis boulengeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leptopelis rugegensis', 'Leptopelis kivuensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Leurognatus marmoratus', 'Desmognathus marmoratus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Limnodynastes convexisculus', 'Limnodynastes convexiusculus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Limnonectes cancrivorus', 'Fejervarya cancrivora')) %>% 
+  mutate(binomial = str_replace(binomial, 'Limnonectes laticeps', 'Limnonectes khasianus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates areolatus', 'Rana areolata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates berlandieri', 'Rana berlandieri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates blairi', 'Rana blairi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates brownorum', 'Rana brownorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates capito', 'Rana capito')) %>% 	
+  mutate(binomial = str_replace(binomial, 'Lithobates catesbeianus', 'Rana catesbeiana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates chiricahuensis', 'Rana chiricahuensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates clamitans', 'Rana clamitans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates dunni', 'Rana dunni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates fisheri', 'Rana fisheri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates forreri', 'Rana forreri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates grylio', 'Rana grylio')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates heckscheri', 'Rana heckscheri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates johni', 'Rana johni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates macroglossa', 'Rana macroglossa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates maculatus', 'Rana maculata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates magnaocularis', 'Rana magnaocularis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates megapoda', 'Rana megapoda')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates montezumae', 'Rana montezumae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates neovolcanicus', 'Rana neovolcanica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates okaloosae', 'Rana okaloosae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates omiltemanus', 'Rana omiltemana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates onca', 'Rana onca')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates palmipes', 'Rana palmipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates palustris', 'Rana palustris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates pipiens', 'Rana pipiens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates pueblae', 'Rana pueblae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates pustulosus', 'Rana pustulosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates septentrionalis', 'Rana septentrionalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates sevosus', 'Rana sevosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates sierramadrensis', 'Rana sierramadrensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates spectabilis', 'Rana spectabilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates sphenocephalus', 'Rana sphenocephala')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates sylvaticus', 'Rana sylvatica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates tarahumarae', 'Rana tarahumarae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates taylori', 'Rana taylori')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates tlaloci', 'Rana tlaloci')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates vaillanti', 'Rana vaillanti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates vibicarius', 'Rana vibicaria')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates virgatipes', 'Rana virgatipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates warszewitschii', 'Rana warszewitschii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates yavapaiensis', 'Rana yavapaiensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Lithobates zweifeli', 'Rana zweifeli')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria affinis', 'Litoria tornieri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria alboguttata', 'Cyclorana alboguttata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria alutaceus', 'Cyclorana novaehollandiae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria australis', 'Cyclorana australis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria avocalis', 'Nyctimystes avocalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria brevipes', 'Cyclorana brevipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria cheesmani', 'Nyctimystes cheesmani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria cryptotis', 'Cyclorana cryptotis	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria cultripes', 'Cyclorana cultripes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria daymani', 'Nyctimystes daymani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria disrupta', 'Nyctimystes disruptus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria dux', 'Litoria graminea	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria fluviatilis', 'Nyctimystes fluviatilis	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria foricula', 'Nyctimystes foricula	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria gracilentas', 'Litoria gracilenta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria granti', 'Nyctimystes granti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria gularis', 'Nyctimystes gularis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria humeralis', 'Nyctimystes humeralis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria kreffti', 'Litoria jervisiensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria kubori', 'Nyctimystes kubori	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria longipes', 'Cyclorana longipes	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria luteola', 'Eleutherodactylus luteolus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria maculosa', 'Cyclorana maculosa	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria maini', 'Cyclorana maini')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria michaeltyleri', 'Nyctimystes tyleri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria mintima', 'Litoria angiana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria narinosa', 'Nyctimystes narinosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria novaehollandiae', 'Cyclorana novaehollandiae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria oktediensis', 'Nyctimystes disruptus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria papillosa', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria papua', 'Nyctimystes papua')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria perimetri', 'Nyctimystes perimetri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria persimilis', 'Nyctimystes persimilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria platycephala', 'Cyclorana platycephala')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria pulchra', 'Nyctimystes pulcher')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria rueppelli', 'Nyctimystes rueppelli')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria semipalmata', 'Nyctimystes semipalmatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria shengeli', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria trachydermis', 'Nyctimystes trachydermis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria vagitus', 'Cyclorana vagitus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria verrucosa', 'Cyclorana verrucosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Litoria zweifeli', 'Nyctimystes zweifeli')) %>% 
+  mutate(binomial = str_replace(binomial, 'Mantophryne infulata', 'Hylophorbus infulata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys brachykolos', 'Panophrys brachykolos')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys carinense', 'Brachytarsophrys carinense')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys carinensis', 'Brachytarsophrys carinense')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys damrei', 'Xenophrys damrei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys dringi', 'Xenophrys dringi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys kobayashii', 'Pelobatrachus kobayashii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys lekaguli', 'Xenophrys lekaguli')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys ligayae', 'Pelobatrachus ligayae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys major', 'Xenophrys major')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys minor', 'Panophrys minor')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys monticola', 'Xenophrys monticola')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys nasuta', 'Pelobatrachus nasuta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys parnum', 'Xenophrys parva')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys shapingensis', 'Atympanophrys shapingensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys stejnegeri', 'Pelobatrachus stejnegeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Megophrys takensis', 'Xenophrys takensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Mertensophryne rondoensis', 'Mertensophryne micranotis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Micrixalus mariae', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Minyobates fulguritus', 'Andinobates fulguritus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Montorana ahli', 'Nanorana pleskei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Myersiohyla kanaima', 'Nesorohyla kanaima')) %>% 
+  mutate(binomial = str_replace(binomial, 'Nanorana delacouri', 'Quasipaa delacouri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Nectocaecilia cooperi', 'Typhlonectes natans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Nectophryne werthi', 'Nectophrynoides viviparus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Nelsonophryne aequatorialis', 'Ctenophryne aequatorialis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Nelsonophryne aterrima', 'Ctenophryne aterrima')) %>% 
+  mutate(binomial = str_replace(binomial, 'Nimbaphrynoides liberiensis', 'Nimbaphrynoides occidentalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Nyctixalus spinosus', 'Nyctixalus spinosum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Odorrana daorum', 'Amolops daorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Odorrana melasma', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipina bonitaensis', 'Oedipina uniformis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipina robustus', 'Bolitoglossa robusta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipina striatulus', 'Bolitoglossa striatula')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus altamontanus', 'Pseudoeurycea altamontana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus barbouri', 'Nototriton barbouri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus bromeliacia', 'Dendrotriton bromeliacius')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus dunni', 'Bolitoglossa dunni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus elongatus', 'Oedipina elongata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus englehardti', 'Bolitoglossa engelhardti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus flavimembris', 'Bolitoglossa flavimembris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus flaviventris', 'Bolitoglossa flaviventris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus franklini', 'Bolitoglossa franklini')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus giganteus', 'Isthmura gigantea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus goebeli', 'Pseudoeurycea goebeli')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus helmrichi', 'Bolitoglossa helmrichi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus multidentata', 'Chiropterotriton multidentatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus nasalis', 'Cryptotriton nasalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus odonelli', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus rex', 'Pseudoeurycea rex')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus robertsi', 'Pseudoeurycea robertsi	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus smithi', 'Pseudoeurycea smithi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oedipus townsendi', 'Parvimolge townsendi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ophryophryne pachyproctus', 'Ophryophryne koui')) %>% 
+  mutate(binomial = str_replace(binomial, 'Oreophryne rookmaarkeri', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Osteocephalus gaschei', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Osteocephalus pearsoni', 'Dryaderces pearsoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Osteopilus brunneus', 'Osteopilus ocellatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pachymedusa dacnicolor', 'Agalychnis dacnicolor')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pachytriton labiatus', 'Paramesotriton labiatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Palmatorappia solomonis', 'Cornufer heffernani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Paramesotriton laoensis', 'Laotriton laoensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pedostibes everetti', 'Rentapia rugosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pedostibes hosii', 'Rentapia hosii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pedostibes rugosus', 'Rentapia rugosa')) %>% 
   mutate(binomial = str_replace(binomial, 'Pelophylax kl', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Peltophryne fracta', 'Pelophryne guentheri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Petropedetes dutoiti', 'Arthroleptides dutoiti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Petropedetes martiensseni', 'Arthroleptides martiensseni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Petropedetes natator', 'Odontobatrachus natator')) %>% 
+  mutate(binomial = str_replace(binomial, 'Petropedetes newtoni', 'Petropedetes newtonii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Petropedetes yakusini', 'Arthroleptides yakusini')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pherohapsis menziesi', 'Mantophryne menziesi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus adspersus', 'Pseudophilautus adspersus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus annandalii', 'Raorchestes annandalii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus banaensis', 'Kurixalus banaensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus beddomii', 'Raorchestes beddomii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus bobingeri', 'Raorchestes bobingeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus bombayensis', 'Raorchestes bombayensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus chalazodes', 'Raorchestes chalazodes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus charius', 'Raorchestes charius')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus cornatus', 'Philautus cornutus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus femoralis', 'Pseudophilautus femoralis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus flaviventris', 'Raorchestes flaviventris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus gauni', 'Leptomantis gauni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus glandulosus', 'Raorchestes glandulosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus graminirupes', 'Raorchestes graminirupes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus gryllus', 'Raorchestes gryllus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus halyi', 'Pseudophilautus halyi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus hansenae', 'Feihyla hansenae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus hypomelas', 'Pseudophilautus hypomelas')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus jinxiuensis', 'Gracixalus jinxiuensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus leucorhinus', 'Pseudophilautus leucorhinus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus maia', 'Pseudophilautus maia')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus microtympanum', 'Pseudophilautus microtympanum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus mindorensis', 'Philautus schmackeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus nasutus', 'Pseudophilautus nasutus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus nongkhorensis', 'Chiromantis nongkhorensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus palpebralis', 'Feihyla palpebralis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus parvulus', 'Raorchestes parvulus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus petilus', 'Theloderma petilum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus poecilus', 'Philautus poecilius	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus pulcher', 'Raorchestes glandulosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus quyeti', 'Gracixalus quyeti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus romeri', 'Liuixalus romeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus schmarda', 'Pseudophilautus schmarda')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus signatus', 'Raorchestes signatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus stictomerus', 'Pseudophilautus stictomerus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus temporalis', 'Pseudophilautus temporalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus travancoricus', 'Raorchestes travancoricus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus truongsonensis', 'Theloderma truongsonense')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus variabilis', 'Pseudophilautus variabilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus williamsii', 'Philautus surdus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Philautus wynaadensis', 'Pseudophilautus wynaadensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phryniscus asper', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Phryniscus pictus', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynobatrachus boulengeri', 'Phrynobatrachus acridoides')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynobatrachus decoratus', 'Phrynobatrachus fraterculus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynobatrachus feae', 'Phrynobatrachus dispar')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynobatrachus hailiensis', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynobatrachus maculatus', 'Phrynobatrachus natalensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynobatrachus moorii', 'Phrynobatrachus natalensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynoidis asper', 'Phrynoidis aspera')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynoidis juxtaspera', 'Phrynoidis juxtasper')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynomantis humicola', 'Callulops humicola')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynomantis personata', 'Callulops personatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynomantis stictogaster', 'Callulops stictogaster')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phrynopus curator', 'Pristimantis tribulosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates anthonyi', 'Epipedobates anthonyi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates flotator', 'Silverstoneia flotator')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates mandelorum', 'Allobates mandelorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates melanorrhinus', 'Phyllobates bicolor')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates mertensi', 'Colostethus mertensi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates nicefori', 'Silverstoneia nubicola')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates nubicola', 'Silverstoneia nubicola')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates petersi', 'Ameerega petersi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates thorntoni', 'Colostethus thorntoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllobates zaparo', 'Allobates zaparo')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllomedusa annae', 'Agalychnis annae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllomedusa callidryas', 'Agalychnis callidryas')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllomedusa jimbriata', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllomedusa loris', 'Agalychnis buckleyi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Phyllomedusa savagi', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Physalaemus notatus', 'Physalaemus cuvieri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pipa americana', 'Pipa pipa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis acrochordus', 'Cornufer acrochordus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis aculeodactylus', 'Cornufer aculeodactylus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis akarithymus', 'Cornufer akarithymus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis boulengeri', 'Cornufer boulengeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis gilliardi', 'Cornufer gilliardi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis guppyi', 'Cornufer guppyi	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis ingeri', 'Platymantis guentheri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis latro', 'Cornufer latro')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis magnus', 'Cornufer magnus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis neckeri', 'Cornufer neckeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis papuensis', 'Cornufer papuensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis pelewensis', 'Cornufer pelewensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis reticulatus', 'Platymantis isarog')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis schmidti', 'Cornufer schmidti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis solomonis', 'Cornufer solomonis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis vitianus', 'Cornufer vitianus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis vitiensis', 'Cornufer vitiensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Platymantis weberi', 'Cornufer weberi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla arborescandens', 'Sarcohyla arborescandens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla bistincta', 'Sarcohyla bistincta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla brachycephala', 'Plectrohyla matudai')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla charadricola', 'Sarcohyla charadricola')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla cotzicensis', 'Plectrohyla glandulosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla crassa', 'Sarcohyla crassa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla hazelae', 'Sarcohyla hazelae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla pachyderma', 'Sarcohyla pachyderma')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla pentheter', 'Sarcohyla pentheter')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plectrohyla robertsorum', 'Sarcohyla robertsorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plethodon huldae', 'Plethodon cinereus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Plethodon longicrus', 'Plethodon yonahlossee')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pleurodema darwinii', 'Pleurodema bibroni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Polypedates beddomii', 'Indirana beddomii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Polypedates eques', 'Taruga eques')) %>% 
+  mutate(binomial = str_replace(binomial, 'Polypedates feae', 'Zhangixalus feae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Polypedates longinasus', 'Taruga longinasus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Polypedates nasutus', 'Taruga longinasus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Polypedates oxyrhynchus', 'Pseudophilautus oxyrhynchus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Potomotyphlus kaupii', 'Potamotyphlus kaupii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Poyntonophryne vertebralis', 'Poyntonophrynus vertebralis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pristimantis achuar', 'Pristimantis luscombei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pristimantis bisignatus', 'Yunganastes bisignatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pristimantis cavernibardus', 'Ceuthomantis cavernibardus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pristimantis educatoris', 'Pristimantis caryophyllaceus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pristimantis fraudator', 'Yunganastes fraudator')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pristimantis mercedesae', 'Yunganastes mercedesae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pristimantis trepidotus', 'Pristimantis festae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Prostherapis dunni', 'Colostethus dunni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudacris cadaverina', 'Hyliola cadaverina')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudacris regilla', 'Hyliola regilla')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudepidalea brongersmai', 'Barbarophryne brongersmai')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudepidalea latastii', 'Bufotes latastii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudepidalea oblonga', 'Bufotes oblongus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudepidalea pseudoraddei', 'Bufotes pseudoraddei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudepidalea raddei', 'Strauchbufo raddei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudepidalea surda', 'Bufotes surdus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudepidalea variabilis', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudepidalea viridis', 'Bufotes viridis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudis boliviana', 'Lysapsus boliviana')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudis caraya', 'Lysapsus caraya')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudis laevis', 'Lysapsus laevis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudis limellum', 'Lysapsus limellum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudoeurycea bellii', 'Isthmura bellii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudoeurycea cephalica', 'Aquiloeurycea cephalica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudoeurycea galeanae', 'Aquiloeurycea galeanae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudoeurycea gigantea', 'Isthmura gigantea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudoeurycea scandens', 'Aquiloeurycea scandens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudophryne blanchardi', 'Pseudophryne semimarmorata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudophryne vivipara', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudorana weiningensis', 'Rana weiningensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pseudotriton diastictus', 'Pseudotriton montanus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Psychrophrynella bagrecitoi', 'Psychrophrynella bagrecito')) %>% 
+  mutate(binomial = str_replace(binomial, 'Psychrophrynella guillei', 'Microkayla guillei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Psychrophrynella wettsteini', 'Microkayla wettsteini	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ptychadena chobiensis', 'Ptychadena subpunctata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ptychadena floweri', 'Ptychadena schillukorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ptychadena guerzea', 'Ptychadena longirostris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ptychadena hylaea', 'Ptychadena mascareniensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ptychadena loveridgei', 'Ptychadena porosissima')) %>% 
+  mutate(binomial = str_replace(binomial, 'Pyxicephalus maltzanii', 'Pyxicephalus edulis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ramanella conjunctus', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Ramanella montana', 'Uperodon montanus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ramanella obscura', 'Uperodon obscurus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ramanella palmata', 'Uperodon palmatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ramanella triangularis', 'Uperodon triangularis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ramanella variegata', 'Uperodon variegatus	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana aberdariensis', 'Amietia nutti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana acanthi', 'Limnonectes acanthi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana albolabris', 'Amnirana albolabris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana andamanensis', 'Minervarya andamanensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana angolensis', 'Amietia angolensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana arathooni', 'Limnonectes arathooni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana arnoldi', 'Nanorana arnoldi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana asperata', 'Limnonectes asperatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana beddomii', 'Indirana beddomii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana bolavensis', 'Odorrana bolavensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana brevipalmata', 'Minervarya brevipalmata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana burnsi', 'Rana pipiens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana caeruleopunctata', 'Rana warszewitschii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana cancrivora', 'Fejervarya cancrivora')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana chapini', 'Amietia chapini')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana chobiensis', 'Ptychadena subpunctata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana chunganensis', 'Amolops chunganensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana compotrix', 'Amolops compotrix')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana corrugata', 'Lankanectes corrugatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana crassipes', 'Conraua crassipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana cucae', 'Amolops cucae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana cyanophlyctis', 'Euphlyctis cyanophlyctis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana darlingi', 'Amnirana darlingi	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana delalandii', 'Amietia delalandii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana derooi', 'Conraua derooi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana desaegeri', 'Amietia desaegeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana diuata', 'Limnonectes diuatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana doriae', 'Limnonectes doriae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana eschatia', 'Chalcorana eschatia')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana fasciata', 'Strongylopus fasciatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana formosa', 'Amolops formosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana fuscigula', 'Amietia fuscigula')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana galamensis', 'Amnirana galamensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana godmani', 'Rana vibicaria')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana gracilis', 'Hydrophylax gracilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana grayi', 'Strongylopus grayii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana greenii', 'Minervarya greenii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana himalayana', 'Amolops himalayanus	')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana huguettae', 'Ptychadena tellinii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana hymenopus', 'Amietia hymenopus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana ibanorum', 'Limnonectes ibanorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana indeprensa', 'Odorrana indeprensa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana ingeri', 'Limnonectes ingeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana iriodes', 'Amolops iriodes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana johnstoni', 'Amietia johnstoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana kandiyohi', 'Rana pipiens')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana kaulbacki', 'Amolops kaulbacki')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana keilingi', 'Ptychadena keilingi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana khalam', 'Odorrana khalam')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana khammonensis', 'Limnonectes khammonensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana kl', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana kohchangae', 'Limnonectes kohchangae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana kuhlii', 'Limnonectes kuhlii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana leithii', 'Indirana leithii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana leonensis', 'Ptychadena longirostris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana leptodactyla', 'Sallywalkerana leptodactyla')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana leytensis', 'Limnonectes leytensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana lighti', 'Pelophylax fukienensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana limnocharis', 'Fejervarya limnocharis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana macrodon', 'Limnonectes macrodon')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana macroenemis', 'Rana macrocnemis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana macrognathus', 'Limnonectes macrognathus')) %>%   
+  mutate(binomial = str_replace(binomial, 'Rana macroscelis', 'Papurana arfaki')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana macrotympanum', 'Hildebrandtia macrotympanum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana macularia', 'Hydrophylax gracilis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana magna', 'Limnonectes magnus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana malabarica', 'Hydrophylax malabaricus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana martensii', 'Rana japonica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana megalonesa', 'Chalcorana megalonesa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana microdisca', 'Limnonectes microdiscus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana microtympanum', 'Limnonectes microtympanum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana modesta', 'Limnonectes modestus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana monticola', 'Amolops monticola')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana moodiei', 'Fejervarya moodiei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana mortenseni', 'Sylvirana mortenseni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana mossambica', 'Ptychadena mossambica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana nasica', 'Odorrana nasica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana natalensis', 'Tomopterna natalensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana nitida', 'Limnonectes nitidus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana noblei', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana nutti', 'Amietia nutti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana obscura', 'Ptychadena obscura')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana occipitalis', 'Hoplobatrachus occipitalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana orba', 'Odorrana orba')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana paramacrodon', 'Limnonectes paramacrodon')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana parvaccola', 'Chalcorana parvaccola')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana phrynoderma', 'Sallywalkerana phrynoderma')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana pileata', 'Limnonectes gyldenstolpei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana quekettii', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana raja', 'Fejervarya cancrivora')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana retropunctata', 'Ptychadena retropunctata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana rhacoda', 'Limnonectes rhacodus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana rolandae', 'Sphaerotheca rolandae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana ruwenzorica', 'Amietia ruwenzorica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana semipalmata', 'Indirana semipalmata')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana stenocephala', 'Ptychadena stenocephala')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana straeleni', 'Ptychadena straeleni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana submascareniensis', 'Ptychadena submascareniensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana systoma', 'Uperodon systoma')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana tasanae', 'Alcalus tasanae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana tenasserimensis', 'Ingerana tenasserimensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana tigrina', 'Hoplobatrachus tigerinus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana timorensis', 'Limnonectes timorensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana tuberculosa', 'Tomopterna tuberculosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana tweediei', 'Limnonectes tweediei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana upembae', 'Ptychadena upembae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana vandijki', 'Amietia vandijki')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana vernayi', 'Ptychadena mossambica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana verrucosa', 'Minervarya keralensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana vertebralis', 'Amietia vertebralis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana vitrea', 'Amolops vitreus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana vittigera', 'Fejervarya vittigera')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana warschewitschii', 'Rana warszewitschii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana wittei', 'Amietia wittei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana woodworthi', 'Limnonectes woodworthi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana yakani', 'Pulchrana grandocula')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rana zeteki', 'Rana warszewitschii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ranitomeya biolat', 'Ranitomeya sirensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Ranoidea aurea', 'Litoria aurea')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rappia bayoni', 'Hyperolius viridiflavus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Relictivomer pearsei', 'Elachistocleis pearsei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus acutirostris', 'Philautus acutirostris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus angulirostris', 'Leptomantis angulirostris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus appendiculatus', 'Kurixalus appendiculatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus arboreus', 'Zhangixalus arboreus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus arvalis', 'Zhangixalus arvalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus bimaculatus', 'Leptomantis bimaculatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus brygooi', 'Boophis laurenti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus callichromus', 'Boophis goudotii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus cavirostris', 'Pseudophilautus cavirostris')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus chenfui', 'Zhangixalus chenfui')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus cyanopunctatus', 'Leptomantis cyanopunctatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus dennysi', 'Zhangixalus dennysi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus dorsoviridis', 'Zhangixalus dorsoviridis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus dubius', 'Philautus dubius')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus duboisi', 'Zhangixalus duboisi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus dugritei', 'Zhangixalus dugritei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus dulitensis', 'Zhangixalus dulitensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus emembranatus', 'Philautus worcesteri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus everetti', 'Philautus everetti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus fasciatus', 'Leptomantis fasciatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus feae', 'Zhangixalus feae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus fergusoni', 'Pseudophilautus fergusonianus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus gauni', 'Leptomantis gauni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus harrissoni', 'Leptomantis harrissoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus hyloides', 'Boophis goudotii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus jarujini', 'Zhangixalus jarujini')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus javanus', 'Rhacophorus margaritifer')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus jerdonii', 'Nasutixalus jerdonii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus kajau', 'Feihyla kajau')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus lissobrachius', 'Philautus surdus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus macropus', 'Pseudophilautus macropus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus madagascariensis', 'Boophis madagascariensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus maximus', 'Zhangixalus pachyproctus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus microglossus', 'Zhangixalus schlegelii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus microtis', 'Spinomantis microtis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus microtympanum', 'Pseudophilautus microtympanum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus moltrechti', 'Zhangixalus moltrechti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus mutus', 'Polypedates mutus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus omeimontis', 'Zhangixalus omeimontis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus owstoni', 'Zhangixalus owstoni')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus pleurotaenia', 'Pseudophilautus pleurotaenia')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus prominanus', 'Zhangixalus prominanus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus reticulatus', 'Pseudophilautus reticulatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus robinsonii', 'Leptomantis robinsonii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus rufipes', 'Leptomantis rufipes')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus schlegelii', 'Zhangixalus schlegelii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus shelfordi', 'Leptomantis fasciatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus taeniatus', 'Polypedates taeniatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus taronensis', 'Zhangixalus burmanus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus viridis', 'Zhangixalus viridis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhacophorus williamsi', 'Philautus surdus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhinella boulengeri', 'Dendrophryniscus proboscideus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Rhombophryne alluaudi', 'Plethodontohyla alluaudi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Scarthyla ostinodactyla', 'Scarthyla goinorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Schistometopum ephele', 'Schistometopum thomense')) %>% 
+  mutate(binomial = str_replace(binomial, 'Scinax parkeri', 'Scinax fuscomarginatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Scinax trilineatus', 'Scinax fuscomarginatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Scutiger alticola', 'Scutiger boulengeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Scutiger pingii', 'Oreolalax pingii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Scutiger popei', 'Oreolalax popei')) %>% 
+  mutate(binomial = str_replace(binomial, 'Scutiger schmidti', 'Oreolalax schmidti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Silurana epitropicalis', 'Xenopus epitropicalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Silurana tropicalis', 'Xenopus tropicalis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Speleomantes ambrosii', 'Hydromantes ambrosii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Speleomantes flavus', 'Hydromantes flavus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Speleomantes imperialis', 'Hydromantes imperialis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Speleomantes italicus', 'Hydromantes italicus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Speleomantes strinatii', 'Hydromantes strinatii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Speleomantes supramontis', 'Hydromantes supramontis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Spelerpes cephalicus', 'Aquiloeurycea cephalica')) %>% 
+  mutate(binomial = str_replace(binomial, 'Sphaenorhynchus nana', NA_character_)) %>% 
+  mutate(binomial = str_replace(binomial, 'Sphaenorhynchus oreophila', 'Sphaenorhynchus platycephalus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Sphaenorhynchus orophilus', 'Sphaenorhynchus platycephalus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Sphenophryne hooglandi', 'Austrochaperina hooglandi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Sphenophryne loriae', 'Austrochaperina laurae')) %>% 
+  mutate(binomial = str_replace(binomial, 'Sphenophryne pluvialis', 'Austrochaperina pluvialis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Sphenophryne robusta', 'Austrochaperina robusta')) %>% 
+  mutate(binomial = str_replace(binomial, 'Staurois hongkongensis', 'Amolops hongkongensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Staurois kangtingensis', 'Amolops mantzorum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Staurois lifanensis', 'Amolops lifanensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Staurois loloensis', 'Amolops loloensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Staurois ricketti', 'Amolops ricketti')) %>% 
+  mutate(binomial = str_replace(binomial, 'Syncope antenori', 'Chiasmocleis antenori')) %>% 
+  mutate(binomial = str_replace(binomial, 'Syncope carvalhoi', 'Chiasmocleis carvalhoi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Syrrhophus gaigeae', 'Eleutherodactylus guttilatus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Syrrhophus nebulosus', 'Eleutherodactylus pipilans')) %>% 
+  mutate(binomial = str_replace(binomial, 'Telmatobius escomeli', 'Telmatobius culeus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Telmatobius walkeri', 'Telmatobius jelskii')) %>% 
+  mutate(binomial = str_replace(binomial, 'Tepuihyla rimarum', 'Tepuihyla rodriguezi')) %>% 
+  mutate(binomial = str_replace(binomial, 'Theloderma asper', 'Theloderma asperum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Theloderma corticalis', 'Theloderma corticale')) %>% 
+  mutate(binomial = str_replace(binomial, 'Trachycephalus venulosus', 'Trachycephalus typhonius')) %>% 
+  mutate(binomial = str_replace(binomial, 'Triturus ensicaudus', 'Cynops ensicauda')) %>% 
+  mutate(binomial = str_replace(binomial, 'Triturus rivularis', 'Taricha rivularis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Uperodon globosus', 'Uperodon globulosus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Uperoleia fimbrianus', 'Uperoleia rugosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Uperoleia variegata', 'Uperoleia lithomoda')) %>% 
+  mutate(binomial = str_replace(binomial, 'Uraeotyphlus nayarani', 'Uraeotyphlus narayani')) %>% 
+  mutate(binomial = str_replace(binomial, 'Xenophrys baluensis', 'Pelobatrachus baluensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Xenophrys boettgeri', 'Panophrys boettgeri')) %>% 
+  mutate(binomial = str_replace(binomial, 'Xenophrys kuatunensis', 'Panophrys kuatunensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Xenophrys minor', 'Panophrys minor')) %>% 
+  mutate(binomial = str_replace(binomial, 'Xenophrys omeimontis', 'Panophrys omeimontis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Xenophrys palpebralespinosa', 'Panophrys palpebralespinosa')) %>% 
+  mutate(binomial = str_replace(binomial, 'Xenophrys shapingensis', 'Atympanophrys shapingensis')) %>% 
+  mutate(binomial = str_replace(binomial, 'Zachaenus sanctaecatharinae', NA_character_)) %>%
   
-  # Fix family names
-  mutate(family = case_when(genus == "Dicamptodon"  
-                            ~ "Dicamptodontidae",
-                            genus == "Allobates" |
+#------------------------------------------------------------------------------------------------ 
+# REPTILES
+# Correcting taxonomy/spellings/typos
+# Checked against Uetz taxonomy
+# Where I coudn't find the species I replaced it with NA_character_
+# and it will drop out of the analysis
+#-------------------------------------------------------------------------------------------------  
+
+mutate(binomial = str_replace(binomial, 'Ablepharus smithi', 'Panaspis seydeli')) %>%
+  mutate(binomial = str_replace(binomial, 'Acanthocercus annectens', 'Acanthocercus annectans')) %>%
+  mutate(binomial = str_replace(binomial, "Acanthophis antarticus", "Acanthophis antarcticus")) %>%
+  mutate(binomial = str_replace(binomial, 'Acanthocerus guentherpetersi', 'Acanthocercus guentherpetersi')) %>%
+  mutate(binomial = str_replace(binomial, 'Acanthodactylus busaki', 'Acanthodactylus busacki')) %>%
+  mutate(binomial = str_replace(binomial, 'Acanthodactylus lineomaculatus', 'Acanthodactylus erythrurus')) %>%
+  mutate(binomial = str_replace(binomial, 'Acanthodactylus opheoduras', 'Acanthodactylus opheodurus')) %>%
+  mutate(binomial = str_replace(binomial, 'Acanthodactylus tristami', 'Acanthodactylus tristrami')) %>%
+  mutate(binomial = str_replace(binomial, 'Afrotyphlops decorosus', 'Letheobia decorosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Agama andrietae', 'Agama anchietae')) %>%
+  mutate(binomial = str_replace(binomial, 'Agama rubrigularis', 'Trapelus rubrigularis')) %>%
+  mutate(binomial = str_replace(binomial, 'Agama tuberculata', 'Laudakia tuberculata')) %>%
+  mutate(binomial = str_replace(binomial, 'Agama wilmsi', 'Xenagama wilmsi')) %>%
+  mutate(binomial = str_replace(binomial, 'Aldabrachelys gouffii', 'Aldabrachelys gigantea')) %>%
+  mutate(binomial = str_replace(binomial, 'Aldabrachelys grandidieri', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Aldabrachelys sumeirei', 'Aldabrachelys gigantea')) %>%
+  mutate(binomial = str_replace(binomial, 'Algiroides marchi', 'Algyroides marchi')) %>%
+  mutate(binomial = str_replace(binomial, 'Alinea pergravis', 'Marisora pergravis')) %>%
+  mutate(binomial = str_replace(binomial, 'Amblyodipsas niangarae', 'Amblyodipsas unicolor')) %>%
+  mutate(binomial = str_replace(binomial, 'Amblyrhynchus nanus', 'Amblyrhynchus cristatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva abbotti', 'Pholidoscelis chrysolaemus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva alboguttata', 'Pholidoscelis exsul')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva atrata', 'Pholidoscelis atratus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva auberi', 'Pholidoscelis auberi')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva beatensis', 'Pholidoscelis lineolatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva chrysolaema', 'Pholidoscelis chrysolaemus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva corax', 'Pholidoscelis corax')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva corvina', 'Pholidoscelis corvinus')) %>%
+  mutate(binomial = str_replace(binomial, "Ameiva desechensis", "Pholidoscelis exsul")) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva dorsalis', 'Pholidoscelis dorsalis')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva erythrocephala', 'Pholidoscelis erythrocephalus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva exsul', 'Pholidoscelis exsul')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva fuscata', 'Pholidoscelis fuscatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva griswoldi', 'Pholidoscelis griswoldi')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva leberi', 'Pholidoscelis chrysolaemus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva lineolata', 'Pholidoscelis lineolatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva maynardi', 'Pholidoscelis maynardi')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva navassae', 'Pholidoscelis taeniurus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva nevisana', 'Pholidoscelis erythrocephalus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva pluvianotata', 'Pholidoscelis pluvianotatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva pluvionotata', 'Pholidoscelis pluvianotatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva polops', 'Pholidoscelis polops')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva riisei', 'Pholidoscelis exsul')) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva taeniura', 'Pholidoscelis taeniurus')) %>%
+  mutate(binomial = str_replace(binomial, "Ameiva undulata", "Holcosus undulatus")) %>%
+  mutate(binomial = str_replace(binomial, 'Ameiva wetmorei', 'Pholidoscelis wetmorei')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphibolurus isolepis', 'Ctenophorus isolepis')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiesma boulengeri', 'Hebius boulengeri')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiesma inas', 'Hebius inas')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus alluaudi', 'Flexiseps alluaudi')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus anosyensis', 'Brachyseps anosyensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus ardouini', 'Flexiseps ardouini')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus crenni', 'Flexiseps crenni')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus decaryi', 'Flexiseps decaryi')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus frontoparietalis', 'Brachyseps frontoparietalis')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus gastrostictus', 'Brachyseps gastrostictus')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus johannae', 'Flexiseps johannae')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus macrocercus', 'Brachyseps macrocercus')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus mandokava', 'Flexiseps mandokava')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus melanurus', 'Flexiseps melanurus')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus ornaticeps', 'Flexiseps ornaticeps')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus punctatus', 'Brachyseps punctatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus splendidus', 'Brachyseps splendidus')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus tsaratananensis', 'Flexiseps tsaratananensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphiglossus valhallae', 'Flexiseps valhallae')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena amazonica', 'Amphisbaena fuliginosa')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena bassleri', 'Amphisbaena fuliginosa')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena flavescens', 'Amphisbaena alba')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena heterozonata', 'Amphisbaena darwinii')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena infraorbitale', 'Leposternon infraorbitale')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena microcephalum', 'Leposternon microcephalum')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena octostegum', 'Leposternon octostegum')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena polystegum', 'Leposternon polystegum')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena scutigerum', 'Leposternon scutigerum')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena trachura', 'Amphisbaena darwinii')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena varia', 'Amphisbaena fuliginosa')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena wiedi', 'Amphisbaena fuliginosa')) %>%
+  mutate(binomial = str_replace(binomial, 'Amphisbaena wuchereri', 'Leposternon wuchereri')) %>%
+  mutate(binomial = str_replace(binomial, 'Anadia rhombifer', 'Anadia rhombifera')) %>%
+  mutate(binomial = str_replace(binomial, 'Anguis incomptus', 'Ophisaurus incomptus')) %>%
+  mutate(binomial = str_replace(binomial, 'Anilios nigroterminatus', 'Anilios grypus')) %>%
+  mutate(binomial = str_replace(binomial, 'Anilios polygrammicus', 'Anilios nigrescens')) %>%
+  mutate(binomial = str_replace(binomial, 'Anolis intermedius', 'Anolis laeviventris')) %>%
+  mutate(binomial = str_replace(binomial, 'Anolis nubilis', 'Anolis nubilus')) %>%
+  mutate(binomial = str_replace(binomial, 'Anolis ordinatus', 'Anolis sagrei')) %>%
+  mutate(binomial = str_replace(binomial, 'Anolis pseudoperaccae', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Anolis scyphaeus', 'Anolis scypheus')) %>%
+  mutate(binomial = str_replace(binomial, 'Anolis wattsi', 'Anolis wattsii')) %>%
+  mutate(binomial = str_replace(binomial, "Anolis wattsiii", 'Anolis wattsii')) %>%
+  mutate(binomial = str_replace(binomial, 'Anolis whitemani', 'Anolis breslini')) %>%
+  mutate(binomial = str_replace(binomial, 'Apodora papuana', 'Liasis papuanus')) %>%
+  mutate(binomial = str_replace(binomial, "Arrhyton exiguum", "Magliophis exiguus")) %>%
+  mutate(binomial = str_replace(binomial, 'Arthrosaura guianensis', 'Yanomamia guianensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Asaccus caudivolvus', 'Asaccus caudivolvulus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidomorphus kreffti', 'Cacophis krefftii')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidomorphus squamulosus', 'Cacophis squamulosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis arizonae', 'Aspidoscelis inornatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis costata', 'Aspidoscelis costatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis cozumelae', 'Aspidoscelis cozumela')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis flagellicauda', 'Aspidoscelis sonorae')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis guttata', 'Aspidoscelis guttatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis hyperythra', 'Aspidoscelis hyperythrus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis inornata', 'Aspidoscelis inornatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis lineattissima', 'Aspidoscelis lineattissimus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis marmorata', 'Aspidoscelis marmoratus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis maxima', 'Aspidoscelis maximus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis mexicana', 'Aspidoscelis mexicanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis neomexicana', 'Aspidoscelis neomexicanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis neotesselata', 'Aspidoscelis neotesselatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis parvisocia', 'Aspidoscelis parvisocius')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis sexlineata', 'Aspidoscelis sexlineatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis stictogramma', 'Aspidoscelis stictogrammus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis tesselata', 'Aspidoscelis tesselatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidoscelis xanthonota', 'Aspidoscelis xanthonotus')) %>%
+  mutate(binomial = str_replace(binomial, 'Aspidura deraniyagala', 'Aspidura deraniyagalae')) %>%
+  mutate(binomial = str_replace(binomial, 'Ateuchosaurus sowerbyi', 'Ateuchosaurus chinensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Atheris hindii', 'Montatheris hindii')) %>%
+  mutate(binomial = str_replace(binomial, 'Atractaspis scotecci', 'Atractaspis scorteccii')) %>%
+  mutate(binomial = str_replace(binomial, 'Atractus cassioni', 'Atractus carrioni')) %>%
+  mutate(binomial = str_replace(binomial, 'Atractus univittatus', 'Atractus fuliginosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Barisia gadovii', 'Mesaspis gadovii')) %>%
+  mutate(binomial = str_replace(binomial, 'Barisia moreleti', 'Mesaspis moreletii')) %>%
+  mutate(binomial = str_replace(binomial, 'Bassiana duperreyi', 'Acritoscincus duperreyi')) %>%
+  mutate(binomial = str_replace(binomial, 'Bassiana platynota', 'Acritoscincus platynotus')) %>%
+  mutate(binomial = str_replace(binomial, 'Bassiana trilineata', 'Acritoscincus trilineatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Batchia bicolor', 'Bachia bicolor')) %>%
+  mutate(binomial = str_replace(binomial, 'Bitia hydrinus', 'Bitia hydroides')) %>%
+  mutate(binomial = str_replace(binomial, 'Boiga gokool', 'Boiga gocool')) %>%
+  mutate(binomial = str_replace(binomial, 'Bothrops aurifer', 'Bothriechis aurifer')) %>%
+  mutate(binomial = str_replace(binomial, "Bothrops bilineata", "Bothrops bilineatus")) %>%
+  mutate(binomial = str_replace(binomial, 'Bothrops marchi', 'Bothriechis marchi')) %>%
+  mutate(binomial = str_replace(binomial, 'Bothrops pulchra', 'Bothrops pulcher')) %>%
+  mutate(binomial = str_replace(binomial, 'Bothrops schlegeli', 'Bothriechis schlegelii')) %>%
+  mutate(binomial = str_replace(binomial, 'Bothrops taeniata', 'Bothrops taeniatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Brachyaspis eusta', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Brachyophidium rhodogaster', 'Teretrurus rhodogaster')) %>%
+  mutate(binomial = str_replace(binomial, 'Bungarus caeruleas', 'Bungarus caeruleus')) %>%
+  mutate(binomial = str_replace(binomial, 'Calamaria palawanensis', 'Calamaria palavanensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Calliophis bivirgata', 'Calliophis bivirgatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Calliophis calligaster', 'Hemibungarus calligaster')) %>%
+  mutate(binomial = str_replace(binomial, 'Callisaurus crinitus', 'Callisaurus draconoides')) %>%
+  mutate(binomial = str_replace(binomial, 'Calotes ellioti', 'Monilesaurus ellioti')) %>%
+  mutate(binomial = str_replace(binomial, 'Calotes rouxii', 'Monilesaurus rouxii')) %>%
+  mutate(binomial = str_replace(binomial, 'Carlia maccooeyi', 'Carlia tetradactyla')) %>%
+  mutate(binomial = str_replace(binomial, 'Carlia pectorale', 'Carlia pectoralis')) %>%
+  mutate(binomial = str_replace(binomial, 'Causus lineatus', 'Causus bilineatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Celestus bivittatus', 'Diploglossus bivittatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Celestus montanus', 'Diploglossus montanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Celestus scansorius', 'Diploglossus scansorius')) %>%
+  mutate(binomial = str_replace(binomial, 'Cercosaura nicefori', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Cercosaura tyleri', 'Arthrosaura reticulata')) %>%
+  mutate(binomial = str_replace(binomial, 'Chalcides ghiari', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, "Chamaeleo basilicus", "Chamaeleo africanus")) %>%
+  mutate(binomial = str_replace(binomial, "Chamaeleo cephalolepis", "Furcifer cephalolepis")) %>%
+  mutate(binomial = str_replace(binomial, "Chamaeleo fischeri", "Kinyongia fischeri")) %>%
+  mutate(binomial = str_replace(binomial, 'Chamaeleo fulleborni', 'Trioceros fuelleborni')) %>%
+  mutate(binomial = str_replace(binomial, 'Chamaeleo hohneli', 'Trioceros hoehnelii')) %>%
+  mutate(binomial = str_replace(binomial, 'Chamaeleo longicauda', 'Furcifer pardalis')) %>%
+  mutate(binomial = str_replace(binomial, "Chamaeleo willsi", "Furcifer willsii")) %>%
+  mutate(binomial = str_replace(binomial, 'Chamaeleo xenorhinus', 'Kinyongia xenorhina')) %>%
+  mutate(binomial = str_replace(binomial, 'Chamaeleon bitaeniatus', 'Trioceros bitaeniatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Chamaelycus werneri', 'Chamaelycus fasciatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Chelodina oblonga', 'Chelodina rugosa')) %>%
+  mutate(binomial = str_replace(binomial, 'Chilomeniscus stramineus', 'Sonora straminea')) %>%
+  mutate(binomial = str_replace(binomial, 'Chionactis annulata', 'Sonora annulatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Chionactis occipitalis', 'Sonora occipitalis')) %>%
+  mutate(binomial = str_replace(binomial, 'Chionactis palarostris', 'Sonora palarostris')) %>%
+  mutate(binomial = str_replace(binomial, 'Cnemaspis boulengerii', 'Cnemaspis boulengeri')) %>%
+  mutate(binomial = str_replace(binomial, 'Cnemidophorus exsanguis', 'Aspidoscelis exsanguis')) %>%
+  mutate(binomial = str_replace(binomial, 'Cnemidophorus gigas', 'Aspidoscelis sackii')) %>%
+  mutate(binomial = str_replace(binomial, 'Cnemidophorus velox', 'Aspidoscelis velox')) %>%
+  mutate(binomial = str_replace(binomial, 'Colopus kochii', 'Pachydactylus kochii')) %>%
+  mutate(binomial = str_replace(binomial, 'Colopus wahlbergii', 'Pachydactylus wahlbergii')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber anthonyi', 'Masticophis anthonyi')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber aurigulus', 'Masticophis aurigulus')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber bilineatus', 'Masticophis bilineatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber flagellum', 'Masticophis flagellum')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber fuliginosus', 'Masticophis fuliginosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber hotsoni', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber lateralis', 'Masticophis lateralis')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber mentovarius', 'Masticophis mentovarius')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber saharicus', 'Platyceps rhodorachis')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber schotti', 'Masticophis schotti')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber taeniatus', 'Masticophis taeniatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Coluber taylori', 'Platyceps taylori')) %>%
+  mutate(binomial = str_replace(binomial, 'Concinnia brachyosoma', 'Concinnia brachysoma')) %>%
+  mutate(binomial = str_replace(binomial, 'Coniophanes peruvianne', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Coniophanes signatus', 'Coniophanes dromiciformis')) %>%
+  mutate(binomial = str_replace(binomial, 'Cordylus warreni', 'Smaug warreni')) %>%
+  mutate(binomial = str_replace(binomial, 'Cosymbotes craspedotus', 'Hemidactylus craspedotus')) %>%
+  mutate(binomial = str_replace(binomial, 'Crocodylus binuensis', 'Crocodylus niloticus')) %>%
+  mutate(binomial = str_replace(binomial, 'Crocodylus raninus', 'Crocodylus porosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ctenosaura cycluroides', 'Ctenosaura acanthura')) %>%
+  mutate(binomial = str_replace(binomial, 'Ctenosaura defensor', 'Cachryx defensor')) %>%
+  mutate(binomial = str_replace(binomial, 'Ctenotus fallens', 'Ctenotus inornatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ctenotus helenae', 'Ctenotus inornatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ctenotus saxatilis', 'Ctenotus inornatus')) %>%
+  mutate(binomial = str_replace(binomial, "Cuora evelynae", "Cuora flavomarginata")) %>%
+  mutate(binomial = str_replace(binomial, 'Cyclophiops doriae', 'Ptyas doriae')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyclophiops hamptoni', 'Ptyas doriae')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyclophiops herminae', 'Ptyas herminae')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyclophiops major', 'Ptyas major')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyclophiops multicinctus', 'Ptyas multicinctus')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyclophiops semicarinatus', 'Ptyas semicarinatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyclura mattea', 'Cyclura pinguis')) %>%
+  mutate(binomial = str_replace(binomial, 'Cylindraspis indica', 'Aldabrachelys gigantea')) %>%
+  mutate(binomial = str_replace(binomial, "Cylindraspis inepta", "Aldabrachelys gigantea")) %>%
+  mutate(binomial = str_replace(binomial, 'Cylindraspis leptocnemis', 'Aldabrachelys gigantea')) %>%
+  mutate(binomial = str_replace(binomial, 'Cylindraspis peltastes', 'Aldabrachelys gigantea')) %>%
+  mutate(binomial = str_replace(binomial, "Cylindraspis triserrata", "Aldabrachelys gigantea")) %>%
+  mutate(binomial = str_replace(binomial, 'Cylindraspis vosmaeri', 'Aldabrachelys gigantea')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyrtodactylus coindemirensis', 'Nactus coindemirensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyrtodactylus fasciolatum', 'Cyrtodactylus fasciolatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyrtodactylus kachhensis', 'Cyrtopodion watsoni')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyrtodactylus montium-salsorum', 'Cyrtopodion montiumsalsorum')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyrtodactylus stoliczkae', 'Altiphylax stoliczkai')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyrtopodion battalense', 'Cyrtodactylus battalensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyrtopodion dattanense', 'Cyrtodactylus dattanensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Cyrtopodion lawderanum', 'Cyrtodactylus lawderanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Daboia deserti', 'Daboia mauritanica')) %>%
+  mutate(binomial = str_replace(binomial, 'Dasia smaragdinum', 'Lamprolepis smaragdina')) %>%
+  mutate(binomial = str_replace(binomial, 'Demansia nuchalis', 'Pseudonaja nuchalis')) %>%
+  mutate(binomial = str_replace(binomial, 'Dendrelaphis caudolineaolatus', 'Dendrelaphis caudolineolatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Denisonia frenata', 'Suta suta')) %>%
+  mutate(binomial = str_replace(binomial, 'Denisonia melanura', 'Salomonelaps par')) %>%
+  mutate(binomial = str_replace(binomial, 'Denisonia spectabilis', 'Parasuta dwyeri')) %>%
+  mutate(binomial = str_replace(binomial, "Dinodon rufozonatum", "Lycodon rufozonatus")) %>%
+  mutate(binomial = str_replace(binomial, 'Diploglossus bakeri', 'Celestus crusculus')) %>%
+  mutate(binomial = str_replace(binomial, 'Diploglossus barbouri', 'Celestus barbouri')) %>%
+  mutate(binomial = str_replace(binomial, 'Diploglossus curtissi', 'Celestus curtissi')) %>%
+  mutate(binomial = str_replace(binomial, 'Diploglossus impressus', 'Celestus occiduus')) %>%
+  mutate(binomial = str_replace(binomial, 'Dipsadoboa montisilva', 'Dipsadoboa montisilva')) %>%
+  mutate(binomial = str_replace(binomial, 'Dipsas latrifrontalis', 'Dipsas latifrontalis')) %>%
+  mutate(binomial = str_replace(binomial, 'Dipsas triseriatas', 'Dipsas pratti')) %>%
+  mutate(binomial = str_replace(binomial, 'Dirosema omiltenanum', 'Geophis omiltemanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Draco timorensis', 'Draco timoriensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Dromicus variegatus', 'Borikenophis variegatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Dryocalamus davisonii', 'Lycodon davisonii')) %>%
+  mutate(binomial = str_replace(binomial, 'Dryocalamus gracilis', 'Lycodon gracilis')) %>%
+  mutate(binomial = str_replace(binomial, 'Dryocalamus nympha', 'Lycodon nympha')) %>%
+  mutate(binomial = str_replace(binomial, 'Dryocalamus subannulatus', 'Lycodon subannulatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Dryocalamus tristrigatus', 'Lycodon tristrigatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Eirenis condoni', 'Eirenis punctatolineatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Elachistodon westermanni', 'Boiga westermanni')) %>%
+  mutate(binomial = str_replace(binomial, "Elaphe longissima", "Zamenis longissimus")) %>%
+  mutate(binomial = str_replace(binomial, 'Elaphe obseleta', 'Zamenis longissimus')) %>%
+  mutate(binomial = str_replace(binomial, 'Emoia sleveni', 'Emoia slevini')) %>%
+  mutate(binomial = str_replace(binomial, 'Emydoidea blandingii', 'Emys blandingii')) %>%
+  mutate(binomial = str_replace(binomial, "Enhydrina schistosa", "Hydrophis schistosus")) %>%
+  mutate(binomial = str_replace(binomial, "Enhydris chinensis", "Myrrophis chinensis")) %>%
+  mutate(binomial = str_replace(binomial, "Enhydris plumbea", "Hypsiscopus plumbea")) %>%
+  mutate(binomial = str_replace(binomial, 'Enulius torquatus', 'Enulius flavitorques')) %>%
+  mutate(binomial = str_replace(binomial, 'Equus bisulcus', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Erythrolamprus epinephelus', 'Erythrolamprus epinephalus')) %>%
+  mutate(binomial = str_replace(binomial, 'Erythrolamprus longiventris', 'Erythrolamprus breviceps')) %>%
+  mutate(binomial = str_replace(binomial, 'Eryx vittatus', 'Eryx tataricus')) %>%
+  mutate(binomial = str_replace(binomial, 'Eublepharis afghanicus', 'Eublepharis macularius')) %>%
+  mutate(binomial = str_replace(binomial, 'Eumeces fasciatus', 'Plestiodon fasciatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Eumeces lynxe', 'Plestiodon lynxe')) %>%
+  mutate(binomial = str_replace(binomial, 'Eumeces schneideri', 'Eumeces schneiderii')) %>%
+  mutate(binomial = str_replace(binomial, 'Eumeces tetragrammus', 'Plestiodon tetragrammus')) %>%
+  mutate(binomial = str_replace(binomial, 'Euspondylus spinalis', 'Proctoporus spinalis')) %>%
+  mutate(binomial = str_replace(binomial, 'Eutropis beddomii', 'Eutropis beddomei')) %>%
+  mutate(binomial = str_replace(binomial, 'Eutropis novemcarinata', 'Toenayar novemcarinata')) %>%
+  mutate(binomial = str_replace(binomial, 'Ficinia olivacea', 'Ficimia olivacea')) %>%
+  mutate(binomial = str_replace(binomial, 'Ficinia quadrangularis', 'Gyalopion quadrangulare')) %>%
+  mutate(binomial = str_replace(binomial, 'Gehyra butleri', 'Gehyra mutilata')) %>%
+  mutate(binomial = str_replace(binomial, 'Geodipsas vauerocogae', 'Buhoma vauerocegae')) %>%
+  mutate(binomial = str_replace(binomial, 'Gerrhonotus weigmanni', 'Gerrhonotus liocephalus')) %>%
+  mutate(binomial = str_replace(binomial, 'Gloydius saxatilis', 'Gloydius intermedius')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonatodes fuscus', 'Gonatodes albogularis')) %>%
+  mutate(binomial = str_replace(binomial, 'Gongylosoma baliodeirus', 'Gongylosoma baliodeira')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis capensis', 'Limaformosa capensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis chanleri', 'Limaformosa chanleri')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis crossi', 'Limaformosa crossi')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis egbensis', 'Mehelya egbensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis gabouensis', 'Mehelya gabouensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis guirali', 'Limaformosa guirali')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis laurenti', 'Mehelya laurenti')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis nyassae', 'Gracililima nyassae')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis poensis', 'Mehelya poensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis savorgnani', 'Limaformosa savorgnani')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis stenophthalmus', 'Mehelya stenophthalmus')) %>%
+  mutate(binomial = str_replace(binomial, 'Gonionotophis vernayi', 'Limaformosa vernayi')) %>%
+  mutate(binomial = str_replace(binomial, 'Gowidon temporalis', 'Tropicagama temporalis')) %>%
+  mutate(binomial = str_replace(binomial, 'Gymnophthalmus pleei', 'Gymnophthalmus pleii')) %>%
+  mutate(binomial = str_replace(binomial, 'Hemidactylus argentii', 'Hemidactylus depressus')) %>%
+  mutate(binomial = str_replace(binomial, "Hemidactylus haitianus", "Hemidactylus angulatus")) %>%
+  mutate(binomial = str_replace(binomial, 'Hemidactylus larutensis', 'Hemiphyllodactylus larutensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Hemidactylus pumilis', 'Hemidactylus pumilio')) %>%
+  mutate(binomial = str_replace(binomial, 'Hemidactylus typus', 'Hemiphyllodactylus aurantiacus')) %>%
+  mutate(binomial = str_replace(binomial, 'Hemidactylus yunnanensis', 'Hemiphyllodactylus yunnanensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Heterodon gloydi', 'Heterodon nasicus')) %>%
+  mutate(binomial = str_replace(binomial, 'Homopus boulengeri', 'Chersobius boulengeri')) %>%
+  mutate(binomial = str_replace(binomial, 'Homopus signatus', 'Chersobius signatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Hydrops corallinus', 'Micrurus corallinus')) %>%
+  mutate(binomial = str_replace(binomial, 'Hydrops ibiboboca', 'Micrurus ibiboboca')) %>%
+  mutate(binomial = str_replace(binomial, 'Hypnale walli', 'Hypnale nepa')) %>%
+  mutate(binomial = str_replace(binomial, 'Hypsiglena ochrorhyncha', 'Hypsiglena ochrorhynchus')) %>%
+  mutate(binomial = str_replace(binomial, 'Imantodes gemmistriatus', 'Imantodes gemmistratus')) %>%
+  mutate(binomial = str_replace(binomial, 'Impensodens arizeloglyphus', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Indotyphlops khoratensis', 'Indotyphlops braminus')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura brevicauda', 'Diploderma brevicauda')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura brevipes', 'Diploderma brevipes')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura chapaensis', 'Diploderma chapaense')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura dymondi', 'Diploderma dymondi')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura fasciata', 'Diploderma fasciata')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura flaviceps', 'Diploderma flaviceps')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura grahami', 'Diploderma grahami')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura hamptoni', 'Diploderma hamptoni')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura kaubacki', 'Pseudocalotes kingdonwardi')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura makii', 'Diploderma makii')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura planidorsata', 'Cristidorsa planidorsata')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura polygonata', 'Diploderma polygonatum')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura splendida', 'Diploderma splendidum')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura swinhonis', 'Diploderma swinhonis')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura varcoae', 'Diploderma varcoae')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura yunnanensis', 'Diploderma yunnanense')) %>%
+  mutate(binomial = str_replace(binomial, 'Japalura zhaoermii', 'Diploderma zhaoermii')) %>%
+  mutate(binomial = str_replace(binomial, 'Kerilia jerdoni', 'Hydrophis jerdonii')) %>%
+  mutate(binomial = str_replace(binomial, 'Kinosternon arizonense', 'Kinosternon flavescens')) %>%
+  mutate(binomial = str_replace(binomial, 'Kolpophis annandalei', 'Hydrophis annandalei')) %>%
+  mutate(binomial = str_replace(binomial, 'Lacerta cappodocica', 'Apathya cappadocica')) %>%
+  mutate(binomial = str_replace(binomial, 'Lacerta lilfordi', 'Podarcis lilfordi')) %>%
+  mutate(binomial = str_replace(binomial, 'Lacerta mostoufii', 'Darevskia chlorogaster')) %>%
+  mutate(binomial = str_replace(binomial, 'Lacerta ocellata', 'Chalcides ocellatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lacerta valentini', 'Darevskia valentini')) %>%
+  mutate(binomial = str_replace(binomial, 'Lachesis bicolor', 'Trimeresurus albolabris')) %>%
+  mutate(binomial = str_replace(binomial, 'Lamprolepis vyneri', 'Dasia vyneri')) %>%
+  mutate(binomial = str_replace(binomial, 'Lamprophis arabicus', 'Boaedon fuliginosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lamprophis bedriagae', 'Boaedon fuliginosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lampropholis austrocaledonica', 'Caledoniscincus austrocaledonicus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lampropholis metallicum', 'Carinascincus metallicus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lampropholis novaecaledoniae', 'Caesoris novaecaledoniae')) %>%
+  mutate(binomial = str_replace(binomial, 'Lampropholis ocellatus', 'Carinascincus ocellatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lampropholis pretiosus', 'Carinascincus pretiosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lampropholis trilineatum', 'Acritoscincus trilineatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lankascincus deraniyagalae', 'Lankascincus fallax')) %>%
+  mutate(binomial = str_replace(binomial, 'Latastia boscae', 'Latastia boscai')) %>%
+  mutate(binomial = str_replace(binomial, 'Laticauda schistorhynchus', 'Laticauda schistorhyncha')) %>%
+  mutate(binomial = str_replace(binomial, 'Leimadophis nebulatus', 'Caraiba andreae')) %>%
+  mutate(binomial = str_replace(binomial, 'Leiocephalus arenarius', 'Leiocephalus psammodromus')) %>%
+  mutate(binomial = str_replace(binomial, 'Leiolopisma challengeri', 'Saproscincus challengeri')) %>%
+  mutate(binomial = str_replace(binomial, 'Leiolopisma cheesmani', 'Lipinia cheesmanae')) %>%
+  mutate(binomial = str_replace(binomial, 'Leiolopisma mustelina', 'Saproscincus mustelinus')) %>%
+  mutate(binomial = str_replace(binomial, 'Leiolopisma zealandica', 'Oligosoma lineoocellatum')) %>%
+  mutate(binomial = str_replace(binomial, 'Leiopython albertisii', 'Bothrochilus albertisii')) %>%
+  mutate(binomial = str_replace(binomial, 'Lemuriatyphlops microcephalus', 'Madatyphlops microcephalus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lemuriatyphlops reuteri', 'Madatyphlops reuteri')) %>%
+  mutate(binomial = str_replace(binomial, 'Lepidothyris fernandi', 'Mochlus fernandi')) %>%
+  mutate(binomial = str_replace(binomial, "Leposoma dispar", "Loxopholis rugiceps")) %>%
+  mutate(binomial = str_replace(binomial, 'Leposoma hexalepis', 'Loxopholis hexalepis')) %>%
+  mutate(binomial = str_replace(binomial, 'Leposoma ioanna', 'Loxopholis ioanna')) %>%
+  mutate(binomial = str_replace(binomial, 'Leposoma percarinatum', 'Loxopholis percarinatum')) %>%
+  mutate(binomial = str_replace(binomial, 'Leposoma southi', 'Loxopholis southi')) %>%
+  mutate(binomial = str_replace(binomial, 'Leposoma taeniata', 'Loxopholis percarinatum')) %>%
+  mutate(binomial = str_replace(binomial, 'Leposternon latifrontale', 'Leposternon microcephalum')) %>%
+  mutate(binomial = str_replace(binomial, 'Leptophis diplotrophis', 'Leptophis diplotropis')) %>%
+  mutate(binomial = str_replace(binomial, 'Leptotyphlops filiformis', 'Myriopholis filiformis')) %>%
+  mutate(binomial = str_replace(binomial, 'Leptotyphlops macrurus', 'Myriopholis macrura')) %>%
+  mutate(binomial = str_replace(binomial, 'Leptotyphlops nursii', 'Myriopholis nursii')) %>%
+  mutate(binomial = str_replace(binomial, 'Leptotyphlops tanae', 'Myriopholis tanae')) %>%
+  mutate(binomial = str_replace(binomial, 'Lepturophis albofuscus', 'Lycodon albofuscus')) %>%
+  mutate(binomial = str_replace(binomial, 'Letheobia simonii', 'Letheobia simoni')) %>%
+  mutate(binomial = str_replace(binomial, 'Liasis papuana', 'Liasis papuanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Liolaemus kuhlmanni', 'Liolaemus zapallarensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Lophocalotes luedekingii', 'Lophocalotes ludekingi')) %>%
+  mutate(binomial = str_replace(binomial, 'Lycodon osmanhilli', 'Lycodon anamallensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Lycodryas variabilis', 'Phisalixella variabilis')) %>%
+  mutate(binomial = str_replace(binomial, 'Lygisaurus salsburyi', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Lygodactylus laurae', 'Lygodactylus angolensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Lygodactylus luteopicturatus', 'Lygodactylus picturatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Lygosoma akeleyi', 'Chalcides chalcides')) %>%
+  mutate(binomial = str_replace(binomial, 'Lygosoma albopunctata', 'Lygosoma albopunctatum')) %>%
+  mutate(binomial = str_replace(binomial, 'Lygosoma laeviceps', 'Mochlus laeviceps')) %>%
+  mutate(binomial = str_replace(binomial, 'Lygosoma pembanum', 'Mochlus pembanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Mabuya longiloba', 'Trachylepis lacertiformis')) %>%
+  mutate(binomial = str_replace(binomial, 'Mabuya stangeri', 'Chioninia stangeri')) %>%
+  mutate(binomial = str_replace(binomial, 'Mabuya vaillanti', 'Chioninia vaillantii')) %>%
+  mutate(binomial = str_replace(binomial, 'Macropholidus annectans', 'Macropholidus annectens')) %>%
+  mutate(binomial = str_replace(binomial, 'Macropisthodon flaviceps', 'Rhabdophis flaviceps')) %>%
+  mutate(binomial = str_replace(binomial, 'Macropisthodon plumbicolor', 'Rhabdophis plumbicolor')) %>%
+  mutate(binomial = str_replace(binomial, 'Macropisthodon rhodomelas', 'Rhabdophis rhodomelas')) %>%
+  mutate(binomial = str_replace(binomial, 'Macropisthodon rudis', 'Pseudagkistrodon rudis')) %>%
+  mutate(binomial = str_replace(binomial, 'Madatyphlops calabresii', 'Afrotyphlops calabresii')) %>%
+  mutate(binomial = str_replace(binomial, 'Madatyphlops cuneirostris', 'Afrotyphlops cuneirostris')) %>%
+  mutate(binomial = str_replace(binomial, 'Magliophis exiguum', 'Magliophis exiguus')) %>%
+  mutate(binomial = str_replace(binomial, 'Mastigodryas bifossatus', 'Palusophis bifossatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Mastigodryas pleei', 'Mastigodryas pleii')) %>%
+  mutate(binomial = str_replace(binomial, 'Mehelya stenopthalmus', 'Mehelya stenophthalmus')) %>%
+  mutate(binomial = str_replace(binomial, "Microcephalophis gracilis", "Hydrophis gracilis")) %>%
+  mutate(binomial = str_replace(binomial, 'Mochlus afer', 'Mochlus sundevallii')) %>%
+  mutate(binomial = str_replace(binomial, 'Mochlus grandisonianum', 'Mochlus grandisonianus')) %>%
+  mutate(binomial = str_replace(binomial, 'Mochlus mabuiiforme', 'Mochlus mabuiiformis')) %>%
+  mutate(binomial = str_replace(binomial, 'Mochlus paedocarinatum', 'Mochlus paedocarinatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Mochlus sundevalli', 'Mochlus sundevallii')) %>%
+  mutate(binomial = str_replace(binomial, 'Morelia amethistina', 'Simalia amethistina')) %>%
+  mutate(binomial = str_replace(binomial, 'Morelia boeleni', 'Simalia boeleni')) %>%
+  mutate(binomial = str_replace(binomial, 'Morelia childreni', 'Antaresia perthensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Naja crawshayi', 'Naja nigricollis')) %>%
+  mutate(binomial = str_replace(binomial, 'Natrix baramensis', 'Pseudoxenodon baramensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Natrix ceylonensis', 'Rhabdophis ceylonensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Natrix chrysargoides', 'Rhabdophis chrysargoides')) %>%
+  mutate(binomial = str_replace(binomial, 'Natrix dendrophiops', 'Tropidonophis dendrophiops')) %>%
+  mutate(binomial = str_replace(binomial, 'Natrix johannis', 'Fowlea sanctijohannis')) %>%
+  mutate(binomial = str_replace(binomial, 'Natrix multiscutellata', 'Tropidonophis multiscutellatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Natrix sarawakensis', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Natrix statisticus', 'Tropidonophis statisticus')) %>%
+  mutate(binomial = str_replace(binomial, 'Nerodia agassizii', 'Nerodia sipedon')) %>%
+  mutate(binomial = str_replace(binomial, "Neusticurus cochranae", "Gelanesaurus cochranae")) %>%
+  mutate(binomial = str_replace(binomial, 'Niveoscincus coventryi', 'Carinascincus coventryi')) %>%
+  mutate(binomial = str_replace(binomial, 'Niveoscincus metallicus', 'Carinascincus metallicus')) %>%
+  mutate(binomial = str_replace(binomial, 'Niveoscincus ocellatus', 'Carinascincus ocellatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Niveoscincus pretiosus', 'Carinascincus pretiosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Norbea mocqardi', 'Tropidophorus mocquardii')) %>%
+  mutate(binomial = str_replace(binomial, 'Ophisaurus koellikeri', 'Hyalosaurus koellikeri')) %>%
+  mutate(binomial = str_replace(binomial, 'Oriocalotes paulus', 'Calotes paulus')) %>%
+  mutate(binomial = str_replace(binomial, 'Orthriophis cantoris', 'Elaphe cantoris')) %>%
+  mutate(binomial = str_replace(binomial, 'Orthriophis hodgsoni', 'Elaphe hodgsoni')) %>%
+  mutate(binomial = str_replace(binomial, 'Orthriophis moellendorffi', 'Elaphe moellendorffi')) %>%
+  mutate(binomial = str_replace(binomial, 'Orthriophis taeniurus', 'Elaphe taeniura')) %>%
+  mutate(binomial = str_replace(binomial, 'Otosaurus kinabaluensis', 'Sphenomorphus kinabaluensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Pachydactylus laevigatus', 'Chondrodactylus laevigatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Panaspis africana', 'Panaspis africanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Panaspis nimbaensis', 'Panaspis tristaoi')) %>%
+  mutate(binomial = str_replace(binomial, "Panaspis wahlbergii", "Panaspis wahlbergi")) %>%
+  mutate(binomial = str_replace(binomial, 'Parahelicops annamensis', 'Hebius annamensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Parvoscincus luzonense', 'Parvoscincus luzonensis')) %>%
+  mutate(binomial = str_replace(binomial, "Pelamis platura", "Hydrophis platurus")) %>%
+  mutate(binomial = str_replace(binomial, 'Phelsuma micropholis', 'Phelsuma mutabilis')) %>%
+  mutate(binomial = str_replace(binomial, 'Phelsuma spec', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Philothamnus emini', 'Philothamnus angolensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Pholidoscelis cineracea', 'Pholidoscelis cineraceus')) %>%
+  mutate(binomial = str_replace(binomial, 'Phrynops gibbus', 'Mesoclemmys gibba')) %>%
+  mutate(binomial = str_replace(binomial, "Phrynonax sexcarinatus", "Chironius quadricarinatus")) %>%
+  mutate(binomial = str_replace(binomial, 'Phyllodactylus angelensis', 'Phyllodactylus xanti')) %>%
+  mutate(binomial = str_replace(binomial, 'Phyllodactylus montanus', 'Asaccus montanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Phyllurus asper', 'Underwoodisaurus milii')) %>%
+  mutate(binomial = str_replace(binomial, 'Platyceps tessellata', 'Platyceps rhodorachis')) %>%
+  mutate(binomial = str_replace(binomial, 'Plecturus eanaricus', 'Pseudoplectrurus canaricus')) %>%
+  mutate(binomial = str_replace(binomial, 'Podarcis raffoneae', 'Podarcis raffonei')) %>%
+  mutate(binomial = str_replace(binomial, 'Pogona minima', 'Pogona minor')) %>%
+  mutate(binomial = str_replace(binomial, 'Polemon unicolor', 'Polemon christyi')) %>%
+  mutate(binomial = str_replace(binomial, 'Potamites apodemus', 'Echinosaura apodema')) %>%
+  mutate(binomial = str_replace(binomial, 'Proablepharus kinghorni', 'Austroablepharus kinghorni')) %>%
+  mutate(binomial = str_replace(binomial, 'Psammodromus edwardsianus', 'Psammodromus edwarsianus')) %>%
+  mutate(binomial = str_replace(binomial, 'Psammophylax ocellatus', 'Psammophylax ocellatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Pseudoithycyphus blanci', 'Ithycyphus blanci')) %>%
+  mutate(binomial = str_replace(binomial, 'Pseudotyphlops philippinus', 'Rhinophis saffragamus')) %>%
+  mutate(binomial = str_replace(binomial, "Pseustes sulphureus", "Spilotes sulphureus")) %>%
+  mutate(binomial = str_replace(binomial, 'Psilophthalmus paeminosus', 'Psilops paeminosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ptychoglossus romalus', 'Ptychoglossus romaleos')) %>%
+  mutate(binomial = str_replace(binomial, 'Ptychoglossus stenolepus', 'Ptychoglossus stenolepis')) %>%
+  mutate(binomial = str_replace(binomial, "Python reticulatus", "Malayopython reticulatus")) %>%
+  mutate(binomial = str_replace(binomial, 'Python sabae', 'Python sebae')) %>%
+  mutate(binomial = str_replace(binomial, "Ramphotyphlops braminus", "Indotyphlops braminus")) %>%
+  mutate(binomial = str_replace(binomial, 'Ramphotyphlops florensis', 'Sundatyphlops polygrammicus')) %>%
+  mutate(binomial = str_replace(binomial, 'Ramphotyphlops infralabialis', 'Acutotyphlops infralabialis')) %>%
+  mutate(binomial = str_replace(binomial, 'Ramphotyphlops nigricauda', 'Anilios guentheri')) %>%
+  mutate(binomial = str_replace(binomial, 'Rena affinis', 'Trilepida affinis')) %>%
+  mutate(binomial = str_replace(binomial, 'Rhabdops bicolor', 'Smithophis bicolor')) %>%
+  mutate(binomial = str_replace(binomial, 'Rhachidelys brazili', 'Rhachidelus brazili')) %>%
+  mutate(binomial = str_replace(binomial, 'Rhagerhis moilensis', 'Malpolon moilensis')) %>%
+  mutate(binomial = str_replace(binomial, "Rhamphiophis togoensis", "Kladirostratus togoensis")) %>%
+  mutate(binomial = str_replace(binomial, 'Rhinogecko femoralis', 'Rhinogekko femoralis')) %>%
+  mutate(binomial = str_replace(binomial, 'Rhynchelaps albiceps', 'Antaioserpens albiceps')) %>%
+  mutate(binomial = str_replace(binomial, 'Rhynchelaps fasciolatus', 'Brachyurophis fasciolatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Rhynchelaps semifasciatus', 'Brachyurophis campbelli')) %>%
+  mutate(binomial = str_replace(binomial, 'Riama laevis', 'Andinosaura laevis')) %>%
+  mutate(binomial = str_replace(binomial, 'Riama luctuosa', 'Oreosaurus luctuosus')) %>%
+  mutate(binomial = str_replace(binomial, 'Riama oculata', 'Andinosaura oculata')) %>%
+  mutate(binomial = str_replace(binomial, 'Riama petrorum', 'Andinosaura petrorum')) %>%
+  mutate(binomial = str_replace(binomial, 'Riama shrevei', 'Oreosaurus shrevei')) %>%
+  mutate(binomial = str_replace(binomial, 'Riama vespertina', 'Andinosaura vespertina')) %>%
+  mutate(binomial = str_replace(binomial, 'Rieppeleon robecchii', 'Rieppeleon kerstenii')) %>%
+  mutate(binomial = str_replace(binomial, 'Saphenophis whymperi', 'Saphenophis boursieri')) %>%
+  mutate(binomial = str_replace(binomial, 'Sceloporus subniger', 'Sceloporus aeneus')) %>%
+  mutate(binomial = str_replace(binomial, 'Scelotes anguinus', 'Scelotes anguineus')) %>%
+  mutate(binomial = str_replace(binomial, 'Scincella assatus', 'Scincella assata')) %>%
+  mutate(binomial = str_replace(binomial, 'Scincella forbesora', 'Scincella forbesorum')) %>%
+  mutate(binomial = str_replace(binomial, 'Scincella miotis', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Scincella palnica', 'Kaestlea palnica')) %>%
+  mutate(binomial = str_replace(binomial, 'Scincella pulchra', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Scincella rufocaudatus', 'Scincella rufocaudata')) %>%
+  mutate(binomial = str_replace(binomial, 'Scincella tavesi', 'Scincella punctatolineata')) %>%
+  mutate(binomial = str_replace(binomial, 'Scincella travankorica', 'Kaestlea travancorica')) %>%
+  mutate(binomial = str_replace(binomial, 'Siagonodon unguirostris', 'Rena unguirostris')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibon fasciata', 'Tropidodipsas fasciata')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibon septentrionale', 'Leptodeira septentrionalis')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibynomorphus lavillai', 'Dipsas lavillai')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibynomorphus mikanii', 'Dipsas mikanii')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibynomorphus neuwiedi', 'Dipsas neuwiedi')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibynomorphus oligozonatus', 'Dipsas oligozonata')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibynomorphus petersi', 'Dipsas jamespetersi')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibynomorphus turgidus', 'Dipsas turgida')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibynomorphus vagrans', 'Dipsas vagrans')) %>%
+  mutate(binomial = str_replace(binomial, 'Sibynomorphus ventrimaculatus', 'Dipsas vermiculata')) %>%
+  mutate(binomial = str_replace(binomial, 'Sinonatrix percarinata', 'Sinonatrix percarinatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphaerodactylus brevirostratus', 'Sphaerodactylus altavelensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphaerodactylus gaigei', 'Sphaerodactylus gaigeae')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphaerodactylus nigropuntatus', 'Sphaerodactylus nigropunctatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus amabilis', 'Sphenomorphus nigrolabris')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus assatus', 'Scincella assata')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus butleri', 'Tytthoscincus butleri')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus celebense', 'Sphenomorphus celebensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus cophias', 'Tytthoscincus cophias')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus courcyanum', 'Sphenomorphus courcyanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus deplanchii', 'Sigaloseps deplanchei')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus labillardierii', 'Ctenotus labillardieri')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus larutense', 'Larutia larutensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus lepidorostris', 'Calyptotis lepidorostrum')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus malayanum', 'Sphenomorphus malayanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus manotropis', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus mimikanum', 'Sphenomorphus mimikanus')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus miodactylus', 'Larutia miodactyla')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus modigliani', 'Sphenomorphus modiglianii')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus nigrilabris', 'Sphenomorphus nigrolabris')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus praesigne', 'Sphenomorphus praesignis')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus ruficaudus', 'Calyptotis ruficauda')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus striatopunctatum', 'Lankascincus taprobanensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus sumatrensis', 'Larutia sumatrensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus taeniolata', 'Ctenotus taeniolatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus taprobanensis', 'Lankascincus taprobanensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorphus trifasciatus', 'Larutia trifasciata')) %>%
+  mutate(binomial = str_replace(binomial, 'Sphenomorus maindroni', 'Sphenomorphus maindroni')) %>%
+  mutate(binomial = str_replace(binomial, 'Stenodactylus arabicus', 'Trigonodactylus arabicus')) %>%
+  mutate(binomial = str_replace(binomial, 'Stenodactylus sharqiyahensis', 'Trigonodactylus sharqiyahensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Tachymenis surinamensis', 'Pseudalsophis elegans')) %>%
+  mutate(binomial = str_replace(binomial, 'Tantilla fraseri', 'Tantilla melanocephala')) %>%
+  mutate(binomial = str_replace(binomial, 'Teira perspicillata', 'Scelarcis perspicillata')) %>%
+  mutate(binomial = str_replace(binomial, "Tenuidactylus kohsulaimanai", "Cyrtopodion kohsulaimanai")) %>%
+  mutate(binomial = str_replace(binomial, 'Teratoscincus bedriagae', 'Teratoscincus bedriagai')) %>%
+  mutate(binomial = str_replace(binomial, "Testudo cyrenaica", "Testudo graeca")) %>%
+  mutate(binomial = str_replace(binomial, 'Thamnodynastes nattereri', 'Thamnodynastes hypoconia')) %>%
+  mutate(binomial = str_replace(binomial, 'Thamnophis leptocephala', 'Thamnophis ordinoides')) %>%
+  mutate(binomial = str_replace(binomial, 'Thamnophis rubristriata', 'Thamnophis ordinoides')) %>%
+  mutate(binomial = str_replace(binomial, 'Thamnophis sauritus', 'Thamnophis saurita')) %>%
+  mutate(binomial = str_replace(binomial, 'Thamnophis valida', 'Thamnophis validus')) %>%
+  mutate(binomial = str_replace(binomial, 'Trachemys adiutrix', 'Trachemys dorbigni')) %>%
+  mutate(binomial = str_replace(binomial, 'Trachemys callirostris', 'Trachemys scripta')) %>%
+  mutate(binomial = str_replace(binomial, 'Trachemys emolli', 'Trachemys grayi')) %>%
+  mutate(binomial = str_replace(binomial, 'Trachischium monitcola', 'Trachischium monticola')) %>%
+  mutate(binomial = str_replace(binomial, 'Trachylepis aurata', 'Heremites auratus')) %>%
+  mutate(binomial = str_replace(binomial, 'Trachylepis ivensii', 'Lubuya ivensii')) %>%
+  mutate(binomial = str_replace(binomial, 'Trachylepis septemtaeniata', 'Heremites septemtaeniatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Trachylepis vittata', 'Heremites vittatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Tricheilostoma macrolepis', 'Trilepida macrolepis')) %>%
+  mutate(binomial = str_replace(binomial, 'Trimeresurus barati', 'Trimeresurus gramineus')) %>%
+  mutate(binomial = str_replace(binomial, 'Trimeresurus buniana', 'Trimeresurus sabahi')) %>%
+  mutate(binomial = str_replace(binomial, 'Trimeresurus fucatus', 'Trimeresurus sabahi')) %>%
+  mutate(binomial = str_replace(binomial, "Trimeresurus mucrosquamatus", "Protobothrops mucrosquamatus")) %>%
+  mutate(binomial = str_replace(binomial, 'Tropidophorus aphilus', 'Tropidophorus grayi')) %>%
+  mutate(binomial = str_replace(binomial, 'Tropidurus lemniseatus', 'Microlophus bivittatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Tropiocolotes scortecci', 'Tropiocolotes scorteccii')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops arator', 'Cubatyphlops arator')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops biminiensis', 'Cubatyphlops biminiensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops catapontus', 'Antillotyphlops catapontus')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops caymanensis', 'Cubatyphlops caymanensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops coecatus', 'Letheobia coecatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops dominicanus', 'Antillotyphlops dominicanus')) %>%
+  mutate(binomial = str_replace(binomial, "Typhlops geotomus", "Antillotyphlops geotomus")) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops guadeloupensis', 'Antillotyphlops guadeloupensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops hypomethes', 'Antillotyphlops hypomethes')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops monastus', 'Antillotyphlops monastus')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops monensis', 'Antillotyphlops monensis')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops naugus', 'Antillotyphlops naugus')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops notorachius', 'Cubatyphlops notorachius')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops perimychus', 'Cubatyphlops perimychus')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops platycephalus', 'Antillotyphlops platycephalus')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops principes', NA_character_)) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops reticulatus', 'Amerotyphlops reticulatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops richardi', 'Antillotyphlops richardi')) %>%
+  mutate(binomial = str_replace(binomial, 'Typhlops zenkeri', 'Letheobia zenkeri')) %>%
+  mutate(binomial = str_replace(binomial, 'Uma rufopunctata', 'Uma cowlesi')) %>%
+  mutate(binomial = str_replace(binomial, 'Uropeltis ceylanicus', 'Uropeltis ceylanica')) %>%
+  mutate(binomial = str_replace(binomial, 'Uropeltis melanogaster', 'Rhinophis melanogaster')) %>%
+  mutate(binomial = str_replace(binomial, 'Uropeltis nigra', 'Uropeltis woodmasoni')) %>%
+  mutate(binomial = str_replace(binomial, 'Uropeltis phillipsi', 'Rhinophis phillipsi')) %>%
+  mutate(binomial = str_replace(binomial, 'Uropeltis rubromaculatus', 'Uropeltis rubromaculata')) %>%
+  mutate(binomial = str_replace(binomial, 'Urosaurus irregularis', 'Urosaurus gadovi')) %>%
+  mutate(binomial = str_replace(binomial, "Uta antiquus", "Uta stansburiana")) %>%
+  mutate(binomial = str_replace(binomial, 'Varanus brevicaudus', 'Varanus brevicauda')) %>%
+  mutate(binomial = str_replace(binomial, 'Varanus ornatus', 'Varanus griseus')) %>%
+  mutate(binomial = str_replace(binomial, 'Vermicella calonotus', 'Neelaps calonotus')) %>%
+  mutate(binomial = str_replace(binomial, "Waglerophis merremi", "Xenodon merremii")) %>%
+  mutate(binomial = str_replace(binomial, 'Woodworthia maculatus', 'Woodworthia maculata')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenocalamus michellii', 'Xenocalamus michelli')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis asperrimus', 'Fowlea asperrimus')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis bellula', 'Xenochrophis bellulus')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis flavipunctatus', 'Fowlea flavipunctatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis melanzostus', 'Fowlea melanzostus')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis piscator', 'Fowlea piscator')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis punctulatus', 'Fowlea punctulatus')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis sanctijohannis', 'Fowlea sanctijohannis')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis schnurrenbergeri', 'Fowlea schnurrenbergeri')) %>%
+  mutate(binomial = str_replace(binomial, 'Xenochrophis tytleri', 'Fowlea tytleri')) %>%
+
+#-------------------------------------------------------------
+# Fix higher taxa
+#-------------------------------------------------------------  
+# Separate out correct genera names
+# Make a new binomial column and remove genus column
+  mutate(binomial2 = binomial) %>%
+  select(-genus) %>%
+  # Split this into genus and species
+  separate(binomial2, c("genus", "species"), sep = " ", 
+           extra = "drop", fill = "right") %>%
+  # Remove species columm
+  select(-species) %>%
+
+#------------------------------------------------------------------------------------------------ 
+# AMPHIBIANS   
+#------------------------------------------------------------------------------------------------ 
+# Fix family names
+mutate(family = case_when(genus == "Dicamptodon"  
+                          ~ "Dicamptodontidae",
+                          genus == "Allobates" |
                             genus == "Anomaloglossus" |
                             genus == "Aromobates" |
                             genus == "Mannophryne" |
                             genus == "Rheobates" |
                             ~ "Dendrobatidae",
-                            genus == "Boulengerula" |
+                          genus == "Boulengerula" |
                             genus == "Herpele"
-                            ~ "Herpelidae",
-                            genus == "Gegeneophis" |
+                          ~ "Herpelidae",
+                          genus == "Gegeneophis" |
                             genus == "Grandisonia" |
                             genus == "Hypogeophis" |  
                             genus == "Idiocranium" |
                             genus == "Indotyphlus" |
                             genus == "Praslinia" |
                             genus == "Sylvacaecilia"
-                            ~ "Indotyphlidae",
-                            genus == "Geotrypetes" |
+                          ~ "Indotyphlidae",
+                          genus == "Geotrypetes" |
                             genus == "Gymnopis"
-                            ~ "Dermophiidae",
-                            genus == "Microcaecilia" |
+                          ~ "Dermophiidae",
+                          genus == "Microcaecilia" |
                             genus == "Parvicaecilia" |
                             genus == "Brasilotyphlus" |
                             genus == "Siphonops"
-                            ~ "Siphonopidae",
-                            genus == "Schistometopum"
-                            ~ "Dermophiidae",
-                            genus == "Typhlonectes" |
-                              genus == "Nectocaecilia" |
-                              genus == "Chthonerpeton" 
-                            ~ "Typhlonectidae",
-                            genus == "Scolecomorphus" |
+                          ~ "Siphonopidae",
+                          genus == "Schistometopum"
+                          ~ "Dermophiidae",
+                          genus == "Typhlonectes" |
+                            genus == "Nectocaecilia" |
+                            genus == "Chthonerpeton" 
+                          ~ "Typhlonectidae",
+                          genus == "Scolecomorphus" |
                             genus == "Crotaphatrema" 
-                            ~ "Scolecomorphidae",
-                            genus == "Allophryne" 
-                            ~ "Allophrynidae",
-                            genus == "Atelognathus" |
+                          ~ "Scolecomorphidae",
+                          genus == "Allophryne" 
+                          ~ "Allophrynidae",
+                          genus == "Atelognathus" |
                             genus == "Batrachyla"  |
                             genus == "Hylorina"  
-                            ~ "Batrachylidae",
-                            genus == "Telmatobius"  
-                            ~ "Telmatobiidae",
-                            genus == "Alsodes"  |
+                          ~ "Batrachylidae",
+                          genus == "Telmatobius"  
+                          ~ "Telmatobiidae",
+                          genus == "Alsodes"  |
                             genus == "Limnomedusa" |
                             genus == "Eupsophus"
-                            ~ "Alsodidae",
-                            genus == "Insuetophrynus"  
-                            ~ "Rhinodermatidae",
-                            genus == "Rhinoderma"  
-                            ~ "Rhinodermatidae",
-                            genus == "Ascaphus"  
-                            ~ "Ascaphidae",
-                            genus == "Macrogenioglottus"  |
+                          ~ "Alsodidae",
+                          genus == "Insuetophrynus"  
+                          ~ "Rhinodermatidae",
+                          genus == "Rhinoderma"  
+                          ~ "Rhinodermatidae",
+                          genus == "Ascaphus"  
+                          ~ "Ascaphidae",
+                          genus == "Macrogenioglottus"  |
                             genus == "Odontophrynus" |
                             genus == "Proceratophrys"
-                            ~ "Odontophrynidae",
-                            genus == "Crossodactylodes"  |
+                          ~ "Odontophrynidae",
+                          genus == "Crossodactylodes"  |
                             genus == "Rupirana" |
                             genus == "Edalorhina" |
                             genus == "Engystomops"  |
@@ -89,8 +1783,8 @@ ds3 <- ds2 %>%
                             genus == "Pleurodema"  |
                             genus == "Pseudopaludicola" |
                             genus == "Somuncuria" 
-                            ~ "Leptodactylidae",
-                            genus == "Adelotus"  |
+                          ~ "Leptodactylidae",
+                          genus == "Adelotus"  |
                             genus == "Heleioporus" |
                             genus == "Lechriodus" |
                             genus == "Limnodynastes"  |
@@ -98,69 +1792,22 @@ ds3 <- ds2 %>%
                             genus == "Notaden" |
                             genus == "Philoria"  |
                             genus == "Platyplectrum"
-                            ~ "Myobatrachidae",
-                            genus == "Conraua"
-                            ~ "Conrauidae",
-                            genus == "Ericabatrachus"
-                            ~ "Petropedetidae",
-                            genus == "Amietia"
-                            ~ "Pyxicephalidae",
-                            genus == "Limnonectes"
-                            ~ "Dicroglossidae",
-                            genus == "Pithecopus"
-                            ~ "Hylidae",
-                            TRUE ~ as.character(family))) %>%
+                          ~ "Myobatrachidae",
+                          genus == "Conraua"
+                          ~ "Conrauidae",
+                          genus == "Ericabatrachus"
+                          ~ "Petropedetidae",
+                          genus == "Amietia"
+                          ~ "Pyxicephalidae",
+                          genus == "Limnonectes"
+                          ~ "Dicroglossidae",
+                          genus == "Pithecopus"
+                          ~ "Hylidae",
+                          TRUE ~ as.character(family))) %>%
+  
 #------------------------------------------------------------------------------------------------ 
-# REPTILES
-# Correcting taxonomy/spellings/typos
-# Checked against Uetz taxonomy
-# Where I coudn't find the species I replaced it with NA_character_
-# and it will drop out of the analysis
-#-------------------------------------------------------------------------------------------------  
-mutate(binomial = str_replace(binomial, "Acanthophis antarticus", "Acanthophis antarcticus")) %>%
-mutate(binomial = str_replace(binomial, "Ameiva desechensis", "Pholidoscelis exsul")) %>%
-mutate(binomial = str_replace(binomial, "Ameiva undulata", "Holcosus undulatus")) %>%
-mutate(binomial = str_replace(binomial, "Anolis wattsii", "Anolis wattsi")) %>%
-mutate(binomial = str_replace(binomial, "Arrhyton exiguum", "Magliophis exiguum")) %>%
-mutate(binomial = str_replace(binomial, "Bothrops bilineata", "Bothrops bilineatus")) %>%
-mutate(binomial = str_replace(binomial, "Chamaeleo basilicus", "Chamaeleo africanus ")) %>%
-mutate(binomial = str_replace(binomial, "Chamaeleo cephalolepis", "Furcifer cephalolepis ")) %>%
-mutate(binomial = str_replace(binomial, "Chamaeleo fischeri", "Kinyongia fischeri")) %>%
-mutate(binomial = str_replace(binomial, "Chamaeleo willsi", "Furcifer willsii")) %>%
-mutate(binomial = str_replace(binomial, "Cuora evelynae", "Cuora flavomarginata")) %>%
-mutate(binomial = str_replace(binomial, "Cylindraspis inepta", "Aldabrachelys gigantea")) %>%
-mutate(binomial = str_replace(binomial, "Cylindraspis triserrata", "Aldabrachelys gigantea")) %>%
-mutate(binomial = str_replace(binomial, "Dinodon rufozonatum", "Lycodon rufozonatus")) %>%
-mutate(binomial = str_replace(binomial, "Elaphe longissima", "Zamenis longissimus")) %>%
-mutate(binomial = str_replace(binomial, "Enhydrina schistosa", "Hydrophis schistosus")) %>%
-mutate(binomial = str_replace(binomial, "Enhydris chinensis", "Myrrophis chinensis")) %>%
-mutate(binomial = str_replace(binomial, "Enhydris plumbea", "Hypsiscopus plumbea")) %>%
-mutate(binomial = str_replace(binomial, "Hemidactylus haitianus", "Hemidactylus angulatus")) %>%
-mutate(binomial = str_replace(binomial, "Leposoma dispar", "Loxopholis rugiceps")) %>%
-mutate(binomial = str_replace(binomial, "Microcephalophis gracilis", "Hydrophis gracilis")) %>%
-mutate(binomial = str_replace(binomial, "Neusticurus cochranae", "Gelanesaurus cochranae")) %>%
-mutate(binomial = str_replace(binomial, "Panaspis wahlbergii", "Panaspis wahlbergi")) %>%
-mutate(binomial = str_replace(binomial, "Pelamis platura", "Hydrophis platurus")) %>%
-mutate(binomial = str_replace(binomial, "Phrynonax sexcarinatus", "Chironius quadricarinatus")) %>%
-mutate(binomial = str_replace(binomial, "Pseustes sulphureus", "Spilotes sulphureus")) %>%
-mutate(binomial = str_replace(binomial, "Python reticulatus", "Malayopython reticulatus")) %>%
-mutate(binomial = str_replace(binomial, "Ramphotyphlops braminus", "Indotyphlops braminus")) %>%
-mutate(binomial = str_replace(binomial, "Rhamphiophis togoensis", "Psammophylax togoensis")) %>%
-mutate(binomial = str_replace(binomial, "Tenuidactylus kohsulaimanai", "Cyrtopodion kohsulaimanai")) %>%
-mutate(binomial = str_replace(binomial, "Testudo cyrenaica", "Testudo graeca")) %>%
-mutate(binomial = str_replace(binomial, "Trimeresurus mucrosquamatus", "Protobothrops mucrosquamatus")) %>%
-mutate(binomial = str_replace(binomial, "Typhlops geotomus", "Antillotyphlops geotomus")) %>%
-mutate(binomial = str_replace(binomial, "Uta antiquus", "Uta stansburiana")) %>%
-mutate(binomial = str_replace(binomial, "Vipera nikolskii", "Vipera berus")) %>%
-mutate(binomial = str_replace(binomial, "Waglerophis merremi", "Xenodon merremii")) %>%
-
-  
-
-  
-  
-  
-  
-    
+# REPTILES   
+#------------------------------------------------------------------------------------------------ 
 # Fix family names
 mutate(family = case_when(genus == "Anniella"  
                           ~ "Anguidae",
@@ -204,3 +1851,7 @@ mutate(family = case_when(genus == "Anniella"
   mutate(family = str_replace(family, "Pseudoxenodontidae", "Colubridae")) %>%
   mutate(family = str_replace(family, "Pareatidae", "Pareidae")) %>%
   mutate(family = str_replace(family, "Xenodermatidae", "Xenodermidae"))
+
+
+
+
