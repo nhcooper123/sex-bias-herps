@@ -145,11 +145,11 @@ ds2 <- readr::read_csv("raw-data/halfwaydone.csv", col_types = c("ccccccccciicc"
 
 # Takes a while to run - go and get a coffee or some cake...
 #----------------------------------------------------------------
-source("data-wrangling/01B-taxonomy-corrections-herps.R")
+source("data-wrangling/01C-taxonomy-corrections-herps.R")
 
 #--------------------------------------------------
 # Exclude dodgy ones based on taxonomy
-# See 03-taxonomy-corrections.R for details
+# See 03-taxonomy-corrections-herps.R for details
 # These specimens have NA for binomials
 #--------------------------------------------------
 ds3 <- ds3 %>%
