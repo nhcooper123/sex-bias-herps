@@ -933,6 +933,7 @@ mutate(binomial = str_replace(binomial, 'Aelurophryne brevipes', 'Scutiger brevi
   mutate(binomial = str_replace(binomial, 'Rana macrotympanum', 'Hildebrandtia macrotympanum')) %>% 
   mutate(binomial = str_replace(binomial, 'Rana macularia', 'Hydrophylax gracilis')) %>% 
   mutate(binomial = str_replace(binomial, 'Rana magna', 'Limnonectes magnus')) %>% 
+  mutate(binomial = str_replace(binomial, 'Limnonectes magnusocularis', 'Rana magnaocularis')) %>% 
   mutate(binomial = str_replace(binomial, 'Rana malabarica', 'Hydrophylax malabaricus')) %>% 
   mutate(binomial = str_replace(binomial, 'Rana martensii', 'Rana japonica')) %>% 
   mutate(binomial = str_replace(binomial, 'Rana megalonesa', 'Chalcorana megalonesa')) %>% 
@@ -1078,6 +1079,7 @@ mutate(binomial = str_replace(binomial, 'Aelurophryne brevipes', 'Scutiger brevi
   mutate(binomial = str_replace(binomial, 'Telmatobius walkeri', 'Telmatobius jelskii')) %>% 
   mutate(binomial = str_replace(binomial, 'Tepuihyla rimarum', 'Tepuihyla rodriguezi')) %>% 
   mutate(binomial = str_replace(binomial, 'Theloderma asper', 'Theloderma asperum')) %>% 
+  mutate(binomial = str_replace(binomial, 'Theloderma asperumum', 'Theloderma asperum')) %>% 
   mutate(binomial = str_replace(binomial, 'Theloderma corticalis', 'Theloderma corticale')) %>% 
   mutate(binomial = str_replace(binomial, 'Trachycephalus venulosus', 'Trachycephalus typhonius')) %>% 
   mutate(binomial = str_replace(binomial, 'Triturus ensicaudus', 'Cynops ensicauda')) %>% 
@@ -1707,12 +1709,12 @@ mutate(binomial = str_replace(binomial, 'Ablepharus smithi', 'Panaspis seydeli')
   mutate(binomial = str_replace(binomial, 'Xenochrophis schnurrenbergeri', 'Fowlea schnurrenbergeri')) %>%
   mutate(binomial = str_replace(binomial, 'Xenochrophis tytleri', 'Fowlea tytleri')) %>%
 
-#-------------------------------------------------------------
+  #-------------------------------------------------------------
 # Fix higher taxa
 #-------------------------------------------------------------  
 # Separate out correct genera names
 # Make a new binomial column and remove genus column
-  mutate(binomial2 = binomial) %>%
+mutate(binomial2 = binomial) %>%
   select(-genus) %>%
   # Split this into genus and species
   separate(binomial2, c("genus", "species"), sep = " ", 
@@ -1720,21 +1722,44 @@ mutate(binomial = str_replace(binomial, 'Ablepharus smithi', 'Panaspis seydeli')
   # Remove species columm
   select(-species) %>%
   
-#------------------------------------------------------------------------------------------------ 
+  #------------------------------------------------------------------------------------------------ 
 # AMPHIBIANS   
 #------------------------------------------------------------------------------------------------ 
 # Fix family names
-mutate(family = case_when(genus == "Dicamptodon"  
+mutate(family = case_when(genus == "Chaltenobatrachus"  
+                          ~ "Batrachylidae",
+                          genus == "Ischnocnema"  
+                          ~ "Brachycephalidae",
+                          genus == "Alcalus" |
+                            genus == "Platymantis"
+                          ~ "Ceratobatrachidae",
+                          genus == "Ceuthomantis"
+                          ~ "Ceuthomantidae",
+                          genus == "Craugastor"
+                          ~ "Craugastoridae",
+                          genus == "Cycloramphus"
+                          ~ "Cycloramphidae",
+                          genus == "Dicamptodon"  
                           ~ "Dicamptodontidae",
                           genus == "Allobates" |
                             genus == "Anomaloglossus" |
                             genus == "Aromobates" |
+                            genus == "Colostethus" |
+                            genus == "Ectopoglossus" | 
                             genus == "Mannophryne" |
                             genus == "Rheobates" 
                           ~ "Dendrobatidae",
+                          genus == "Eleutherodactylus"
+                          ~ "Eleutherodactylidae",
+                          genus == "Gastrotheca"
+                          ~ "Hemiphractidae",
                           genus == "Boulengerula" |
                             genus == "Herpele"
                           ~ "Herpelidae",
+                          genus == "Litoria"
+                          ~ "Hylidae",
+                          genus == "Hylodes"
+                          ~ "Hylodidae",
                           genus == "Gegeneophis" |
                             genus == "Grandisonia" |
                             genus == "Hypogeophis" |  
@@ -1744,18 +1769,19 @@ mutate(family = case_when(genus == "Dicamptodon"
                             genus == "Sylvacaecilia"
                           ~ "Indotyphlidae",
                           genus == "Geotrypetes" |
-                            genus == "Gymnopis"
+                            genus == "Gymnopis" |
+                            genus == "Dermophis" |
+                            genus == "Schistometopum"
                           ~ "Dermophiidae",
                           genus == "Microcaecilia" |
                             genus == "Parvicaecilia" |
                             genus == "Brasilotyphlus" |
                             genus == "Siphonops"
                           ~ "Siphonopidae",
-                          genus == "Schistometopum"
-                          ~ "Dermophiidae",
                           genus == "Typhlonectes" |
                             genus == "Nectocaecilia" |
-                            genus == "Chthonerpeton" 
+                            genus == "Chthonerpeton" |
+                            genus == "Potamotyphlus"
                           ~ "Typhlonectidae",
                           genus == "Scolecomorphus" |
                             genus == "Crotaphatrema" 
@@ -1778,10 +1804,23 @@ mutate(family = case_when(genus == "Dicamptodon"
                           ~ "Rhinodermatidae",
                           genus == "Ascaphus"  
                           ~ "Ascaphidae",
+                          genus == "Scutiger"  
+                          ~ "Megophryidae",
+                          genus == "Uperodon"  
+                          ~ "Microhylidae",
+                          genus == "Odontobatrachus"  
+                          ~ "Odontobatrachidae",
+                          genus == "Lankanectes"  
+                          ~ "Nyctibatrachidae",
+                          genus == "Phrynobatrachus"  
+                          ~ "Phrynobatrachidae",
                           genus == "Macrogenioglottus"  |
                             genus == "Odontophrynus" |
                             genus == "Proceratophrys"
                           ~ "Odontophrynidae",
+                          genus == "Hildebrandtia" |
+                            genus == "Ptychadena" |
+                            ~ "Ptychadenidae",
                           genus == "Crossodactylodes"  |
                             genus == "Rupirana" |
                             genus == "Edalorhina" |
@@ -1792,6 +1831,10 @@ mutate(family = case_when(genus == "Dicamptodon"
                             genus == "Pseudopaludicola" |
                             genus == "Somuncuria" 
                           ~ "Leptodactylidae",
+                          genus == "Boophis" |
+                            genus == "Mantella" |
+                            genus == "Spinomantis"
+                          ~ "Mantellidae",
                           genus == "Adelotus"  |
                             genus == "Heleioporus" |
                             genus == "Lechriodus" |
@@ -1805,20 +1848,85 @@ mutate(family = case_when(genus == "Dicamptodon"
                           ~ "Conrauidae",
                           genus == "Ericabatrachus"
                           ~ "Petropedetidae",
-                          genus == "Amietia"
+                          genus == "Amietia" |
+                            genus == "Strongylopus" |
+                            genus == "Tomopterna" |
+                            genus == "Cacosternum"  
                           ~ "Pyxicephalidae",
-                          genus == "Limnonectes"
+                          genus == "Limnonectes" |
+                            genus == "Euphlyctis" |
+                            genus == "Fejervarya" |
+                            genus == "Hoplobatrachus" |
+                            genus == "Ingerana" |
+                            genus == "Minervarya" |
+                            genus == "Nanorana" |
+                            genus == "Sphaerotheca"
                           ~ "Dicroglossidae",
                           genus == "Pithecopus"
                           ~ "Hylidae",
+                          genus == "Indirana" |
+                            genus == "Sallywalkerana"  
+                          ~ "Ranixalidae",
+                          genus == "Dischidodactylus" |
+                            genus == "Phrynopus" |
+                            genus == "Pristimantis"
+                          ~ "Strabomantidae",
                           TRUE ~ as.character(family))) %>%
   
-#------------------------------------------------------------------------------------------------ 
+  #------------------------------------------------------------------------------------------------ 
 # REPTILES   
 #------------------------------------------------------------------------------------------------ 
-# Fix family names
+# Fix family namesLamprophiidae
 mutate(family = case_when(genus == "Anniella"  
                           ~ "Anguidae",
+                          genus == "Amblyodipsas" |
+                            genus == "Aparallactus" |
+                            genus == "Brachyophis" |
+                            genus == "Chilorhinophis" |
+                            genus == "Hypoptophis" |
+                            genus == "Macrelaps" |
+                            genus == "Polemon" |
+                            genus == "Atractaspis" |
+                            genus == "Homoroselaps" 
+                          ~ "Atractaspididae",
+                          genus == "Dipsina" |
+                            genus == "Hemirhagerrhis" |
+                            genus == "Malpolon" |
+                            genus == "Mimophis"
+                          ~ "Psammophiidae",
+                          genus == "Ithycyphus"  |
+                            genus == "Brygophis" |
+                            genus == "Compsophis" |
+                            genus == "Dromicodryas" |
+                            genus == "Elapotinus" |
+                            genus == "Heteroliodon" |
+                            genus == "Ithycyphus" |
+                            genus == "Langaha" |
+                            genus == "Leioheterodon" |
+                            genus == "Liophidium" |
+                            genus == "Liopholidophis" |
+                            genus == "Lycodryas" |
+                            genus == "Madagascarophis" |
+                            genus == "Micropisthodon" |
+                            genus == "Pararhadinaea" |
+                            genus == "Parastenophis" |
+                            genus == "Phisalixella" |
+                            genus == "Amplorhinus" |
+                            genus == "Ditypophis" |
+                            genus == "Duberria" 
+                          ~ "Pseudoxyrhophiidae",
+                          genus == "Ptychoglossus"  
+                          ~ "Alopoglossidae",
+                          genus == "Chalcides"  
+                          ~ "Scincidae",
+                          genus == "Micrurus"  
+                          ~ "Elapidae",
+                          genus == "Buhoma" | 
+                            genus == "Oxyrhabdium" 
+                          ~ "Elapoidea",
+                          genus == "Hologerrhum" | 
+                            genus == "Mehelya" 
+                          ~ "Lamprophiidae",
                           binomial == "Bolyeria multocarinata" |
                             binomial == "Casarea dussumieri"
                           ~ "Bolyeriidae",
