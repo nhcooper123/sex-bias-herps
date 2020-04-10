@@ -1819,7 +1819,7 @@ mutate(family = case_when(genus == "Chaltenobatrachus"
                             genus == "Proceratophrys"
                           ~ "Odontophrynidae",
                           genus == "Hildebrandtia" |
-                            genus == "Ptychadena" |
+                            genus == "Ptychadena" 
                             ~ "Ptychadenidae",
                           genus == "Crossodactylodes"  |
                             genus == "Rupirana" |
