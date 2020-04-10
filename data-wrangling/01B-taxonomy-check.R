@@ -7,8 +7,12 @@ library(tidyverse)
 # AMPHIBIANS
 #----------------------------------
 # Read in our list of species
-amp <- read_csv("raw-data/Amphibian-species.csv")
-
+amp <- 
+  ds3 %>%
+  filter(class == "Amphibians") %>%
+  select(binomial, family) %>%
+  distinct()
+  
 # Read in check list from AmphibiaWeb
 amphibian_species <- read_csv("raw-data/amphib_names.csv")
 
@@ -35,7 +39,11 @@ fix_species_amphibians <- filter(all_amp, is.na(familyX)) %>% arrange(binomial)
 # REPTILES
 #----------------------------------
 # Read in our list of species
-rep <- read_csv("raw-data/Reptile-species.csv")
+rep <-   
+  ds3 %>%
+  filter(class == "Reptiles") %>%
+  select(binomial, family) %>%
+  distinct()
 
 # Read in species check list from Uetz
 reptile_species <- read_csv("raw-data/Reptile_checklist_2019_08.csv")
