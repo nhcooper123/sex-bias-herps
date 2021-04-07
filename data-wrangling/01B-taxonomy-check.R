@@ -8,13 +8,14 @@ library(tidyverse)
 #----------------------------------
 # Read in our list of species
 amp <- 
-  ds3 %>%
+  ds2 %>%
   filter(class == "Amphibians") %>%
   select(binomial, family) %>%
   distinct()
   
 # Read in check list from AmphibiaWeb
-amphibian_species <- read_csv("raw-data/amphib_names.csv")
+# https://amphibiaweb.org/amphib_names.txt
+amphibian_species <- read_delim("raw-data/amphib_names.txt", delim = "\t")
 
 # Add binomial column
 # Rename family to familyX so it is retained in joins
@@ -40,19 +41,20 @@ fix_species_amphibians <- filter(all_amp, is.na(familyX)) %>% arrange(binomial)
 #----------------------------------
 # Read in our list of species
 rep <-   
-  ds3 %>%
+  ds2 %>%
   filter(class == "Reptiles") %>%
   select(binomial, family) %>%
   distinct()
 
 # Read in species check list from Uetz
-reptile_species <- read_csv("raw-data/Reptile_checklist_2019_08.csv")
+# http://www.reptile-database.org/data/
+reptile_species <- read_csv("raw-data/reptile_checklist_2020_12.csv")
 
 # Rename Species to binomial
 # Separate out Familyetc column to get Family names
 # Rename family to familyX so it is retained in joins
 # Select only required columns
-### Note this gives a warning as the Familyetc column is not of a standardised
+### Note this gives a warning as the Family etc column is not of a standardised
 ### size, but it doesn't matter as the first element (family) is all we want
 reptile_species <-
   reptile_species %>%
@@ -78,4 +80,3 @@ fix_species_reptiles <- filter(all_rep, is.na(familyX)) %>% arrange(binomial)
 #for (i in 1:length(fix_species_amphibians$binomial)){
 #  print(paste0("mutate(binomial = str_replace(binomial, '", fix_species_amphibians$binomial[i], "', 'FIX')) %>%" ))
 #} 
-
