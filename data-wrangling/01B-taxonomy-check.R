@@ -33,9 +33,12 @@ all_amp <- left_join(amp, amphibian_species, by = "binomial")
 
 # Which family names need correcting?
 fix_family_amphibians <- filter(all_amp, family != familyX)
+#write_csv(fix_family_amphibians, file = "raw-data/fix-family-amphibians.csv")
 
 # Which species names need correcting?
 fix_species_amphibians <- filter(all_amp, is.na(familyX)) %>% arrange(binomial)
+#write_csv(fix_species_amphibians, file = "raw-data/fix-species-amphibians.csv")
+
 #----------------------------------
 # REPTILES
 #----------------------------------
@@ -70,9 +73,11 @@ all_rep <- left_join(rep, reptile_species, by = "binomial")
 
 # Which family names need correcting?
 fix_family_reptiles <- filter(all_rep, family != familyX)
+#write_csv(fix_family_reptiles, file = "raw-data/fix-family-reptiles.csv")
 
 # Which species names need correcting?
 fix_species_reptiles <- filter(all_rep, is.na(familyX)) %>% arrange(binomial)
+#write_csv(fix_species_reptiles, file = "raw-data/fix-species-reptiles.csv")
 
 # Fixes are in the script 01C-taxonomy-fix-herps
 
