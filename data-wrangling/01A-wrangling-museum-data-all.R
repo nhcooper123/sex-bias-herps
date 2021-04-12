@@ -98,7 +98,8 @@ ds2 <-
   unite("binomial", Genus, Species, sep = " ") %>%
     
   # Remove entries with incorrect orders
-  filter(order != "Dinosauria" & order != "") %>%
+  filter(order != "Dinosauria" & order != "" & order != "395dfaad-8b0d-47e2-a2ea-bf8a3fd5c10c"
+         & order != "beddb937-47b8-48f6-8efb-e347383aa9b5")  %>%
   
   # Remove classes that shouldn't be there
   filter(class != "Actinopterygii" & class != "Aves") %>%
