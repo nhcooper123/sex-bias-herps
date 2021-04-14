@@ -6,7 +6,6 @@
 library(tidyverse)
 library(lubridate)
 library(purrr)
-library(taxize)
 library(naniar)
 
 # Short function to get decades
@@ -98,7 +97,9 @@ ds2 <-
   unite("binomial", Genus, Species, sep = " ") %>%
     
   # Remove entries with incorrect orders
-  filter(order != "Dinosauria" & order != "") %>%
+  filter(order != "Dinosauria" & order != "" 
+         & order != "395dfaad-8b0d-47e2-a2ea-bf8a3fd5c10c"
+         & order != "beddb937-47b8-48f6-8efb-e347383aa9b5")  %>%
   
   # Remove classes that shouldn't be there
   filter(class != "Actinopterygii" & class != "Aves") %>%
@@ -131,43 +132,64 @@ ds2 <-
   mutate(class = str_replace_all(class, "Reptilia", "Reptiles")) %>%
   
   # Select just the columns of interest
-  select(institutionCode, specID, binomial, sex, class, order, family, genus,
-         continent, year, decade, typeStatus, type)
+  # Note that we keep gbifID as it is the only unique identifier of each record
+  # in herps it is common for a number of specimens to have the same museum ID
+  select(gbifID, institutionCode, specID, binomial, sex, class, order, family, genus,
+         continent, countryCode, year, decade, typeStatus, type, iucnRedListCategory)
 
-# To deal with the issues of "" rather than NA
+# To deal with the issues of "" rather than NA in some records
+# write to file and then read back in for next step
 # Write to file
 write_csv(ds2, file = "raw-data/halfwaydone.csv")
-# Read back in, with column designations as appropriate
-# otherwise sex, year and decade become logical
-ds2 <- readr::read_csv("raw-data/halfwaydone.csv", col_types = c("ccccccccciicc"))
 
 #----------------------------------------------------------------
 # Match taxonomy to Frost/Uetz
-# taxize is not working properly, so done manually
-
-# This is long so I've put in into another script called
-# 01B-taxonomy-corrections-herps.R
-# It takes ds2 and corrects the taxonomy into ds3 binomial column
-
-# Takes a while to run - go and get a coffee or some cake...
 #----------------------------------------------------------------
-source("data-wrangling/01C-taxonomy-corrections-herps.R")
+# taxize is not working properly, so done semi-manually
 
-#--------------------------------------------------
-# Exclude dodgy ones based on taxonomy
-# See 03-taxonomy-corrections-herps.R for details
-# These specimens have NA for binomials
-#--------------------------------------------------
-ds3 <- ds3 %>%
+# I've put in into another script called 01B-taxonomy-corrections-herps.R
+# It takes ds2 and matches it up to the taxonomies then outputs a file for correcting
+# the mismatches manually.
+
+# This is then read back in below and merged to obtain the most up to date names
+#------------------------------------------------------------------------------------
+# Read data back in, with column designations as appropriate
+# otherwise sex, year and decade become logical
+ds2 <- readr::read_csv("raw-data/halfwaydone.csv", col_types = c("ccccccccciiccc"))
+
+# Read in the two taxonomy files
+amphibians <- read_csv("raw-data/amphibian-taxonomy-corrections.csv")
+reptiles <- read_csv("raw-data/reptile-taxonomy-corrections.csv")
+
+# Stick them together, and remove the family column as it is not needed.
+taxonomy <- rbind(amphibians, reptiles)
+taxonomy <- dplyr::select(taxonomy, -family)
+
+# Merge the specimen dataset and taxonomy data
+ds3 <- left_join(ds2, taxonomy, by = "binomial")
+
+# Remove the now defunct original binomial and family columns 
+# and then rename the _correct columns to make coding simpler
+# Create a new genus column using the updated genera
+# and remove the species column as it is also not needed
+# And remove any row without binomial names
+final <- 
+  ds3 %>%
+  dplyr::select(-binomial, -family, -genus) %>%
+  rename(family = family_correct) %>%
+  rename(binomial = binomial_correct) %>%
+  separate(binomial, c("genus", "species"), sep = " ", remove = FALSE) %>%
+  dplyr::select(-species) %>%
   filter(!is.na(binomial))
-
-#-----------------------------------------------------
+  
+  
+#------------------------------------------------------------------------------------
 # Write to file for analyses
 #-----------------------------------------------------
-write_csv(ds3, path = "data/all-specimen-data.csv")  
+
+write_csv(final, file = "data/all-specimen-data-2021-04.csv")  
 
 #------------------------------------------------------------------------------------
 # Note that this was followed by a data quality check, scrolling through
 # species names to check for obvious duplicates (i.e. very similar species names)
-# and matching with body size dataset species names to reduce mismatches caused
-# by taxonomic differences
+# to reduce mismatches caused by taxonomic differences.
