@@ -19,12 +19,12 @@ floor_decade <- function(x){
 # Separate the reptile data as it is too large to read in one chunk
 # Then add column names so they can be joined
 #------------------------------------------------------------------
-amphibians <- read.delim("raw-data/gbif-amphibians-2021-03-03.txt", sep =  "\t")
+amphibians <- read.delim("raw-data/gbif-amphibians-2021-04-21.txt", sep =  "\t", quote = "")
 
-reptiles1 <- read.delim("raw-data/gbif-reptiles-2021-03-03.txt", sep =  "\t", nrows = 1000000)
-reptiles2 <- read.delim("raw-data/gbif-reptiles-2021-03-03.txt", sep =  "\t", skip = 1000000, nrows = 2000000, header = FALSE)
-reptiles3 <- read.delim("raw-data/gbif-reptiles-2021-03-03.txt", sep =  "\t", skip = 2000000, nrows = 3000000, header = FALSE)
-reptiles4 <- read.delim("raw-data/gbif-reptiles-2021-03-03.txt", sep =  "\t", skip = 3000000, header = FALSE)
+reptiles1 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", nrows = 1000000, quote = "")
+reptiles2 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", skip = 1000000, nrows = 2000000, header = FALSE, quote = "")
+reptiles3 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", skip = 2000000, nrows = 3000000, header = FALSE, quote = "")
+reptiles4 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", skip = 3000000, header = FALSE, quote = "")
 
 # Change headers so they match
 names(reptiles2) <- names(reptiles1)
@@ -35,11 +35,7 @@ names(reptiles4) <- names(reptiles1)
 all <- list(amphibians, reptiles1, reptiles2, reptiles3, reptiles4)
 
 # Combine based on shared columns
-# and make a new binomial column
-# This throws a warning but it refers to columns we don't intend to use
-ds <- all %>%
-  map(function(x) x[Reduce(intersect, map(all, colnames))]) %>% 
-  reduce(rbind)
+ds <- rbind(amphibians, reptiles1, reptiles2, reptiles3, reptiles4)
 
 #----------------------------------
 # Tidy up the data
