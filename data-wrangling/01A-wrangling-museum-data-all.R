@@ -18,6 +18,7 @@ floor_decade <- function(x){
 # Read in the GBIF data
 # Separate the reptile data as it is too large to read in one chunk
 # Then add column names so they can be joined
+# Note that quote = "" is needed or R only reads in half the data!
 #------------------------------------------------------------------
 amphibians <- read.delim("raw-data/gbif-amphibians-2021-04-21.txt", sep =  "\t", quote = "")
 
