@@ -51,6 +51,11 @@ all_amphibians <- left_join(amphibians, amphibians_frost, by = c("binomial" = "b
 # Now manually check any mismatches and update the family taxonomy to match Frost
 # then save file as amphibian-taxonomy-corrections.csv
 
+# Note that AmphibiaWeb mostly follows the Frost taxonomy, but not entirely.
+# Where the taxonomies do not match AND where both appear in our dataset,
+# we use the AmphibiaWeb name. Several species names are "missing" from AmphibiaWeb
+# because they are new species (new descriptions and/or new)
+
 #----------------------------------
 # REPTILES
 #----------------------------------
@@ -82,3 +87,9 @@ all_reptiles <- left_join(reptiles, reptiles_uetz, by = c("binomial" = "binomial
 # write_csv(all_reptiles, file = "raw-data/reptile-taxonomy-corrections-to-complete.csv")
 # Now manually check any mismatches and update the family taxonomy to match Uetz
 # then save file as reptile-taxonomy-corrections.csv
+
+# Note there is one problem genus, Buhoma, which is in an uncertain family Elapoidea. 
+# Recent evidence suggests these are most closely related to Elapidae, so we have placed them 
+# there. 
+
+# Higher taxonomy (between order and family level) comes from Burbrink et al 2019.
