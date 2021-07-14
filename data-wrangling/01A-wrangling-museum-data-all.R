@@ -161,3 +161,36 @@ write_csv(final, file = "data/all-specimen-data-2021-07.csv")
 # Note that this was followed by a data quality check, scrolling through
 # species names to check for obvious duplicates (i.e. very similar species names)
 # to reduce mismatches caused by taxonomic differences.
+
+#------------------------------------------------------------------------------------
+# Unsexed data
+#------------------------------------------------------------------------------------
+# Read data back in
+ds2_unsexed <- readr::read_csv("raw-data/halfwaydone-unsexed.csv")
+
+# Merge the specimen dataset and taxonomy data
+ds3_unsexed <- left_join(ds2_unsexed, taxonomy, by = "binomial")
+
+# Remove the now defunct original binomial and family columns 
+# and then rename the _correct columns to make coding simpler
+# Create a new genus column using the updated genera
+# and remove the species column as it is also not needed
+# And remove any row without binomial names to exclude fossils and uncertain taxonomy species
+# Finally add the higher level taxonomy for squamates
+final_unsexed <- 
+  ds3_unsexed %>%
+  dplyr::select(-binomial, -family, -genus) %>%
+  rename(family = family_correct) %>%
+  rename(binomial = binomial_correct) %>%
+  separate(binomial, c("genus", "species"), sep = " ", remove = FALSE) %>%
+  dplyr::select(-species) %>%
+  filter(!is.na(binomial)) %>%
+  full_join(higher, by = "family")
+
+#------------------------------------------------------------------------------------
+# Write to file for analyses
+#-----------------------------------------------------
+write_csv(final_unsexed, file = "data/all-specimen-data-unsexed-2021-07.csv")  
+#------------------------------------------------------------------------------------
+
+

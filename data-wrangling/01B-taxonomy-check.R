@@ -7,8 +7,8 @@
 # Load libraries
 library(tidyverse)
 
-# Read in our tidied data 
-ds2 <- read_csv("raw-data/halfwaydone.csv")
+# Read in our tidied data for all sexed and unsexed specimens
+ds2 <- read_csv("raw-data/halfwaydone-unsexed.csv")
 
 # Split into amphibians and reptiles
 # And select only the species and family
@@ -91,5 +91,9 @@ all_reptiles <- left_join(reptiles, reptiles_uetz, by = c("binomial" = "binomial
 # Note there is one problem genus, Buhoma, which is in an uncertain family Elapoidea. 
 # Recent evidence suggests these are most closely related to Elapidae, so we have placed them 
 # there. 
+
+# Also some species of recently extinct reptiles have slipped in by accident so these have NA for 
+# binomial_correct. I also used this for some really outdated Linnaean names that don't have easy
+# to work out current names.
 
 # Higher taxonomy (between order and family level) comes from Burbrink et al 2019.
