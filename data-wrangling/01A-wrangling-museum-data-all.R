@@ -1,6 +1,6 @@
 # Tidying the data from databases
 # Natalie Cooper
-# March 2021
+# April 2021
 #---------------------------------
 # Load libraries
 library(tidyverse)
@@ -22,21 +22,17 @@ floor_decade <- function(x){
 #------------------------------------------------------------------
 amphibians <- read.delim("raw-data/gbif-amphibians-2021-04-21.txt", sep =  "\t", quote = "")
 
-reptiles1 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", nrows = 1000000, quote = "")
-reptiles2 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", skip = 1000000, nrows = 2000000, header = FALSE, quote = "")
-reptiles3 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", skip = 2000000, nrows = 3000000, header = FALSE, quote = "")
-reptiles4 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", skip = 3000000, header = FALSE, quote = "")
+reptiles1 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", nrows = 2000000, quote = "")
+reptiles2 <- read.delim("raw-data/gbif-reptiles-2021-04-21.txt", sep =  "\t", skip = 2000000, header = FALSE, quote = "")
 
 # Change headers so they match
 names(reptiles2) <- names(reptiles1)
-names(reptiles3) <- names(reptiles1)
-names(reptiles4) <- names(reptiles1)
 
 # Combine into a list
-all <- list(amphibians, reptiles1, reptiles2, reptiles3, reptiles4)
+all <- list(amphibians, reptiles1, reptiles2)
 
 # Combine based on shared columns
-ds <- rbind(amphibians, reptiles1, reptiles2, reptiles3, reptiles4)
+ds <- rbind(amphibians, reptiles1, reptiles2)
 
 #----------------------------------
 # Tidy up the data
@@ -44,14 +40,12 @@ ds <- rbind(amphibians, reptiles1, reptiles2, reptiles3, reptiles4)
 ds2 <-
   
   ds %>%
-  
-  # Remove paleo collections from NHMUK data and other incorrect codes
-  filter(collectionCode != "PAL" & collectionCode != "Birds" & 
-         collectionCode != "" & collectionCode != "Fishes" &
-         collectionCode != "BMNH(E)" & collectionCode != "BOT") %>%
 
   # Check that all included records are specimens not observations
   filter(basisOfRecord == "PRESERVED_SPECIMEN") %>%
+  
+  # Remove entries with no order or species
+  filter(order != "" & species != "") %>%
   
   # Create a new column for specimen ID number
   unite(col = specID, `institutionCode`, `catalogNumber`, sep = "_", remove = FALSE) %>%
@@ -71,36 +65,13 @@ ds2 <-
   filter(sex == "Male" | sex == "Female") %>%
   
   # ALTERNATIVE CODE that keeps specimens that have not been sexed
-  #filter(sex == "Male" | sex == "Female" | is.na(sex) | sex == "") %>%
-  
-  # Replace the poorly coded year data with NAs
-  # This will throw a warning as it makes blanks and non numeric entries into NAs.
-  mutate(year = as.numeric(as.character(year))) %>%
-  mutate(year = ifelse(year > 2021 | year < 1750, NA_character_, year)) %>%
-  # Coerce to numeric again
-  mutate(year = as.numeric(year)) %>%
+  # filter(sex == "Male" | sex == "Female" | is.na(sex) | sex == "") %>%
   
   # Add decade variable (function above)
   # This maps to character to deal with NAs so needs coercing back to numeric
   mutate(decade = map_chr(year, floor_decade)) %>%
   mutate(decade = as.numeric(decade)) %>%
   
-  # TAXONOMY (note there is a second set of checks later)
-  # 1. Remove entries where we only have the Genus
-  # 2. Create binomial column
-  separate(species, c("Genus", "Species"), sep = " ", 
-           extra = "drop", fill = "right") %>%
-  filter(!is.na(Species) & Species != "sp." & Species != "sp") %>%
-  unite("binomial", Genus, Species, sep = " ") %>%
-    
-  # Remove entries with incorrect orders
-  filter(order != "Dinosauria" & order != "" 
-         & order != "395dfaad-8b0d-47e2-a2ea-bf8a3fd5c10c"
-         & order != "beddb937-47b8-48f6-8efb-e347383aa9b5")  %>%
-  
-  # Remove classes that shouldn't be there
-  filter(class != "Actinopterygii" & class != "Aves") %>%
-
   # Add a name bearing type column and designate name bearing types as such
   # Non types
   mutate(typeStatus = as.character(typeStatus)) %>%
@@ -131,14 +102,14 @@ ds2 <-
   # Select just the columns of interest
   # Note that we keep gbifID as it is the only unique identifier of each record
   # in herps it is common for a number of specimens to have the same museum ID
-  select(gbifID, institutionCode, specID, binomial, sex, class, order, family, genus,
+  select(gbifID, institutionCode, specID, binomial = species, sex, class, order, family, genus,
          continent, countryCode, year, decade, typeStatus, type, iucnRedListCategory)
 
 # To deal with the issues of "" rather than NA in some records
 # write to file and then read back in for next step
 # Write to file
 write_csv(ds2, file = "raw-data/halfwaydone.csv")
-
+# write_csv(ds2, file = "raw-data/halfwaydone-unsexed.csv")
 #----------------------------------------------------------------
 # Match taxonomy to Frost/Uetz
 #----------------------------------------------------------------
@@ -150,15 +121,15 @@ write_csv(ds2, file = "raw-data/halfwaydone.csv")
 
 # This is then read back in below and merged to obtain the most up to date names
 #------------------------------------------------------------------------------------
-# Read data back in, with column designations as appropriate
-# otherwise sex, year and decade become logical
-ds2 <- readr::read_csv("raw-data/halfwaydone.csv", col_types = c("ccccccccciiccc"))
+# Read data back in
+ds2 <- readr::read_csv("raw-data/halfwaydone.csv")
 
-# Read in the two taxonomy files
+# Read in the two taxonomy files, and the higher taxonomy file for squamates
 amphibians <- read_csv("raw-data/amphibian-taxonomy-corrections.csv")
 reptiles <- read_csv("raw-data/reptile-taxonomy-corrections.csv")
+higher <- read_csv("raw-data/squamate-higher-taxonomy.csv")
 
-# Stick them together, and remove the family column as it is not needed.
+# Stick the amphibianx and reptiles together, and remove the family column as it is not needed.
 taxonomy <- rbind(amphibians, reptiles)
 taxonomy <- dplyr::select(taxonomy, -family)
 
@@ -170,6 +141,7 @@ ds3 <- left_join(ds2, taxonomy, by = "binomial")
 # Create a new genus column using the updated genera
 # and remove the species column as it is also not needed
 # And remove any row without binomial names
+# Finally add the higher level taxonomy for squamates
 final <- 
   ds3 %>%
   dplyr::select(-binomial, -family, -genus) %>%
@@ -177,14 +149,13 @@ final <-
   rename(binomial = binomial_correct) %>%
   separate(binomial, c("genus", "species"), sep = " ", remove = FALSE) %>%
   dplyr::select(-species) %>%
-  filter(!is.na(binomial))
-  
-  
+  filter(!is.na(binomial)) %>%
+  full_join(higher, by = "family")
+
 #------------------------------------------------------------------------------------
 # Write to file for analyses
 #-----------------------------------------------------
-
-write_csv(final, file = "data/all-specimen-data-2021-04.csv")  
+write_csv(final, file = "data/all-specimen-data-2021-07.csv")  
 
 #------------------------------------------------------------------------------------
 # Note that this was followed by a data quality check, scrolling through
