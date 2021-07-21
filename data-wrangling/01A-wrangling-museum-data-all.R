@@ -65,6 +65,7 @@ ds2 <-
   filter(sex == "Male" | sex == "Female") %>%
   
   # ALTERNATIVE CODE that keeps specimens that have not been sexed
+  # If using this, comment out the line above
   # filter(sex == "Male" | sex == "Female" | is.na(sex) | sex == "") %>%
   
   # Add decade variable (function above)
@@ -109,7 +110,9 @@ ds2 <-
 # write to file and then read back in for next step
 # Write to file
 write_csv(ds2, file = "raw-data/halfwaydone.csv")
+# ALTERNATIVE CODE that keeps specimens that have not been sexed
 # write_csv(ds2, file = "raw-data/halfwaydone-unsexed.csv")
+
 #----------------------------------------------------------------
 # Match taxonomy to Frost/Uetz
 #----------------------------------------------------------------
@@ -121,17 +124,19 @@ write_csv(ds2, file = "raw-data/halfwaydone.csv")
 
 # This is then read back in below and merged to obtain the most up to date names
 #------------------------------------------------------------------------------------
-# Read data back in
-ds2 <- readr::read_csv("raw-data/halfwaydone.csv")
-
 # Read in the two taxonomy files, and the higher taxonomy file for squamates
 amphibians <- read_csv("raw-data/amphibian-taxonomy-corrections.csv")
 reptiles <- read_csv("raw-data/reptile-taxonomy-corrections.csv")
 higher <- read_csv("raw-data/squamate-higher-taxonomy.csv")
 
-# Stick the amphibianx and reptiles together, and remove the family column as it is not needed.
+# Stick the amphibianx and reptiles together, and remove the 
+# family column as it is not needed.
 taxonomy <- rbind(amphibians, reptiles)
 taxonomy <- dplyr::select(taxonomy, -family)
+#------------------------------------------------------------------------------------
+# Merge taxonomy and data
+# Read data back in
+ds2 <- readr::read_csv("raw-data/halfwaydone.csv")
 
 # Merge the specimen dataset and taxonomy data
 ds3 <- left_join(ds2, taxonomy, by = "binomial")
@@ -163,8 +168,9 @@ write_csv(final, file = "data/all-specimen-data-2021-07.csv")
 # to reduce mismatches caused by taxonomic differences.
 
 #------------------------------------------------------------------------------------
-# Unsexed data
+# Unsexed data - merge taxonomy and data and save for future analyses
 #------------------------------------------------------------------------------------
+# Merge taxonomy and data
 # Read data back in
 ds2_unsexed <- readr::read_csv("raw-data/halfwaydone-unsexed.csv")
 
@@ -192,5 +198,3 @@ final_unsexed <-
 #-----------------------------------------------------
 write_csv(final_unsexed, file = "data/all-specimen-data-unsexed-2021-07.csv")  
 #------------------------------------------------------------------------------------
-
-
