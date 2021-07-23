@@ -47,6 +47,9 @@ ds2 <-
   # Remove entries with no order or species
   filter(order != "" & species != "") %>%
   
+  # Remove oldest specimens as these are not reliable
+  filter(year >= 1800 | year == "" | is.na(year)) %>%
+  
   # Create a new column for specimen ID number
   unite(col = specID, `institutionCode`, `catalogNumber`, sep = "_", remove = FALSE) %>%
   
