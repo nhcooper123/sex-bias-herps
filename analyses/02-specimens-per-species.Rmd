@@ -1,0 +1,88 @@
+---
+title: "Specimens per species - supplemental analysis"
+output:
+  html_document: default
+---
+
+```{r}
+# Preliminaries
+
+# Load libraries
+library(tidyverse)
+library(patchwork) # from GitHub
+library(png)
+library(knitr)
+library(broom)
+library(here)
+library(ggfortify)
+
+# Colour blind friendly palette
+cbPalette <- c("#a53606", "#b32db5", "#881a58", "#0e288e", "#164c64")
+
+
+```
+
+```{r}
+# Read in all the specimen data
+specimens <- read_csv(here("data/all-specimen-data-2021-07.csv")) 
+```
+
+## How does the proportion of male and female specimens vary as we increase the number of specimens?
+We expect large skews in the percentage of male or female specimens when sample size is low, but the ratio of male:female specimens should approach 50:50 as more specimens are added (assuming a 50:50 sex ratio in nature). 
+
+Most species are repesented by only a few specimens (see histograms below), with large skews in % female specimens (in both directions) at low numbers.
+
+```{r, fig.cap = "Distribution of percentage female specimens and log number of specimens per species across herps."}
+source(here("analyses/figure-specimens-all.R"))
+hist1 / hist2
+```
+
+```{r, fig.cap = "Relationship between the percentage female specimens per species and the number of specimens per species. Hex bins are used rather than points to make the plot clearer."}
+all
+```
+
+If we fit a model (LM or GLM) to this data we see massive heteroscedasticity in the residuals.
+```{r, fig.cap = "Model diagnostic plots for models of % female specimens as a function of log total number of specimens for each species"}
+ds <-
+  specimens %>%
+  filter(!is.na(sex)) %>%
+  group_by(class) %>%
+  add_count(binomial, name = "n") %>%
+  add_count(binomial, sex, name = "nn") %>%
+  filter(sex == "Female") %>%
+  rename(female = nn) %>%
+  mutate(male = n - female) %>%
+  select(class, order, binomial, n, female, male) %>%
+  mutate(percentf = (female/n) * 100) %>%
+  distinct()
+
+spec_model <- glm(cbind(female, male) ~ log(n+1), data = ds, family = "binomial")
+
+# Diagnostics
+autoplot(spec_model, add.smooth = FALSE)
+```
+
+And we see a significant relationship between number of specimens and proportion female/male
+```{r}
+# Is the relationship significant?
+anova(spec_model, test = "Chisq")
+```
+
+To avoid this variability influencing our results we excluded all species with fewer than 10 specimens from our analyses. Model fit improved a little (see below).
+
+```{r, fig.cap = "Model diagnostic plots for models of % female specimens as a function of log total number of specimens for each species, for species with > 10 specimens"}
+ds10 <- 
+  ds %>%
+  filter(n >= 10)
+
+spec_model2 <- glm(cbind(female, male) ~ log(n+1), data = ds10, family = "binomial")
+
+# Diagnostics
+autoplot(spec_model2, add.smooth = FALSE)
+```
+
+And we no longer see a significant relationship between number of specimens and proportion female/male
+```{r}
+# Is the relationship significant?
+anova(spec_model2, test = "Chisq")
+```
