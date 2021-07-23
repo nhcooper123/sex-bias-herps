@@ -6,29 +6,10 @@ output:
 ---
 
 ```{r}
-# Preliminaries
-
 # Load libraries
 library(tidyverse)
-library(patchwork) # from GitHub
-library(png)
 library(knitr)
-library(broom)
 library(here)
-
-# Colour blind friendly palette
-cbPalette <- c("#a53606", "#b32db5", "#881a58", "#0e288e", "#164c64")
-
-# Helper functions for plotting
-remove_y <- 
-  theme(axis.title.y=element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank())
-
-remove_x <-   
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
 ```
 
 ```{r}
