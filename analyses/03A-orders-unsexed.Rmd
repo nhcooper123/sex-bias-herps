@@ -35,8 +35,8 @@ The mean percentage of female specimens varies across orders.
 ds_orders <-
   specimens_all %>%
   group_by(class) %>%
-  # Remove these orders as they only have one species with enough data
-  filter(order != "Gymnophiona" & order != "Rhynchocephalia") %>%
+  # Remove as they only have one species
+  filter(order != "Rhynchocephalia") %>%
   add_count(binomial, name = "n") %>%
   add_count(binomial, sexed, name = "nn") %>%
   filter(n >= 10 & sexed == "sexed") %>%
