@@ -7,6 +7,7 @@ library(tidyverse)
 library(viridis)
 library(patchwork)
 library(rphylopic)
+library(grid)
 
 # Read in phylopics
 library(png)
@@ -77,6 +78,7 @@ order <-
   geom_vline(xintercept = 50, linetype = 2) +
   theme_bw(base_size = 14) +
   xlab("% female specimens") +
+  ylab("density") +
   xlim(0, 100) +
   ylim(0, 0.04) +
   expand_limits(x = 0, y = 0) +
@@ -88,19 +90,19 @@ order <-
 
 # Add phylopics
 frog <- annotation_custom2(rasterGrob(img_frog, interpolate=TRUE, height = 0.8), 
-                        xmin=-1, xmax=10, ymin=0.02, ymax=0.04,
+                        xmin=90, xmax=100, ymin=0.02, ymax=0.04,
                         data=ds_orders[1,])
 salamander <- annotation_custom2(rasterGrob(img_salamander, interpolate=TRUE, height = 0.6), 
-                                 xmin=1, xmax=10, ymin=0.02, ymax=0.04, 
+                                 xmin=90, xmax=90, ymin=0.02, ymax=0.04, 
                                  data=ds_orders[which(ds_orders$order == "Caudata")[1],])
 croc <- annotation_custom2(rasterGrob(img_croc, interpolate=TRUE, height = 0.8), 
-                           xmin=0, xmax=10, ymin=0.02, ymax=0.04, 
+                           xmin=90, xmax=95, ymin=0.02, ymax=0.04, 
                            data=ds_orders[which(ds_orders$order == "Crocodylia")[1],])
 lizard <- annotation_custom2(rasterGrob(img_lizard, interpolate=TRUE, height = 0.8), 
-                             xmin=0, xmax=10, ymin=0.02, ymax=0.04, 
+                             xmin=90, xmax=95, ymin=0.02, ymax=0.04, 
                              data=ds_orders[which(ds_orders$order == "Squamata")[1],])
 turtle <- annotation_custom2(rasterGrob(img_turtle, interpolate=TRUE, height = 0.6), 
-                             xmin=-1, xmax=10, ymin=0.02, ymax=0.04, 
+                             xmin=90, xmax=100, ymin=0.02, ymax=0.04, 
                              data=ds_orders[which(ds_orders$order == "Testudines")[1],])
 
 # Combine plots
