@@ -11,17 +11,11 @@ output:
 
 # Load libraries
 library(tidyverse)
-library(patchwork) # from GitHub
-library(png)
 library(knitr)
 library(broom)
 library(here)
 library(ggfortify)
 library(car)
-
-# Colour blind friendly palette
-cbPalette <- c("#a53606", "#b32db5", "#881a58", "#0e288e", "#164c64")
-
 ```
 
 ```{r}
