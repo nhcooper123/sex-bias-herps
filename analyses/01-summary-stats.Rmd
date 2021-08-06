@@ -64,7 +64,7 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
   kable(proportion)
 ```
 
-## What is the median proportion of females per species for those with >= 25 specimens only?
+## What is the median proportion of females per species for those with >= 10 specimens only?
 
 ```{r}
   proportion2 <-
@@ -74,20 +74,20 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
   select(class, binomial, sex, n, nn) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
-  filter(sex == "Female" & n >= 25) %>%
+  filter(sex == "Female" & n >= 10) %>%
   group_by(class) %>%
   summarise('median % female' = median(percent))
 
   kable(proportion2)
 ```
 
-## And what if we only look at species with > 25 specimens
+## And what if we only look at species with > 10 specimens
 
 ```{r}
   sum3 <-
   specimens %>%
   add_count(binomial, name = "spec") %>%
-  filter(spec >= 25) %>%
+  filter(spec >= 10) %>%
   add_count(class, name = "n") %>%
   add_count(class, sex, name = "nn") %>%
   select(class, sex, n, nn) %>%
@@ -102,7 +102,7 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
   sum4 <-
   specimens %>%
   add_count(binomial, name = "spec") %>%
-  filter(spec >= 25) %>%
+  filter(spec >= 10) %>%
   select(class, binomial) %>%
   distinct() %>%
   group_by(class) %>%
@@ -121,7 +121,7 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
   select(class, binomial, sex, n, nn) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
-  filter(sex == "Female" & n >= 25) %>%
+  filter(sex == "Female" & n >= 10) %>%
   arrange(class, percent)
 
 kable(slice(worst, 1:10))
@@ -135,7 +135,7 @@ kable(slice(worst, 1:10))
   select(class, binomial, sex, n, nn) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
-  filter(sex == "Female" & n >= 25) %>%
+  filter(sex == "Female" & n >= 10) %>%
   arrange(class, -percent)
 
 kable(slice(best, 1:10))
@@ -150,7 +150,7 @@ kable(slice(best, 1:10))
   select(class, binomial, sex, n, nn) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
-  filter(sex == "Female" & n >= 100) %>%
+  filter(sex == "Female" & n >= 10) %>%
   arrange(desc(class), percent)
 
   kable(slice(worstr, 1:10))
@@ -164,7 +164,7 @@ kable(slice(best, 1:10))
   select(class, binomial, sex, n, nn) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
-  filter(sex == "Female" & n >= 100) %>%
+  filter(sex == "Female" & n >= 10) %>%
   arrange(desc(class), -percent)
 
   kable(slice(bestr, 1:10))
@@ -213,9 +213,4 @@ kable(type_sum2)
   mutate('%' = round(nn/n*100, 2))
 
 kable(type_sum3)
-```
-
-```{r types_all, message = FALSE, echo = FALSE, fig.cap="Figure 1: Percentage of female (green) and male (blue) specimens and name bearing type specimens for birds and mammals."}
-source(here("analyses/figure-types-all.R"))
-plot_all + plot_types
 ```
