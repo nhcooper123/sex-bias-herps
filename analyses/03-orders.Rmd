@@ -17,6 +17,7 @@ library(knitr)
 library(broom)
 library(here)
 library(ggfortify)
+library(car)
 
 # Colour blind friendly palette
 cbPalette <- c("#a53606", "#b32db5", "#881a58", "#0e288e", "#164c64")
@@ -78,7 +79,7 @@ order_model_amph <- glm(cbind(female, male) ~ order, data = ds_orders_amph, fami
 autoplot(order_model_amph)
 
 # Look at outputs
-tidy(anova(order_model_amph, test = "F"))
+Anova(order_model_amph, test = "F")
 summary(order_model_amph)
 
 
@@ -100,10 +101,14 @@ order_model_reptiles <- glm(cbind(female, male) ~ order, data = ds_orders_reptil
 autoplot(order_model_reptiles)
 
 # Look at outputs
-anova(order_model_reptiles, test = "F")
+Anova(order_model_reptiles, test = "F")
 summary(order_model_reptiles)
 ```
 
 ## Plotting
 
 See `figure-class-orders.R`
+
+## Tables
+
+See `table-orders.R`
