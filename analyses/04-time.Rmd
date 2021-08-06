@@ -1,0 +1,111 @@
+---
+title: "Variation through time"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+# Preliminaries
+
+# Load libraries
+library(tidyverse)
+library(knitr)
+library(broom)
+library(here)
+library(ggfortify)
+library(car)
+```
+
+```{r}
+# Read in all the specimen data
+specimens <- read_csv(here("data/all-specimen-data-2021-07.csv")) 
+```
+
+## How does the % of female specimens vary through time?
+
+The mean percentage of female specimens varies across orders.
+
+```{r}
+# First set up dataset
+# Exclude the two points before 1880 as they skew the analyses and plots
+ds_years <-
+  specimens %>%
+  filter(!is.na(year)) %>%
+  group_by(class) %>%
+  add_count(binomial, year, name = "n") %>%
+  add_count(binomial, year, sex, name = "nn") %>%
+  filter(n >= 10 & sex == "Female" & year > 1880) %>%
+  rename(female = nn) %>%
+  mutate(male = n - female) %>%
+  select(class, order, binomial, year, decade, n, female, male) %>%
+  mutate(percentf = (female/n) * 100) %>%
+  distinct()
+```
+
+# How many males and females are in these analyses?
+
+```{r}
+  sum1 <-
+  ds_years %>%
+  select(class, binomial, male, female) %>%
+  distinct() %>%
+  group_by(class) %>%
+  summarise(species = n(), spec = sum(male, female),
+            male = sum(male), female = sum(female))
+
+  kable(sum1)
+```
+
+
+## Fitting models
+### Amphibians
+```{r}
+# Fitting the model
+ds_years_amphibians <- filter(ds_years, class == "Amphibians")
+year_model_amphibians <- glm(cbind(female, male) ~ year, data = ds_years_amphibians, family = "binomial")
+# Check for overdispersion
+summary_mod_amphibians <- summary(year_model_amphibians)
+summary_mod_amphibians$deviance / summary_mod_amphibians$df.resid 
+
+year_model_amphibians <- glm(cbind(female, male) ~ year, data = ds_years_amphibians, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(year_model_amphibians)
+
+# Look at outputs
+Anova(year_model_amphibians, test = "F")
+summary(year_model_amphibians)
+
+
+```
+
+### Reptiles
+```{r}
+# Fitting the model for reptiles
+ds_years_reptiles <- filter(ds_years, class == "Reptiles")
+year_model_reptiles <- glm(cbind(female, male) ~ year, data = ds_years_reptiles, family = "binomial")
+
+# Check for overdispersion
+summary_mod_reptiles <- summary(year_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+
+year_model_reptiles <- glm(cbind(female, male) ~ year, data = ds_years_reptiles, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(year_model_reptiles)
+
+# Look at outputs
+Anova(year_model_reptiles, test = "F")
+summary(year_model_reptiles)
+
+```
+
+## Plotting
+
+See `figure-years-all.R`
