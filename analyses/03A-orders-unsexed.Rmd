@@ -1,0 +1,111 @@
+---
+title: "Variation among orders in sexed versus unsexed"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+# Preliminaries
+
+# Load libraries
+library(tidyverse)
+library(knitr)
+library(broom)
+library(here)
+library(ggfortify)
+library(car)
+```
+
+```{r}
+# Read in all the specimen data
+specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv")) 
+specimens_all <- 
+  specimens_all %>%
+  mutate(sexed = case_when(is.na(sex) ~ "unsexed", !is.na(sex) ~ "sexed"))
+```
+
+## How does the % of female specimens vary across orders?
+
+The mean percentage of female specimens varies across orders.
+
+```{r}
+# First set up dataset
+ds_orders <-
+  specimens_all %>%
+  group_by(class) %>%
+  # Remove these orders as they only have one species with enough data
+  filter(order != "Gymnophiona" & order != "Rhynchocephalia") %>%
+  add_count(binomial, name = "n") %>%
+  add_count(binomial, sexed, name = "nn") %>%
+  filter(n >= 10 & sexed == "sexed") %>%
+  rename(sexedY = nn) %>%
+  mutate(unsexed = n - sexedY) %>%
+  select(class, order, binomial, n, sexedY, unsexed) %>%
+  mutate(percent = (sexedY/n) * 100) %>%
+  distinct()
+```
+
+## Summary table
+```{r}
+sum_orders <-
+  ds_orders %>%
+  group_by(class, order) %>%
+  summarise('n species' = length(unique(binomial)),
+           'n specimens' = sum(n),
+           '% sexed' = round(median(percent),2))
+
+kable(sum_orders)
+```
+
+## Fitting models
+### Amphibians
+```{r}
+# Fitting the model for amphibians
+ds_orders_amph <- filter(ds_orders, class == "Amphibians")
+order_model_amph <- glm(cbind(sexedY, unsexed) ~ order, data = ds_orders_amph, family = "binomial")
+# Check for overdispersion
+summary_mod_amph <- summary(order_model_amph)
+summary_mod_amph$deviance / summary_mod_amph$df.resid 
+
+# quasibinomial
+order_model_amph <- glm(cbind(sexedY, unsexed) ~ order, data = ds_orders_amph, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(order_model_amph)
+
+# Look at outputs
+Anova(order_model_amph, test = "F")
+summary(order_model_amph)
+
+
+```
+
+### Reptiles
+```{r}
+# Fitting the model for reptiles
+ds_orders_reptiles <- filter(ds_orders, class == "Reptiles")
+order_model_reptiles <- glm(cbind(sexedY, unsexed) ~ order, data = ds_orders_reptiles, family = "binomial")
+
+# Check for overdispersion
+summary_mod_reptiles <- summary(order_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+
+order_model_reptiles <- glm(cbind(sexedY, unsexed) ~ order, data = ds_orders_reptiles, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(order_model_reptiles)
+
+# Look at outputs
+Anova(order_model_reptiles, test = "F")
+summary(order_model_reptiles)
+```
+
+## Plotting
+
+See `figure-sexed-class-orders.R`
+
+## Tables
+
+See `table-sexed-orders.R`
