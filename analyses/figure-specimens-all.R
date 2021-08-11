@@ -12,6 +12,8 @@ ds_females <-
   add_count(binomial, name = "n") %>%
   add_count(binomial, sex, name = "nn") %>%
   select(class, binomial, sex, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(class, binomial, n), fill = list(nn = 0)) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
   filter(sex == "Female")
@@ -24,7 +26,6 @@ hist1 <-
   geom_histogram(alpha = 0.8, bins = 30) +
   theme_bw(base_size = 14) +
   xlab("% female specimens") +
-  xlim(0, 100) +
   geom_vline(xintercept = 50, linetype = 2) +
   theme(legend.position = "none",
         strip.background = element_rect(fill = "white")) +
@@ -46,17 +47,13 @@ hist1 / hist2
 #-------------------------------------------------------------------
 # Plot % female by number of specimens
 
-# Plot - note this excludes one species with >15000 specimens!
-#all <- 
+all <- 
   ggplot(ds_females, aes(x = n, y = percent)) +
-  geom_point() +
   geom_hex(bins = 40, alpha = 0.8) +
   geom_abline(slope = 0, intercept = 50, linetype = 2) +
   theme_bw(base_size = 14) +
   ylab("% female specimens") +
   xlab("Number of specimens") +
-  ylim(0, 100) +
-  xlim(0, 100) +
   scale_fill_viridis_c(trans = "log10") +
   theme(legend.title = element_blank(),
         strip.background = element_rect(fill = "white")) +

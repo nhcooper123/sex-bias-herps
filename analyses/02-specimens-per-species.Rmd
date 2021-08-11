@@ -49,6 +49,8 @@ ds <-
   group_by(class) %>%
   add_count(binomial, name = "n") %>%
   add_count(binomial, sex, name = "nn") %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(class, binomial, n), fill = list(nn = 0)) %>%
   filter(sex == "Female") %>%
   rename(female = nn) %>%
   mutate(male = n - female) %>%
