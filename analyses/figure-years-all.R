@@ -25,10 +25,13 @@ ds_years <-
   group_by(class) %>%
   add_count(binomial, year, name = "n") %>%
   add_count(binomial, year, sex, name = "nn") %>%
+  select(class, order, binomial, year, sex, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(class, order, binomial, year, n), fill = list(nn = 0)) %>%
   filter(n >= 10 & sex == "Female" & year > 1880) %>%
   rename(female = nn) %>%
   mutate(male = n - female) %>%
-  select(class, order, binomial, year, decade, n, female, male) %>%
+  select(class, order, binomial, year,  n, female, male) %>%
   mutate(percentf = (female/n) * 100) %>%
   distinct()
 
@@ -45,7 +48,7 @@ ggplot(ds_years, aes(x = year, y = percentf/100, colour = class)) +
   ylab("% female specimens") +
   xlab("Collection year") +
   #ylim(0, 1) +
-  scale_colour_manual(values = c(cbPalette[c(3:5)])) +
+  scale_colour_manual(values = c(cbPalette[c(3,5)])) +
   scale_y_continuous(labels = c(0,25,50,75,100)) +
   xlim(1880, 2020) +
   theme(legend.position = "none",

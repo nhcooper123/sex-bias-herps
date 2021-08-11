@@ -49,6 +49,9 @@ ds_orders <-
   filter(order != "Rhynchocephalia") %>%
   add_count(binomial, name = "n") %>%
   add_count(binomial, sexed, name = "nn") %>%
+  select(class, order, binomial, sexed, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sexed, nesting(order, class, binomial, n), fill = list(nn = 0)) %>%
   filter(n >= 10 & sexed == "sexed") %>%
   rename(sexedY = nn) %>%
   mutate(unsexed = n - sexedY) %>%
@@ -66,7 +69,7 @@ class <-
   theme_bw(base_size = 14) +
   xlab("% sexed specimens") +
   xlim(0, 100) +
-  ylim(0, 0.15) +
+  ylim(0, 0.35) +
   facet_wrap(~class, ncol = 1) +
   scale_fill_manual(values = cbPalette[c(3,5)]) +
   theme(legend.position = "none") +
@@ -84,9 +87,9 @@ order <-
   xlab("% sexed specimens") +
   ylab("density") +
   xlim(0, 100) +
-  ylim(0, 0.20) +
+  #ylim(0, 0.20) +
   expand_limits(x = 0, y = 0) +
-  facet_wrap(~order, ncol = 1) +
+  facet_wrap(~order, ncol = 1, scales = "free_y") +
   scale_fill_manual(values = cbPalette[c(3,5)]) +
   theme(legend.position = "none") +
   theme(legend.position = "none",
@@ -94,22 +97,22 @@ order <-
 
 # Add phylopics
 frog <- annotation_custom2(rasterGrob(img_frog, interpolate=TRUE, height = 0.8), 
-                        xmin=90, xmax=100, ymin=0.10, ymax=0.20,
+                        xmin=90, xmax=100, ymin=0.10, ymax=0.30,
                         data=ds_orders[1,])
 salamander <- annotation_custom2(rasterGrob(img_salamander, interpolate=TRUE, height = 0.6), 
-                                 xmin=90, xmax=90, ymin=0.10, ymax=0.20, 
+                                 xmin=85, xmax=85, ymin=0.1, ymax=0.40, 
                                  data=ds_orders[which(ds_orders$order == "Caudata")[1],])
 croc <- annotation_custom2(rasterGrob(img_croc, interpolate=TRUE, height = 0.8), 
-                           xmin=90, xmax=95, ymin=0.1, ymax=0.2, 
+                           xmin=90, xmax=95, ymin=0, ymax=0.1, 
                            data=ds_orders[which(ds_orders$order == "Crocodylia")[1],])
 lizard <- annotation_custom2(rasterGrob(img_lizard, interpolate=TRUE, height = 0.8), 
-                             xmin=90, xmax=95, ymin=0.1, ymax=0.2, 
+                             xmin=90, xmax=95, ymin=0.05, ymax=0.15, 
                              data=ds_orders[which(ds_orders$order == "Squamata")[1],])
 turtle <- annotation_custom2(rasterGrob(img_turtle, interpolate=TRUE, height = 0.6), 
-                             xmin=90, xmax=100, ymin=0.1, ymax=0.2, 
-                             data=ds_orders[which(ds_orders$order == "Gymnophiona")[1],])
+                             xmin=90, xmax=100, ymin=0.01, ymax=0.04, 
+                             data=ds_orders[which(ds_orders$order == "Testudines")[1],])
 caecilian <- annotation_custom2(rasterGrob(img_caecilian, interpolate=TRUE, height = 0.6), 
-                             xmin=90, xmax=100, ymin=0.1, ymax=0.2, 
+                             xmin=90, xmax=100, ymin=1, ymax=2, 
                              data=ds_orders[which(ds_orders$order == "Gymnophiona")[1],])
 
 # Combine plots

@@ -39,6 +39,9 @@ ds_orders <-
   filter(order != "Rhynchocephalia") %>%
   add_count(binomial, name = "n") %>%
   add_count(binomial, sexed, name = "nn") %>%
+  select(class, order, binomial, sexed, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sexed, nesting(order, class, binomial, n), fill = list(nn = 0)) %>%
   filter(n >= 10 & sexed == "sexed") %>%
   rename(sexedY = nn) %>%
   mutate(unsexed = n - sexedY) %>%

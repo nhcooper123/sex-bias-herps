@@ -24,6 +24,9 @@ ds_orders <-
   group_by(class) %>%
   add_count(binomial, name = "n") %>%
   add_count(binomial, sex, name = "nn") %>%
+  select(class, order, binomial, sex, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(order, class, binomial, n), fill = list(nn = 0)) %>%
   filter(n >= 10 & sex == "Female") %>%
   rename(female = nn) %>%
   mutate(male = n - female) %>%
