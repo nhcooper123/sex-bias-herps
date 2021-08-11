@@ -57,6 +57,8 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
   select(class, binomial, sex, n, nn) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
+  complete(sex, nesting(class, binomial),
+           fill = list(nn = 0, percent = 0)) %>%
   filter(sex == "Female") %>%
   group_by(class) %>%
   summarise('median % female' = median(percent))
@@ -69,9 +71,11 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
 ```{r}
   proportion2 <-
   specimens %>%
+  select(class, binomial, sex) %>%
   add_count(class, binomial, name = "n") %>%
   add_count(class, binomial, sex, name = "nn") %>%
-  select(class, binomial, sex, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(class, binomial, n), fill = list(nn = 0)) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
   filter(sex == "Female" & n >= 10) %>%
@@ -119,6 +123,8 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
   add_count(class, binomial, name = "n") %>%
   add_count(class, binomial, sex, name = "nn") %>%
   select(class, binomial, sex, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(class, binomial, n), fill = list(nn = 0)) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
   filter(sex == "Female" & n >= 10) %>%
@@ -133,6 +139,8 @@ kable(slice(worst, 1:10))
   add_count(class, binomial, name = "n") %>%
   add_count(class, binomial, sex, name = "nn") %>%
   select(class, binomial, sex, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(class, binomial, n), fill = list(nn = 0)) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
   filter(sex == "Female" & n >= 10) %>%
@@ -148,6 +156,8 @@ kable(slice(best, 1:10))
   add_count(class, binomial, name = "n") %>%
   add_count(class, binomial, sex, name = "nn") %>%
   select(class, binomial, sex, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(class, binomial, n), fill = list(nn = 0)) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
   filter(sex == "Female" & n >= 10) %>%
@@ -162,6 +172,8 @@ kable(slice(best, 1:10))
   add_count(class, binomial, name = "n") %>%
   add_count(class, binomial, sex, name = "nn") %>%
   select(class, binomial, sex, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(class, binomial, n), fill = list(nn = 0)) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2)) %>%
   filter(sex == "Female" & n >= 10) %>%
