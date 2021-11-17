@@ -8,6 +8,7 @@ library(viridis)
 library(patchwork)
 library(rphylopic)
 library(grid)
+library(here)
 
 # Read in phylopics
 library(png)
@@ -15,7 +16,7 @@ img_frog <- readPNG(here("img/frog.png"))
 img_croc <- readPNG(here("img/crocodile.png"))
 img_lizard <- readPNG(here("img/lizard.png"))
 img_salamander <- readPNG(here("img/salamander.png"))
-img_turtle <- readPNG(here("img/tortoise.png"))
+img_turtle <- readPNG(here("img/turtle.png"))
 img_caecilian <- readPNG(here("img/caecilian.png"))
 
 
