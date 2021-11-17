@@ -21,14 +21,15 @@ library(car)
 ```{r}
 # Read in all the specimen data
 specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv")) 
+# Create sexed column
 specimens_all <- 
   specimens_all %>%
   mutate(sexed = case_when(is.na(sex) ~ "unsexed", !is.na(sex) ~ "sexed"))
 ```
 
-## How does the % of female specimens vary across orders?
+## How does the % of sexed specimens vary across orders?
 
-The mean percentage of female specimens varies across orders.
+The mean percentage of sexed specimens varies across orders.
 
 ```{r}
 # First set up dataset
