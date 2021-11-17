@@ -29,7 +29,7 @@ specimens <- read_csv(here("data/all-specimen-data-2021-07.csv"))
 
 ## How does the % of female specimens vary through time?
 
-The mean percentage of female specimens varies across orders.
+The mean percentage of female specimens varies across time.
 
 ```{r}
 # First set up dataset
