@@ -1,0 +1,118 @@
+---
+title: "Variation through time in sexed versus unsexed"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+# Preliminaries
+
+# Load libraries
+library(tidyverse)
+library(knitr)
+library(broom)
+library(here)
+library(ggfortify)
+library(car)
+```
+
+```{r}
+# Read in all the specimen data
+specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv")) 
+# Create sexed column
+specimens_all <- 
+  specimens_all %>%
+  mutate(sexed = case_when(is.na(sex) ~ "unsexed", !is.na(sex) ~ "sexed"))
+```
+
+## How does the % of sexed specimens vary through time?
+
+The mean percentage of sexed specimens varies through time
+
+```{r}
+# First set up dataset
+# Exclude the two points before 1880 as they skew the analyses and plots
+ds_years_all <-
+  specimens_all %>%
+  filter(!is.na(year)) %>%
+  group_by(class) %>%
+  add_count(binomial, year, name = "n") %>%
+  add_count(binomial, year, sexed, name = "nn") %>%
+  select(class, order, binomial, year, sexed, n, nn) %>%
+  # Add in data for species with no males or no females
+  complete(sexed, nesting(class, order, binomial, year, n), fill = list(nn = 0)) %>%
+  filter(n >= 10 & sexed == "sexed" & year > 1880) %>%
+  rename(sexedY = nn) %>%
+  mutate(unsexed = n - sexedY) %>%
+  select(class, order, binomial, year, n, sexedY, unsexed) %>%
+  mutate(percent = (sexedY/n) * 100) %>%
+  distinct()
+```
+
+# How many sexed and unsexed are in these analyses?
+
+```{r}
+  sum1 <-
+  ds_years_all %>%
+  select(class, binomial, sexedY, unsexed) %>%
+  distinct() %>%
+  group_by(class) %>%
+  summarise(species = n(), spec = sum(sexedY, unsexed),
+            sexedY = sum(sexedY), unsexed = sum(unsexed))
+
+  kable(sum1)
+```
+
+
+## Fitting models
+### Amphibians
+```{r}
+# Fitting the model
+ds_years_amphibians <- filter(ds_years_all, class == "Amphibians")
+year_model_amphibians <- glm(cbind(sexedY, unsexed) ~ year, data = ds_years_amphibians, family = "binomial")
+# Check for overdispersion
+summary_mod_amphibians <- summary(year_model_amphibians)
+summary_mod_amphibians$deviance / summary_mod_amphibians$df.resid 
+
+year_model_amphibians <- glm(cbind(sexedY, unsexed) ~ year, data = ds_years_amphibians, family = "quasibinomial") 
+
+# Look at model diagnostics
+autoplot(year_model_amphibians)
+
+# Look at outputs
+Anova(year_model_amphibians, test = "F")
+summary(year_model_amphibians)
+
+
+```
+
+### Reptiles
+```{r}
+# Fitting the model for reptiles
+ds_years_reptiles <- filter(ds_years_all, class == "Reptiles")
+year_model_reptiles <- glm(cbind(sexedY, unsexed) ~ year, data = ds_years_reptiles, family = "binomial")
+
+# Check for overdispersion
+summary_mod_reptiles <- summary(year_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+
+year_model_reptiles <- glm(cbind(sexedY, unsexed) ~ year, data = ds_years_reptiles, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(year_model_reptiles)
+
+# Look at outputs
+Anova(year_model_reptiles, test = "F")
+summary(year_model_reptiles)
+
+```
+
+## Plotting
+
+See `figure-years-all.R`
