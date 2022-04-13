@@ -1,6 +1,7 @@
 # Figures for classes and orders for sexed and unsexed
 # Natalie Cooper 
 # Aug 2021
+# Modified April 2022
 #------------------------
 # Load libraries
 library(tidyverse)
@@ -58,7 +59,10 @@ ds_orders <-
   mutate(unsexed = n - sexedY) %>%
   select(class, order, binomial, n, sexedY, unsexed) %>%
   mutate(percent = (sexedY/n) * 100) %>%
-  distinct()
+  distinct() %>%
+  # Set up order levels to make plot match class taxonomy
+  mutate(order = factor(order, levels = c("Anura", "Caudata", "Gymnophiona", 
+                                          "Crocodylia", "Squamata", "Testudines")))
 
 #--------------------------------------
 # Make class plot
@@ -71,11 +75,11 @@ class <-
   xlab("% sexed specimens") +
   xlim(0, 100) +
   ylim(0, 0.35) +
-  facet_wrap(~class, ncol = 1) +
+  facet_wrap(~class, ncol = 2) +
   scale_fill_manual(values = cbPalette[c(3,5)]) +
   theme(legend.position = "none") +
   theme(legend.position = "none",
-        strip.background = element_rect(fill = "white"))
+        strip.background = element_rect(fill = "white")) 
 
 #--------------------------------------
 # Make plots for each order
@@ -90,34 +94,34 @@ order <-
   xlim(0, 100) +
   #ylim(0, 0.20) +
   expand_limits(x = 0, y = 0) +
-  facet_wrap(~order, ncol = 1, scales = "free_y") +
+  facet_wrap(~order, ncol = 3, scales = "free_y") +
   scale_fill_manual(values = cbPalette[c(3,5)]) +
   theme(legend.position = "none") +
   theme(legend.position = "none",
         strip.background = element_rect(fill = "white"))
 
 # Add phylopics
-frog <- annotation_custom2(rasterGrob(img_frog, interpolate=TRUE, height = 0.8), 
+frog <- annotation_custom2(rasterGrob(img_frog, interpolate=TRUE, height = 0.6), 
                         xmin=90, xmax=100, ymin=0.10, ymax=0.30,
                         data=ds_orders[1,])
-salamander <- annotation_custom2(rasterGrob(img_salamander, interpolate=TRUE, height = 0.6), 
+salamander <- annotation_custom2(rasterGrob(img_salamander, interpolate=TRUE, height = 0.5), 
                                  xmin=85, xmax=85, ymin=0.1, ymax=0.40, 
                                  data=ds_orders[which(ds_orders$order == "Caudata")[1],])
-croc <- annotation_custom2(rasterGrob(img_croc, interpolate=TRUE, height = 0.8), 
-                           xmin=90, xmax=95, ymin=0, ymax=0.1, 
+croc <- annotation_custom2(rasterGrob(img_croc, interpolate=TRUE, height = 0.7), 
+                           xmin=90, xmax=90, ymin=0.05, ymax=0.15, 
                            data=ds_orders[which(ds_orders$order == "Crocodylia")[1],])
-lizard <- annotation_custom2(rasterGrob(img_lizard, interpolate=TRUE, height = 0.8), 
-                             xmin=90, xmax=95, ymin=0.05, ymax=0.15, 
+lizard <- annotation_custom2(rasterGrob(img_lizard, interpolate=TRUE, height = 0.7), 
+                             xmin=85, xmax=85, ymin=0.05, ymax=0.14, 
                              data=ds_orders[which(ds_orders$order == "Squamata")[1],])
-turtle <- annotation_custom2(rasterGrob(img_turtle, interpolate=TRUE, height = 0.6), 
-                             xmin=90, xmax=100, ymin=0.01, ymax=0.04, 
+turtle <- annotation_custom2(rasterGrob(img_turtle, interpolate=TRUE, height = 0.8), 
+                             xmin=90, xmax=98, ymin=0.015, ymax=0.045, 
                              data=ds_orders[which(ds_orders$order == "Testudines")[1],])
 caecilian <- annotation_custom2(rasterGrob(img_caecilian, interpolate=TRUE, height = 0.6), 
-                             xmin=90, xmax=100, ymin=1, ymax=2, 
+                             xmin=90, xmax=97, ymin=1, ymax=2, 
                              data=ds_orders[which(ds_orders$order == "Gymnophiona")[1],])
 
 # Combine plots
-class + order + frog + salamander + croc + lizard + turtle + caecilian
+class / (order + frog + salamander + caecilian + croc + lizard + turtle)
 
 # Save
-#ggsave("figures/unsexed-class-order-density.png", width = 9)
+#ggsave("figures/unsexed-class-order-density.png")
