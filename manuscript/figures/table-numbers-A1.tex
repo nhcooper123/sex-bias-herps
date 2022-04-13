@@ -1,9 +1,9 @@
 % Table A1
-% Numbers from 01-summary-stats
+% Numbers from 01-summary-stats and figure-types-all
 
 \begin{longtable}{ccccc}
 
-\caption{Numbers of specimens in our dataset divided by sex.}\\ 
+\caption{Numbers of female, male, sexed and unsexed specimen and name-bearing type records for amphibians and reptiles in our dataset}\\ 
   
 \hline
 \multicolumn{2}{c}{\textbf{AMBHIBIANS}} & \multicolumn{2}{c}{\textbf{REPTILES}} \\
@@ -30,6 +30,7 @@
   Male & 50,672 & 61.36 & 104,200 & 53.57\\
   \hline
 
+%from kable sum3
   \multicolumn{5}{c}{\textbf{Sexed specimens from species with $\geq$ 10 specimens}}\\
   \hline
   & \textbf{N specimens} & \textbf{\%} & \textbf{N specimens} & \textbf{\%}\\
@@ -37,6 +38,28 @@
   Total & 75,248 & NA & 183,285 & NA\\
   Female & 28,971 & 38.50 & 85,300 & 46.54\\
   Male & 46,277 & 61.50 & 97,985 & 53.46\\
+  \hline
+ 
+ %from ds_type_unsexed 
+  \multicolumn{5}{c}{\textbf{Name-bearing types only}}\\
+  \hline
+  & \textbf{N specimens} & \textbf{\%} & \textbf{N specimens} & \textbf{\%}\\
+  \hline
+  Total & 5,062 & NA & 9,198 & NA\\
+  Sexed & 739 & 14.60 & 1,305 & 14.20\\
+  Unsexed & 4,323  & 85.40 & 7,893 & 85.81\\
+  Female & 321 & 6.34 & 555 & 6.03 \\
+  Male & 418 & 8.26 & 750 & 8.15\\
+  \hline
+  
+  %from ds_type
+  \multicolumn{5}{c}{\textbf{Sexed name-bearing types only}}\\
+  \hline
+  & \textbf{N specimens} & \textbf{\%} & \textbf{N specimens} & \textbf{\%}\\
+  \hline
+  Total & 739 & NA & 1,305 & NA\\
+  Female & 321 & 43.44 & 555 & 42.53\\
+  Male & 418 & 56.56 & 750 & 57.47\\
   \hline
 
 \label{table_A1}
