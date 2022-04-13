@@ -47,6 +47,22 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
   kable(sum2)
 ```
 
+## And what if we only look at species with > 10 specimens
+
+```{r}
+  sum3 <-
+  specimens %>%
+  add_count(binomial, name = "spec") %>%
+  filter(spec >= 10) %>%
+  add_count(class, name = "n") %>%
+  add_count(class, sex, name = "nn") %>%
+  select(class, sex, n, nn) %>%
+  distinct() %>%
+  mutate('%' = round(nn/n*100, 2))
+
+  kable(sum3)
+```
+
 ## What is the median proportion of females per species?
 
 ```{r}
@@ -85,21 +101,7 @@ specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv"))
   kable(proportion2)
 ```
 
-## And what if we only look at species with > 10 specimens
 
-```{r}
-  sum3 <-
-  specimens %>%
-  add_count(binomial, name = "spec") %>%
-  filter(spec >= 10) %>%
-  add_count(class, name = "n") %>%
-  add_count(class, sex, name = "nn") %>%
-  select(class, sex, n, nn) %>%
-  distinct() %>%
-  mutate('%' = round(nn/n*100, 2))
-
-  kable(sum3)
-```
 
 ## How many species are there?
 ```{r}
