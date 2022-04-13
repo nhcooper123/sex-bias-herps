@@ -86,31 +86,31 @@ order <-
   xlim(0, 100) +
   ylim(0, 0.04) +
   expand_limits(x = 0, y = 0) +
-  facet_wrap(~order, ncol = 1) +
+  facet_wrap(~order, ncol = 2) +
   scale_fill_manual(values = cbPalette[c(3,5)]) +
   theme(legend.position = "none") +
   theme(legend.position = "none",
         strip.background = element_rect(fill = "white"))
 
 # Add phylopics
-frog <- annotation_custom2(rasterGrob(img_frog, interpolate=TRUE, height = 1), 
-                        xmin=100, xmax=100, ymin=0.02, ymax=0.04,
+frog <- annotation_custom2(rasterGrob(img_frog, interpolate=TRUE, height = 0.8), 
+                        xmin=90, xmax=90, ymin=0.025, ymax=0.04,
                         data=ds_orders[1,])
-salamander <- annotation_custom2(rasterGrob(img_salamander, interpolate=TRUE, height = 0.75), 
-                                 xmin=95, xmax=100, ymin=0.02, ymax=0.04, 
+salamander <- annotation_custom2(rasterGrob(img_salamander, interpolate=TRUE, height = 0.65), 
+                                 xmin=80, xmax=80, ymin=0.025, ymax=0.041, 
                                  data=ds_orders[which(ds_orders$order == "Caudata")[1],])
-croc <- annotation_custom2(rasterGrob(img_croc, interpolate=TRUE, height = 0.9), 
-                           xmin=97, xmax=100, ymin=0.02, ymax=0.04, 
+croc <- annotation_custom2(rasterGrob(img_croc, interpolate=TRUE, height = 0.7), 
+                           xmin=80, xmax=80, ymin=0.023, ymax=0.042, 
                            data=ds_orders[which(ds_orders$order == "Crocodylia")[1],])
-lizard <- annotation_custom2(rasterGrob(img_lizard, interpolate=TRUE, height = 0.9), 
-                             xmin=95, xmax=100, ymin=0.02, ymax=0.04, 
+lizard <- annotation_custom2(rasterGrob(img_lizard, interpolate=TRUE, height = 0.7), 
+                             xmin=80, xmax=80, ymin=0.023, ymax=0.041, 
                              data=ds_orders[which(ds_orders$order == "Squamata")[1],])
-turtle <- annotation_custom2(rasterGrob(img_turtle, interpolate=TRUE, height = 1.2), 
-                             xmin=100, xmax=100, ymin=0.02, ymax=0.04, 
+turtle <- annotation_custom2(rasterGrob(img_turtle, interpolate=TRUE, height = 0.8), 
+                             xmin=85, xmax=95, ymin=0.023, ymax=0.043, 
                              data=ds_orders[which(ds_orders$order == "Testudines")[1],])
 
 # Combine plots
 class + order + frog + salamander + croc + lizard + turtle
 
 # Save
-#ggsave("figures/class-order-density.png", width = 9)
+#ggsave("figures/class-order-density.png")
