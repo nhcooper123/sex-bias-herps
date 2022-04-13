@@ -3,9 +3,12 @@
 # July 2021
 # This runs on "specimens" = all specimen data
 #------------------------
+cbPalette <- c("#999999", "#a53606", "#b32db5", "#881a58", "#0e288e", "#164c64")
+
 # Summarise by species
 # Extract numbers of males and females
 # proportions, and totals
+
 ds_females <-
   specimens %>%
   group_by(class) %>%
@@ -29,7 +32,7 @@ hist1 <-
   geom_vline(xintercept = 50, linetype = 2) +
   theme(legend.position = "none",
         strip.background = element_rect(fill = "white")) +
-  scale_fill_manual(values = cbPalette[c(2,4)]) +
+  scale_fill_manual(values = cbPalette[c(3,5)]) +
   facet_wrap(~ class)
 
 hist2 <- 
@@ -39,7 +42,7 @@ hist2 <-
   xlab("log(number of specimens + 1)") +
   theme(legend.position = "none",
         strip.background = element_rect(fill = "white")) +
-  scale_fill_manual(values = cbPalette[c(2,4)]) +
+  scale_fill_manual(values = cbPalette[c(3,5)]) +
   facet_wrap(~ class)
 
 hist1 / hist2
