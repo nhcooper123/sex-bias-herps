@@ -166,10 +166,10 @@ plot_year_totals_sexed + plot_year_totals
 # Combine
 #---------------------------------------------------------
 
-(plot_year_totals_sexed + plot_year_totals) / (plot_year + plot_year_sex)
+(plot_year_totals_sexed + plot_year_totals) / (plot_year + plot_year_sex) + plot_annotation(tag_levels = 'A')
 
 #ggsave("figures/years-combined-totals.png", height = 7)
 
-plot_year + plot_year_sex
+plot_year + plot_year_sex + plot_annotation(tag_levels = 'A')
 
 #ggsave("figures/years-combined.png", width = 7)
