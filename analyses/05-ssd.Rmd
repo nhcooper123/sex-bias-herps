@@ -269,13 +269,15 @@ size_model_reptiles <- glm(cbind(female, male) ~ larger_sex, data = ds_size_rept
 # Check for overdispersion
 summary_mod_reptiles <- summary(size_model_reptiles)
 summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
-# There is none for once!
+
+# quasibinomial
+size_model_reptiles <- glm(cbind(female, male) ~ larger_sex, data = ds_size_reptiles2, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_reptiles)
 
 # Look at outputs
-Anova(size_model_reptiles, test = "LR")
+Anova(size_model_reptiles, test = "F")
 summary(size_model_reptiles)
 ```
 
