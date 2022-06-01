@@ -48,7 +48,7 @@ ggplot(ds_size, aes(x = log(max_body_size_mm), y = percentf/100, colour = class)
   geom_abline(slope = 0, intercept = 0.5, linetype = 2) +
   theme_bw(base_size = 14) +
   ylab("% female specimens") +
-  xlab("ln(maximum SVL) (mm)") +
+  xlab("ln(maximum body size)") +
   #ylim(0, 1) +
   scale_colour_manual(values = c(cbPalette[c(3,5)])) +
   scale_y_continuous(labels = c(0,25,50,75,100)) +
@@ -69,7 +69,7 @@ plot_size_males <-
   geom_abline(slope = 0, intercept = 0.5, linetype = 2) +
   theme_bw(base_size = 14) +
   ylab("% female specimens") +
-  xlab("ln(maximum SVL) (mm)") +
+  xlab("ln(maximum body size)") +
   #ylim(0, 1) +
   scale_colour_manual(values = c(cbPalette[c(3,5)])) +
   scale_y_continuous(labels = c(0,25,50,75,100)) +
@@ -91,7 +91,7 @@ plot_size_females <-
   geom_abline(slope = 0, intercept = 0.5, linetype = 2) +
   theme_bw(base_size = 14) +
   ylab("% female specimens") +
-  xlab("ln(maximum SVL) (mm)") +
+  xlab("ln(maximum body size)") +
   #ylim(0, 1) +
   scale_colour_manual(values = c(cbPalette[c(3,5)])) +
   scale_y_continuous(labels = c(0,25,50,75,100)) +
@@ -155,8 +155,8 @@ ds_size_larger %>% ungroup() %>% summarise(n())
 # Combine
 #---------------------------------------------------------
 
-(plot_size + plot_size_males + plot_size_females) / 
+(plot_size + plot_size_females + plot_size_males) / 
   (plot_size_ssd + plot_size_larger) + plot_annotation(tag_levels = 'A')
    
-#ggsave("figures/size-combined.png", height = 7, width = 8.5)
+#ggsave("figures/size-combined.png", height = 7, width = 9)
    
