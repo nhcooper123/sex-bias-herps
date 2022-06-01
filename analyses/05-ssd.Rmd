@@ -162,6 +162,25 @@ Anova(size_model_amph, test = "F")
 summary(size_model_amph)
 ```
 
+#### Larger sex
+```{r}
+# Fitting the model
+size_model_amph <- glm(cbind(female, male) ~ larger_sex, data = ds_size_amph, family = "binomial")
+# Check for overdispersion
+summary_mod_amph <- summary(size_model_amph)
+summary_mod_amph$deviance / summary_mod_amph$df.resid 
+
+# quasibinomial
+size_model_amph <- glm(cbind(female, male) ~ larger_sex, data = ds_size_amph, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_amph)
+
+# Look at outputs
+Anova(size_model_amph, test = "F")
+summary(size_model_amph)
+```
+
 ### Reptiles
 
 #### BODY SIZE
@@ -237,6 +256,26 @@ autoplot(size_model_reptiles)
 
 # Look at outputs
 Anova(size_model_reptiles, test = "F")
+summary(size_model_reptiles)
+```
+
+### LARGER
+```{r}
+# Remove parthenogenetic species
+ds_size_reptiles2 <- filter(ds_size_reptiles, larger_sex != "Parthenogenetic")
+
+# Fitting the model
+size_model_reptiles <- glm(cbind(female, male) ~ larger_sex, data = ds_size_reptiles2, family = "binomial")
+# Check for overdispersion
+summary_mod_reptiles <- summary(size_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+# There is none for once!
+
+# Look at model diagnostics
+autoplot(size_model_reptiles)
+
+# Look at outputs
+Anova(size_model_reptiles, test = "LR")
 summary(size_model_reptiles)
 ```
 
