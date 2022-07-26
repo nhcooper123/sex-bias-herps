@@ -18,3 +18,21 @@ all <- left_join(specs, size)
 
 # Write to file
 write_csv(all, "data/extra-data-sexed-2022-04.csv")
+
+#--------------------------------
+# Unsexed data
+#--------------------------------
+# Read in full specimen dataset to extract species
+specimens_all <- read_csv(here("data/all-specimen-data-unsexed-2021-07.csv")) 
+# Create sexed column
+specimens_all <- 
+  specimens_all %>%
+  mutate(sexed = case_when(is.na(sex) ~ "unsexed", !is.na(sex) ~ "sexed"))
+
+#--------------------------------
+# Merge data
+#--------------------------------
+all2 <- left_join(specimens_all, size)  
+
+# Write to file
+write_csv(all2, "data/extra-data-unsexed-2022-07.csv")
