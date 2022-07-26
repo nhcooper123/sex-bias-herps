@@ -30,7 +30,7 @@ extra <- read_csv(here("data/extra-data-unsexed-2022-07.csv"))
 extra <- mutate(extra, ssd = max_male / max_female)
 ```
 
-## Does sexual size dimorphism correlate with % female specimens?
+## Does sexual size dimorphism correlate with % sexed specimens?
 
 ```{r}
 # Reformat data
@@ -38,14 +38,14 @@ ds_size <-
   extra %>%
   #ßgroup_by(class) %>%
   add_count(binomial, name = "n") %>%
-  add_count(binomial, sex, name = "nn") %>%
-  select(class, order, binomial, sex, n, nn, max_body_size_mm, max_male, max_female, ssd, larger_sex) %>%
+  add_count(binomial, sexed, name = "nn") %>%
+  select(class, order, binomial, sexed, n, nn, max_body_size_mm, max_male, max_female, ssd, larger_sex) %>%
   # Add in data for species with no males or no females
-  complete(sex, nesting(order, class, binomial, n), fill = list(nn = 0)) %>%
-  filter(n >= 10 & sex == "Female") %>%
-  rename(female = nn) %>%
-  mutate(male = n - female) %>%
-  mutate(percentf = (female/n) * 100) %>%
+  complete(sexed, nesting(order, class, binomial, n), fill = list(nn = 0)) %>%
+  filter(n >= 10 & sexed == "sexed") %>%
+  rename(sexedY = nn) %>%
+  mutate(unsexed = n - sexedY) %>%
+  mutate(percent = (sexedY/n) * 100) %>%
   distinct()
 ```
 
@@ -89,13 +89,13 @@ ds_size_reptiles <- filter(ds_size, class == "Reptiles")
 #### BODY SIZE
 ```{r}
 # Fitting the model
-size_model_amph <- glm(cbind(female, male) ~ log(max_body_size_mm), data = ds_size_amph, family = "binomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ log(max_body_size_mm), data = ds_size_amph, family = "binomial")
 # Check for overdispersion
 summary_mod_amph <- summary(size_model_amph)
 summary_mod_amph$deviance / summary_mod_amph$df.resid 
 
 # quasibinomial
-size_model_amph <- glm(cbind(female, male) ~ log(max_body_size_mm), data = ds_size_amph, family = "quasibinomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ log(max_body_size_mm), data = ds_size_amph, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_amph)
@@ -108,13 +108,13 @@ summary(size_model_amph)
 #### MALE BODY SIZE
 ```{r}
 # Fitting the model
-size_model_amph <- glm(cbind(female, male) ~ log(max_male), data = ds_size_amph, family = "binomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ log(max_male), data = ds_size_amph, family = "binomial")
 # Check for overdispersion
 summary_mod_amph <- summary(size_model_amph)
 summary_mod_amph$deviance / summary_mod_amph$df.resid 
 
 # quasibinomial
-size_model_amph <- glm(cbind(female, male) ~ log(max_male), data = ds_size_amph, family = "quasibinomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ log(max_male), data = ds_size_amph, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_amph)
@@ -127,13 +127,13 @@ summary(size_model_amph)
 #### FEMALE BODY SIZE
 ```{r}
 # Fitting the model
-size_model_amph <- glm(cbind(female, male) ~ log(max_female), data = ds_size_amph, family = "binomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ log(max_female), data = ds_size_amph, family = "binomial")
 # Check for overdispersion
 summary_mod_amph <- summary(size_model_amph)
 summary_mod_amph$deviance / summary_mod_amph$df.resid 
 
 # quasibinomial
-size_model_amph <- glm(cbind(female, male) ~ log(max_female), data = ds_size_amph, family = "quasibinomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ log(max_female), data = ds_size_amph, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_amph)
@@ -146,13 +146,13 @@ summary(size_model_amph)
 #### SSD
 ```{r}
 # Fitting the model
-size_model_amph <- glm(cbind(female, male) ~ ssd, data = ds_size_amph, family = "binomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ ssd, data = ds_size_amph, family = "binomial")
 # Check for overdispersion
 summary_mod_amph <- summary(size_model_amph)
 summary_mod_amph$deviance / summary_mod_amph$df.resid 
 
 # quasibinomial
-size_model_amph <- glm(cbind(female, male) ~ ssd, data = ds_size_amph, family = "quasibinomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ ssd, data = ds_size_amph, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_amph)
@@ -165,13 +165,13 @@ summary(size_model_amph)
 #### Larger sex
 ```{r}
 # Fitting the model
-size_model_amph <- glm(cbind(female, male) ~ larger_sex, data = ds_size_amph, family = "binomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ larger_sex, data = ds_size_amph, family = "binomial")
 # Check for overdispersion
 summary_mod_amph <- summary(size_model_amph)
 summary_mod_amph$deviance / summary_mod_amph$df.resid 
 
 # quasibinomial
-size_model_amph <- glm(cbind(female, male) ~ larger_sex, data = ds_size_amph, family = "quasibinomial")
+size_model_amph <- glm(cbind(sexedY, unsexed) ~ larger_sex, data = ds_size_amph, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_amph)
@@ -186,13 +186,13 @@ summary(size_model_amph)
 #### BODY SIZE
 ```{r}
 # Fitting the model
-size_model_reptiles <- glm(cbind(female, male) ~ log(max_body_size_mm), data = ds_size_reptiles, family = "binomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ log(max_body_size_mm), data = ds_size_reptiles, family = "binomial")
 # Check for overdispersion
 summary_mod_reptiles <- summary(size_model_reptiles)
 summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
 
 # quasibinomial
-size_model_reptiles <- glm(cbind(female, male) ~ log(max_body_size_mm), data = ds_size_reptiles, family = "quasibinomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ log(max_body_size_mm), data = ds_size_reptiles, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_reptiles)
@@ -205,13 +205,13 @@ summary(size_model_reptiles)
 #### MALE BODY SIZE
 ```{r}
 # Fitting the model
-size_model_reptiles <- glm(cbind(female, male) ~ log(max_male), data = ds_size_reptiles, family = "binomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ log(max_male), data = ds_size_reptiles, family = "binomial")
 # Check for overdispersion
 summary_mod_reptiles <- summary(size_model_reptiles)
 summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
 
 # quasibinomial
-size_model_reptiles <- glm(cbind(female, male) ~ log(max_male), data = ds_size_reptiles, family = "quasibinomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed)~ log(max_male), data = ds_size_reptiles, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_reptiles)
@@ -224,13 +224,13 @@ summary(size_model_reptiles)
 #### FEMALE BODY SIZE
 ```{r}
 # Fitting the model
-size_model_reptiles <- glm(cbind(female, male) ~ log(max_female), data = ds_size_reptiles, family = "binomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ log(max_female), data = ds_size_reptiles, family = "binomial")
 # Check for overdispersion
 summary_mod_reptiles <- summary(size_model_reptiles)
 summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
 
 # quasibinomial
-size_model_reptiles <- glm(cbind(female, male) ~ log(max_female), data = ds_size_reptiles, family = "quasibinomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ log(max_female), data = ds_size_reptiles, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_reptiles)
@@ -243,13 +243,13 @@ summary(size_model_reptiles)
 #### SSD
 ```{r}
 # Fitting the model
-size_model_reptiles <- glm(cbind(female, male) ~ ssd, data = ds_size_reptiles, family = "binomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ ssd, data = ds_size_reptiles, family = "binomial")
 # Check for overdispersion
 summary_mod_reptiles <- summary(size_model_reptiles)
 summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
 
 # quasibinomial
-size_model_reptiles <- glm(cbind(female, male) ~ ssd, data = ds_size_reptiles, family = "quasibinomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ ssd, data = ds_size_reptiles, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_reptiles)
@@ -265,13 +265,13 @@ summary(size_model_reptiles)
 ds_size_reptiles2 <- filter(ds_size_reptiles, larger_sex != "Parthenogenetic")
 
 # Fitting the model
-size_model_reptiles <- glm(cbind(female, male) ~ larger_sex, data = ds_size_reptiles2, family = "binomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ larger_sex, data = ds_size_reptiles2, family = "binomial")
 # Check for overdispersion
 summary_mod_reptiles <- summary(size_model_reptiles)
 summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
 
 # quasibinomial
-size_model_reptiles <- glm(cbind(female, male) ~ larger_sex, data = ds_size_reptiles2, family = "quasibinomial")
+size_model_reptiles <- glm(cbind(sexedY, unsexed) ~ larger_sex, data = ds_size_reptiles2, family = "quasibinomial")
 
 # Look at model diagnostics
 autoplot(size_model_reptiles)
