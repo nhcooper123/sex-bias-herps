@@ -35,7 +35,7 @@ The mean percentage of sexed specimens varies across orders.
 # First set up dataset
 ds_orders <-
   specimens_all %>%
-  group_by(class) %>%
+  #group_by(class) %>%
   # Remove as they only have one species
   filter(order != "Rhynchocephalia") %>%
   add_count(binomial, name = "n") %>%

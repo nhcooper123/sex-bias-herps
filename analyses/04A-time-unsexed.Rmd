@@ -41,7 +41,7 @@ The mean percentage of sexed specimens varies through time
 ds_years_all <-
   specimens_all %>%
   filter(!is.na(year)) %>%
-  group_by(class) %>%
+  #group_by(class) %>%
   add_count(binomial, year, name = "n") %>%
   add_count(binomial, year, sexed, name = "nn") %>%
   select(class, order, binomial, year, sexed, n, nn) %>%

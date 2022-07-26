@@ -37,7 +37,7 @@ The mean percentage of female specimens varies across time.
 ds_years <-
   specimens %>%
   filter(!is.na(year)) %>%
-  group_by(class) %>%
+  #group_by(class) %>%
   add_count(binomial, year, name = "n") %>%
   add_count(binomial, year, sex, name = "nn") %>%
   select(class, order, binomial, year, sex, n, nn) %>%

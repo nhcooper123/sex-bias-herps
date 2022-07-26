@@ -36,7 +36,7 @@ extra <- mutate(extra, ssd = max_male / max_female)
 # Reformat data
 ds_size <-
   extra %>%
-  group_by(class) %>%
+  #ßgroup_by(class) %>%
   add_count(binomial, name = "n") %>%
   add_count(binomial, sex, name = "nn") %>%
   select(class, order, binomial, sex, n, nn, max_body_size_mm, max_male, max_female, ssd, larger_sex) %>%
