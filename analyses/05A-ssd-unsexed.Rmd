@@ -1,0 +1,290 @@
+---
+title: "Sexual size dimorphism and body mass"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r, message = FALSE}
+# Preliminaries
+
+# Load libraries
+library(tidyverse)
+library(knitr)
+library(broom)
+library(here)
+library(ggfortify)
+library(car)
+```
+
+```{r, message = FALSE, warning = FALSE}
+# Read in all the specimen data and body size data
+extra <- read_csv(here("data/extra-data-unsexed-2022-07.csv"))
+
+# Add ssd (male/female)
+extra <- mutate(extra, ssd = max_male / max_female)
+```
+
+## Does sexual size dimorphism correlate with % female specimens?
+
+```{r}
+# Reformat data
+ds_size <-
+  extra %>%
+  #ßgroup_by(class) %>%
+  add_count(binomial, name = "n") %>%
+  add_count(binomial, sex, name = "nn") %>%
+  select(class, order, binomial, sex, n, nn, max_body_size_mm, max_male, max_female, ssd, larger_sex) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(order, class, binomial, n), fill = list(nn = 0)) %>%
+  filter(n >= 10 & sex == "Female") %>%
+  rename(female = nn) %>%
+  mutate(male = n - female) %>%
+  mutate(percentf = (female/n) * 100) %>%
+  distinct()
+```
+
+### How many species of each class do we have data for?
+
+```{r}
+n_size <- 
+  ds_size %>%
+  group_by(class) %>%
+  summarise(n_max_body_size = sum(!is.na(max_body_size_mm)),
+            n_max_male = sum(!is.na(max_male)),
+            n_max_female = sum(!is.na(max_female)), 
+            n_ssd = sum(!is.na(ssd)),
+            n_larger = sum(!is.na(larger_sex)))
+
+n_size_totals <- 
+  ds_size %>%
+  ungroup() %>%
+  summarise(n_max_body_size = sum(!is.na(max_body_size_mm)),
+            n_max_male = sum(!is.na(max_male)),
+            n_max_female = sum(!is.na(max_female)), 
+            n_ssd = sum(!is.na(ssd)),
+            n_larger = sum(!is.na(larger_sex)))
+
+kable(n_size)
+```
+
+```{r}
+kable(n_size_totals)
+```
+## Fitting models
+
+```{r}
+# Create a dataset for each class
+ds_size_amph <- filter(ds_size, class == "Amphibians")
+ds_size_reptiles <- filter(ds_size, class == "Reptiles")
+```
+
+### Amphibians
+
+#### BODY SIZE
+```{r}
+# Fitting the model
+size_model_amph <- glm(cbind(female, male) ~ log(max_body_size_mm), data = ds_size_amph, family = "binomial")
+# Check for overdispersion
+summary_mod_amph <- summary(size_model_amph)
+summary_mod_amph$deviance / summary_mod_amph$df.resid 
+
+# quasibinomial
+size_model_amph <- glm(cbind(female, male) ~ log(max_body_size_mm), data = ds_size_amph, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_amph)
+
+# Look at outputs
+Anova(size_model_amph, test = "F")
+summary(size_model_amph)
+```
+
+#### MALE BODY SIZE
+```{r}
+# Fitting the model
+size_model_amph <- glm(cbind(female, male) ~ log(max_male), data = ds_size_amph, family = "binomial")
+# Check for overdispersion
+summary_mod_amph <- summary(size_model_amph)
+summary_mod_amph$deviance / summary_mod_amph$df.resid 
+
+# quasibinomial
+size_model_amph <- glm(cbind(female, male) ~ log(max_male), data = ds_size_amph, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_amph)
+
+# Look at outputs
+Anova(size_model_amph, test = "F")
+summary(size_model_amph)
+```
+
+#### FEMALE BODY SIZE
+```{r}
+# Fitting the model
+size_model_amph <- glm(cbind(female, male) ~ log(max_female), data = ds_size_amph, family = "binomial")
+# Check for overdispersion
+summary_mod_amph <- summary(size_model_amph)
+summary_mod_amph$deviance / summary_mod_amph$df.resid 
+
+# quasibinomial
+size_model_amph <- glm(cbind(female, male) ~ log(max_female), data = ds_size_amph, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_amph)
+
+# Look at outputs
+Anova(size_model_amph, test = "F")
+summary(size_model_amph)
+```
+
+#### SSD
+```{r}
+# Fitting the model
+size_model_amph <- glm(cbind(female, male) ~ ssd, data = ds_size_amph, family = "binomial")
+# Check for overdispersion
+summary_mod_amph <- summary(size_model_amph)
+summary_mod_amph$deviance / summary_mod_amph$df.resid 
+
+# quasibinomial
+size_model_amph <- glm(cbind(female, male) ~ ssd, data = ds_size_amph, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_amph)
+
+# Look at outputs
+Anova(size_model_amph, test = "F")
+summary(size_model_amph)
+```
+
+#### Larger sex
+```{r}
+# Fitting the model
+size_model_amph <- glm(cbind(female, male) ~ larger_sex, data = ds_size_amph, family = "binomial")
+# Check for overdispersion
+summary_mod_amph <- summary(size_model_amph)
+summary_mod_amph$deviance / summary_mod_amph$df.resid 
+
+# quasibinomial
+size_model_amph <- glm(cbind(female, male) ~ larger_sex, data = ds_size_amph, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_amph)
+
+# Look at outputs
+Anova(size_model_amph, test = "F")
+summary(size_model_amph)
+```
+
+### Reptiles
+
+#### BODY SIZE
+```{r}
+# Fitting the model
+size_model_reptiles <- glm(cbind(female, male) ~ log(max_body_size_mm), data = ds_size_reptiles, family = "binomial")
+# Check for overdispersion
+summary_mod_reptiles <- summary(size_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+
+# quasibinomial
+size_model_reptiles <- glm(cbind(female, male) ~ log(max_body_size_mm), data = ds_size_reptiles, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_reptiles)
+
+# Look at outputs
+Anova(size_model_reptiles, test = "F")
+summary(size_model_reptiles)
+```
+
+#### MALE BODY SIZE
+```{r}
+# Fitting the model
+size_model_reptiles <- glm(cbind(female, male) ~ log(max_male), data = ds_size_reptiles, family = "binomial")
+# Check for overdispersion
+summary_mod_reptiles <- summary(size_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+
+# quasibinomial
+size_model_reptiles <- glm(cbind(female, male) ~ log(max_male), data = ds_size_reptiles, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_reptiles)
+
+# Look at outputs
+Anova(size_model_reptiles, test = "F")
+summary(size_model_reptiles)
+```
+
+#### FEMALE BODY SIZE
+```{r}
+# Fitting the model
+size_model_reptiles <- glm(cbind(female, male) ~ log(max_female), data = ds_size_reptiles, family = "binomial")
+# Check for overdispersion
+summary_mod_reptiles <- summary(size_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+
+# quasibinomial
+size_model_reptiles <- glm(cbind(female, male) ~ log(max_female), data = ds_size_reptiles, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_reptiles)
+
+# Look at outputs
+Anova(size_model_reptiles, test = "F")
+summary(size_model_reptiles)
+```
+
+#### SSD
+```{r}
+# Fitting the model
+size_model_reptiles <- glm(cbind(female, male) ~ ssd, data = ds_size_reptiles, family = "binomial")
+# Check for overdispersion
+summary_mod_reptiles <- summary(size_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+
+# quasibinomial
+size_model_reptiles <- glm(cbind(female, male) ~ ssd, data = ds_size_reptiles, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_reptiles)
+
+# Look at outputs
+Anova(size_model_reptiles, test = "F")
+summary(size_model_reptiles)
+```
+
+### LARGER
+```{r}
+# Remove parthenogenetic species
+ds_size_reptiles2 <- filter(ds_size_reptiles, larger_sex != "Parthenogenetic")
+
+# Fitting the model
+size_model_reptiles <- glm(cbind(female, male) ~ larger_sex, data = ds_size_reptiles2, family = "binomial")
+# Check for overdispersion
+summary_mod_reptiles <- summary(size_model_reptiles)
+summary_mod_reptiles$deviance / summary_mod_reptiles$df.resid 
+
+# quasibinomial
+size_model_reptiles <- glm(cbind(female, male) ~ larger_sex, data = ds_size_reptiles2, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(size_model_reptiles)
+
+# Look at outputs
+Anova(size_model_reptiles, test = "F")
+summary(size_model_reptiles)
+```
+
+## Plotting
+
+See `figure-ssd.R`
+
+## Tables
+
+See `table-ssd.R`
