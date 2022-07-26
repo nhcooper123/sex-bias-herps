@@ -1,0 +1,352 @@
+%-------------------------------------------------------------------------------
+% Preamble
+%-------------------------------------------------------------------------------
+
+\documentclass[a4paper, 12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[osf]{mathpazo} % palatino
+%\usepackage[round]{natbib} % author-year citations
+\usepackage[superscript,biblabel]{cite} % for superscript citations
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{parskip} 
+\usepackage{amsmath}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{array}
+\usepackage{float}
+\usepackage{url}
+
+\pagenumbering{arabic}  
+\linespread{1.3}
+
+% figure numbering override
+\renewcommand*{\thefigure}{A\arabic{figure}} % make Fig A1 not Fig 1
+\renewcommand*{\thetable}{A\arabic{table}} % make Table A1 not Table 1
+
+%-------------------------------------------------------------------------------
+% Title page information
+%-------------------------------------------------------------------------------
+
+\title{Supplementary Materials from: \textit{TITLE}; journal}
+
+\author{Tara Wainwright, 
+  Morwenna Trevenna, 
+  Sarah Alewinjse,\\ 
+  Marc E.H. Jones, 
+  Jeff? 
+  Patrick? and\\
+  Natalie Cooper}
+
+\date{}
+
+% End of preamble
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\parindent = 1.5em
+\addtolength{\parskip}{.3em}
+
+%-------------------------------------------------------------------------------
+% Supplementary materials
+%-------------------------------------------------------------------------------
+\newpage
+\section{Numbers of specimens for each species}
+%-------------------------------------------------------------------------------
+We expect large skews in the proportion of male or female specimens when sample size is low, but the ratio of male:female specimens should approach 50:50 as more specimens are added if there is no bias. 
+Most species in our dataset were represented by only a few specimens (Figure \ref{fig-histograms}; median of 8 specimens for each species), with large skews in the percentage of female specimens (in both directions) at low numbers (Figure \ref{fig-hex}).
+To test whether this may influence our analyses, we used generalised linear models (GLM) with binomial errors, with the proportion of female specimens (success) and the proportion of male specimens (failure) for each species as the response variable, and the log number of specimens per species as the explanatory variable. 
+We then used standard model checks for GLMs (Q-Q plot, histogram of residuals, residuals vs. linear predictors, response vs. fitted values) to assess model fit. 
+The model showed massive heteroscedasticity in the residuals, due to the skew in proportions when sample size is low. 
+We therefore repeated the analysis, removing species with fewer than 10, 25, 50 and 100 specimens in turn. 
+The best fitting model, without losing too much data, was a model with species with more than 10 specimens. 
+There is no significant relationship between the number of specimens and the proportion of female specimens using a minimum of 10 specimens for each species (binomial GLM: $deviance = 0.741$, $df = 1,3306$, $p = 0.389$) so we exclude this variable from further analyses.
+
+% figure A1
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/histogram-specimen-counts.png}
+  \caption{Histograms showing the distribution of percentage female specimens and log number of specimens for each species across amphibians and reptiles.}
+  \label{fig-histograms}
+\end{figure}
+
+% figure A2
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/specimens-numbers-all.png}
+  \caption{Relationship between the percentage female specimens in each species and the number of specimens for each species across amphibians and reptiles. 
+  Hex bins are used rather than points to make the plot easier to read.}
+  \label{fig-hex}
+\end{figure}
+
+%------------------------------------------------------------------------------------------------
+\newpage
+\section{Total numbers of female, male, sexed and unsexed specimen and name-bearing type records}
+%-------------------------------------------------------------------------------------------------
+% Table A1
+\input{figures/table-numbers-A1}
+
+\newpage
+
+% figure A3
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/types-class.png}
+  \caption{Percentages of female (yellow), male (orange), sexed (green) and unsexed (grey) specimen records in amphibian and reptile collections for all specimens (left hand panels) and for name-bearing type specimens only (right hand panels). 
+  The dashed line represents 50\% female specimens.}
+  \label{fig-types-class}
+\end{figure}
+
+%------------------------------------------------------------------------------------------------
+\newpage
+\subsection{Orders}
+%-------------------------------------------------------------------------------------------------
+
+% figure A4
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/types-order.png}
+  \caption{Percentages of female (yellow), male (orange), sexed (green) and unsexed (grey) specimen records in amphibian and reptile collections for all specimens (top panels) and for name-bearing type specimens only (bottom panels), categorised by order. Rhynchocephalia is excluded from the name-bearing types plots as our dataset contained no types for this order. 
+  The dashed line represents 50\% female specimens.}
+  \label{fig-types-order}
+\end{figure}
+
+%------------------------------------------------------------------------------------------------
+\newpage
+\subsection{Families}
+%-------------------------------------------------------------------------------------------------
+
+\subsubsection{Amphibians}
+
+% Table A2
+\input{figures/table-family_amphibians}
+
+\newpage
+
+% figure A5
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/all-family-amphibians.png}
+  \caption{Percentages of female (yellow) and male (orange) specimen records in amphibian collections, categorised by family.
+  The dashed line represents 50\% female specimens.}
+  \label{fig-amphibian-family}
+\end{figure}
+
+% figure A6
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/all-unsexed-family-amphibians.png}
+  \caption{Percentages of sexed (green) and unsexed (grey) specimen records in amphibian collections, categorised by family.
+  The dashed line represents 50\% female specimens.}
+  \label{fig-amphibian-family-unsexed}
+\end{figure}
+
+\newpage
+
+\subsubsection{Reptiles}
+
+% Table A3
+\input{figures/table-family_reptiles}
+
+\newpage
+
+% figure A7
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/all-family-reptiles.png}
+  \caption{Percentages of female (yellow) and male (orange) specimen records in reptile collections, categorised by family. Rhynchocephalia is excluded as it contains only one species/family. 
+  The dashed line represents 50\% female specimens.}
+  \label{fig-reptile-family}
+\end{figure}
+
+% figure A8
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/all-unsexed-family-reptiles.png}
+  \caption{Percentages of sexed (green) and unsexed (grey) specimen records in reptile collections, categorised by family. Rhynchocephalia is excluded as it contains only one species/family. 
+  The dashed line represents 50\% female specimens.}
+  \label{fig-reptile-family-unsexed}
+\end{figure}
+
+
+
+%-------------------------------------------------------------------------------
+\newpage
+\section{Species with the most extreme sex ratios}
+%-------------------------------------------------------------------------------
+% Table A4
+\input{figures/table-best}
+
+% Table A5
+\input{figures/table-worst}
+
+%-------------------------------------------------------------------------------
+\newpage
+\section{Numbers of species in each analysis}
+%-------------------------------------------------------------------------------
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+
+  \hline
+  \textbf{Model} & \textbf{Sexed only} & \textbf{All specimens}\\ 
+  \hline
+  \textbf{AMPHIBIANS} & &\\
+  \hline
+  orders & 1143 & 4818\\
+  years & 1300 & 34320\\
+  max size & 229 & -\\
+  female size & 181 & -\\
+  male size & 181 & -\\
+  SSD & 175 & -\\
+  larger sex & 195 & -\\
+  \hline
+  \textbf{REPTILES} & &\\
+  \hline
+  orders & 2163 & 6727\\
+  years & 2816 & 44054\\
+  max size & 305 & -\\
+  female size & 197 & -\\
+  male size & 175 & -\\
+  SSD & 162  & -\\
+  larger sex & 235  & -\\
+  \hline
+
+\label{table_numbers}
+\end{tabular}
+\caption{Numbers of species in each of our models, investigating males and females (sexed only) and sexed and unsexed (all specimens). Numbers in years analyses are species x year combinations. SSD is sexual size dimorphism. All species have order data.} 
+
+\end{table}
+
+%-------------------------------------------------------------------------------
+\newpage
+\section{More inclusive taxonomic groupings for Squamata}
+%-------------------------------------------------------------------------------
+%\input{figures/table-best}
+
+\begin{longtable}{lll}
+\caption{} 
+
+\hline
+\textbf{Family} & \textbf{Grouping 1} & \textbf{Grouping 2}\\ 
+\hline
+Anguidae & Anguiformes & Anguiformes \\
+Diploglossidae & Anguiformes & Anguiformes \\
+Helodermatidae & Anguiformes & Anguiformes \\
+Lanthanotidae & Anguiformes & Anguiformes \\
+Shinisauridae & Anguiformes & Anguiformes \\
+Varanidae & Anguiformes & Anguiformes \\
+Xenosauridae & Anguiformes & Anguimorpha \\
+Dibamidae & Dibamia & Dibamia \\
+Carphodactylidae & Gekkota & Gekkota \\
+Dactyloidae & Gekkota & Gekkota \\
+Diplodactylidae & Gekkota & Gekkota \\
+Eublepharidae & Gekkota & Gekkota \\
+Gekkonidae & Gekkota & Gekkota \\
+Phyllodactylidae & Gekkota & Gekkota \\
+Pygopodidae & Gekkota & Gekkota \\
+Sphaerodactylidae & Gekkota & Gekkota \\
+Agamidae & Iguania & Acrodonta \\
+Chamaeleonidae & Iguania & Acrodonta \\
+Corytophanidae & Iguania & Pleurodonta \\
+Crotaphytidae & Iguania & Pleurodonta \\
+Hoplocercidae & Iguania & Pleurodonta \\
+Iguanidae & Iguania & Pleurodonta \\
+Leiocephalidae & Iguania & Pleurodonta \\
+Leiosauridae & Iguania & Pleurodonta \\
+Liolaemidae & Iguania & Pleurodonta \\
+Opluridae & Iguania & Pleurodonta \\
+Phrynosomatidae & Iguania & Pleurodonta \\
+Polychrotidae & Iguania & Pleurodonta \\
+Tropidophiidae & Iguania & Pleurodonta \\
+Tropiduridae & Iguania & Pleurodonta \\
+Alopoglossidae & Laterata & Laterata \\
+Amphisbaenidae & Laterata & Laterata \\
+Bipedidae & Laterata & Laterata \\
+Blanidae & Laterata & Laterata \\
+Gymnophthalmidae & Laterata & Laterata \\
+Lacertidae & Laterata & Laterata \\
+Rhineuridae & Laterata & Laterata \\
+Teiidae & Laterata & Laterata \\
+Trogonophidae & Laterata & Laterata \\
+Cordylidae & Scincomorpha & Scincomorpha \\
+Gerrhosauridae & Scincomorpha & Scincomorpha \\
+Scincidae & Scincomorpha & Scincomorpha \\
+Xantusiidae & Scincomorpha & Scincomorpha \\
+Aniliidae & Serpentes & Amerophidia \\
+Anomalepididae & Serpentes & Anomalepididae \\
+Boidae & Serpentes & Booidae \\
+Acrochordidae & Serpentes & Caenophidia \\
+Atractaspididae & Serpentes & Caenophidia \\
+Colubridae & Serpentes & Caenophidia \\
+Cyclocoridae & Serpentes & Caenophidia \\
+Elapidae & Serpentes & Caenophidia \\
+Homalopsidae & Serpentes & Caenophidia \\
+Lamprophiidae & Serpentes & Caenophidia \\
+Pareidae & Serpentes & Caenophidia \\
+Prosymnidae & Serpentes & Caenophidia \\
+Psammophiidae & Serpentes & Caenophidia \\
+Pseudaspididae & Serpentes & Caenophidia \\
+Pseudoxyrhophiidae & Serpentes & Caenophidia \\
+Viperidae & Serpentes & Caenophidia \\
+Xenodermidae & Serpentes & Caenophidia \\
+Leptotyphlopidae & Serpentes & Leptotyphlopidae \\
+Bolyeriidae & Serpentes & Pythonidea \\
+Loxocemidae & Serpentes & Pythonidea \\
+Pythonidae & Serpentes & Pythonidea \\
+Xenopeltidae & Serpentes & Pythonidea \\
+Xenophidiidae & Serpentes & Pythonidea \\
+Typhlopidae & Serpentes & Typhlopidae \\
+Gerrhopilidae & Serpentes & Typhlopidea \\
+Anomochilidae & Serpentes & Uropeltoidea \\
+Cylindrophiidae & Serpentes & Uropeltoidea \\
+Uropeltidae & Serpentes & Uropeltoidea \\
+\hline
+
+\label{table_higher-definitions}
+\end{longtable}
+
+
+%-------------------------------------------------------------------------------
+\newpage
+%\section{Comparing our sex ratios to wild adult sex ratio data for birds}
+
+%There is very little available data on sex ratios in wild bird populations. The study which has collated the most data so far is Szekely et al. (2014). We took their data and compared the wild adult sex ratios (number of males/ number of males + number of females) to the sex ratios of the matching species in our dataset.
+
+%Overall we found 119 overlapping species out of the 187 in Szekely et al. (2014)\cite{szekely2014sex}.
+%Of these 88 (74\%) have less male biased sex ratios in the wild compared to museums, while the remaining 31 (26\%) have more male biased sex ratios in the wild compared to museums. 
+%This difference was significant (paired t-test: $t_{118} = -6.768$, $p < 0.001$; Figure \ref{fig-asr})
+
+% figure A7
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width = \linewidth]{figures/wild-sex-ratios.png}
+%  \caption{Adult sex ratio (ASR) in wild populations versus ASR in our museum dataset for 119 bird species. 
+%  Wild ASR values come from Szekely et al. (2014)\cite{szekely2014sex}. 
+%  For the museum dataset only species with at least 100 specimens are included. 
+%  The dotted lines represents 50\% female specimens in either the wild or museum ASR data. 
+%  The red dashed line is the 1:1 line representing where points would sit of wild ASR and museum ASR are identical for a given %species.
+%  Points above this line indicate species where museum ASR is more male biased than in wild populations.
+%}
+%  \label{fig-asr}
+%\end{figure}
+
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+\newpage
+% References
+
+% Add reference list for the body size data.
+
+
+\bibliographystyle{vancouver}
+\bibliography{sex-bias}
+
+\end{document}
