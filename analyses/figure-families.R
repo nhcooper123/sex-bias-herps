@@ -46,41 +46,6 @@ specimens_all <-
                                           "Squamata","Testudines")))
 
 #----------------------------------------------
-# For squamates swap family for higher2
-# Fill in gaps where higher2 did not exist first
-#----------------------------------------------
-specimens <- 
-  specimens %>%
-  # correct to anguimorpha
-    mutate(higher2 = case_when(higher2 == "Anguiformes" ~ "Anguimorpha",
-                               TRUE ~ as.character(higher2))) %>%
-  # add missing higher taxon names  
-  mutate(higher2 = case_when(family == "Aniliidae" ~ ,     
-                             family == "Anomalepididae" ~ ,
-                             family == "Anomochilidae" ~ , 
-                             family == "Bipedidae" ~ "Lacertoidea",     
-                             family == "Blanidae" ~ "Lacertoidea",       
-                             family == "Bolyeriidae" ~ ,   
-                             family == "Dibamidae" ~ "Dibamia",     
-                             family == "Gerrhopilidae" ~ , 
-                             family == "Lanthanotidae" ~ "Anguimorpha", 
-                             family == "Loxocemidae" ~ ,   
-                             family == "Pareidae" ~ ,      
-                             family == "Rhineuridae" ~ "Lacertoidea",   
-                             family == "Shinisauridae" ~ "Anguimorpha", 
-                             family == "Trogonophidae" ~ "Lacertoidea", 
-                             family == "Tropidophiidae" ~ "Pleurodonta",
-                             family == "Xenodermidae" ~ ,  
-                             family == "Xenophidiidae" ~ ,
-                             TRUE ~ as.character(family))) %>%
-    mutate(family = case_when(order == "Squamata" ~ higher2,
-                              TRUE ~ as.character(family))) 
-
-specimens_all <- 
-  specimens_all %>%
-  mutate(family = case_when(order == "Squamata" ~ higher2,
-                            TRUE ~ as.character(family))) 
-#----------------------------------------------
 # Create datasets for plots
 #----------------------------------------------
 ds_all_family <-
@@ -88,17 +53,6 @@ ds_all_family <-
   add_count(class, order, family, name = "n") %>%
   add_count(class, order, family, sex, name = "nn") %>%
   select(class, order,family, sex, n, nn) %>%
-  distinct() %>%
-  mutate(percent = round(nn/n*100, 2))
-
-# Just focus on types
-# Exclude non-types and non-name-bearing types
-ds_type_family <-
-  specimens %>%
-  filter(type == "Type") %>%
-  add_count(class, order, family, type, name = "n") %>%
-  add_count(class, order, family, sex, type, name = "nn") %>%
-  select(class, order, family, sex, type, n, nn) %>%
   distinct() %>%
   mutate(percent = round(nn/n*100, 2))
 
@@ -111,27 +65,36 @@ ds_all_unsexed_family <-
   distinct() %>%
   mutate(percent = round(nn/n*100, 2))
 
-# Just focus on types
-# Exclude non-types and non-name-bearing types
-ds_type_unsexed_family <-
-  specimens_all %>%
-  filter(type == "Type") %>%
-  add_count(class, order,family, type, name = "n") %>%
-  add_count(class, order, family,sexed, type, name = "nn") %>%
-  select(class, order, family,sexed, type, n, nn) %>%
-  distinct() %>%
-  mutate(percent = round(nn/n*100, 2))
-
-#---------------------------------------------------------------
-# Make the plots
-#---------------------------------------------------------------
-
 # Remove tuatara
 ds_all_family <- filter(ds_all_family, order != "Rhynchocephalia")
 ds_all_unsexed_family <- filter(ds_all_unsexed_family, order != "Rhynchocephalia")
 
-plot_all_family <-
-  ggplot(ds_all_family, aes(y = percent, x = family, fill = sex)) +
+# Split amphibians and reptiles
+ds_all_family_a <- filter(ds_all_family, class == "Amphibians")
+ds_all_family_r <- filter(ds_all_family, class == "Reptiles")
+
+ds_all_unsexed_family_a <- filter(ds_all_unsexed_family, class == "Amphibians")
+ds_all_unsexed_family_r <- filter(ds_all_unsexed_family, class == "Reptiles")
+
+#------------------------------------
+# Higher taxon summary for squamates
+#------------------------------------
+
+ds_squamata <-
+  specimens %>%
+  add_count(class, order, higher2, name = "n") %>%
+  add_count(class, order, higher2, sex, name = "nn") %>%
+  filter(order == "Squamata") %>%
+  select(higher2, sex, n, nn) %>%
+  distinct() %>%
+  mutate(percent = round(nn/n*100, 2)) 
+
+#---------------------------------------------------------------
+# Make the plots
+#---------------------------------------------------------------
+# Amphibians
+plot_all_family_a <-
+  ggplot(ds_all_family_a, aes(y = percent, x = family, fill = sex)) +
   geom_col(alpha = 0.8, position = position_stack(reverse = TRUE)) +
   ylab("% specimens") +
   xlab("") +
@@ -144,32 +107,13 @@ plot_all_family <-
   coord_flip() +
   ylim(0, 101) +
   theme(legend.position = "top") +
-  theme(axis.text.y = element_text(size = 5)) +
-  facet_wrap(~order, scales = "free") +
-  theme(strip.background = element_rect(fill = "white"))
-
-plot_types_family <-
-  ggplot(ds_type_family, aes(y = percent, x = family, fill = sex)) +
-  geom_col(alpha = 0.8, position = position_stack(reverse = TRUE)) +
-  ylab("% type specimens") +
-  xlab("") +
-  geom_abline(slope = 0, intercept = 50, linetype = 2) +
-  theme_bw(base_size = 14) +
-  theme(axis.text=element_text(size=12)) +
-  scale_fill_manual(values = c(cbPalette[3], cbPalette[4]),
-                    name = "Sex",
-                    breaks = c("Female", "Male"),
-                    labels = c("Female", "Male")) +
-  coord_flip() +
-  ylim(0, 101) +
-  theme(legend.position = "none") +
   theme(axis.text.y = element_text(size = 5)) +
   facet_wrap(~order, scales = "free") +
   theme(strip.background = element_rect(fill = "white"))
 
 # Unsexed
-plot_all_unsexed_family <-
-  ggplot(ds_all_unsexed_family, aes(y = percent, x = family, fill = sexed)) +
+plot_all_unsexed_family_a <-
+  ggplot(ds_all_unsexed_family_a, aes(y = percent, x = family, fill = sexed)) +
   geom_col(alpha = 0.8, position = position_stack(reverse = TRUE)) +
   ylab("% specimens") +
   xlab("") +
@@ -180,23 +124,6 @@ plot_all_unsexed_family <-
   coord_flip() +
   ylim(0, 101) +
   theme(legend.position = "top") +
-  remove_y+
-  theme(axis.text.y = element_text(size = 5)) +
-  facet_wrap(~order, scales = "free") +
-  theme(strip.background = element_rect(fill = "white"))
-
-plot_types_unsexed_family <-
-  ggplot(ds_type_unsexed_family, aes(y = percent, x = family, fill = sexed)) +
-  geom_col(alpha = 0.8, position = position_stack(reverse = TRUE)) +
-  ylab("% type specimens") +
-  xlab("") +
-  geom_abline(slope = 0, intercept = 50, linetype = 2) +
-  theme_bw(base_size = 14) +
-  scale_fill_manual(values = c(cbPalette[2], cbPalette[1]),
-                    name = "Sexed") +
-  coord_flip() +
-  ylim(0, 101) +
-  theme(legend.position = "none") +
   remove_y+
   theme(axis.text.y = element_text(size = 5)) +
   facet_wrap(~order, scales = "free") +
@@ -206,7 +133,96 @@ plot_types_unsexed_family <-
 # Plot and save
 #---------------
 
-#ggsave(plot_all_family, file = here("figures/all-family.png"), width = 7)
-#ggsave(plot_all_unsexed_family, file = here("figures/all-unsexed-family.png"), width = 7)
-#ggsave(plot_types_family, file = here("figures/types-family.png"), width = 7)
-#ggsave(plot_types_unsexed_family, file = here("figures/types-unsexed-family.png"), width = 7)
+#ggsave(plot_all_family_a, file = here("figures/all-family-amphibians.png"), width = 7)
+#ggsave(plot_all_unsexed_family_a, file = here("figures/all-unsexed-family-amphibians.png"), width = 7)
+
+#---------------
+# Reptiles
+
+plot_all_family_r <-
+  ggplot(ds_all_family_r, aes(y = percent, x = family, fill = sex)) +
+  geom_col(alpha = 0.8, position = position_stack(reverse = TRUE)) +
+  ylab("% specimens") +
+  xlab("") +
+  geom_abline(slope = 0, intercept = 50, linetype = 2) +
+  theme_bw(base_size = 14) +
+  scale_fill_manual(values = c(cbPalette[3], cbPalette[4]),
+                    name = "Sex",
+                    breaks = c("Female", "Male"),
+                    labels = c("Female", "Male")) +
+  coord_flip() +
+  ylim(0, 101) +
+  theme(legend.position = "top") +
+  theme(axis.text.y = element_text(size = 5)) +
+  facet_wrap(~order, scales = "free") +
+  theme(strip.background = element_rect(fill = "white"))
+
+# Unsexed
+plot_all_unsexed_family_r <-
+  ggplot(ds_all_unsexed_family_r, aes(y = percent, x = family, fill = sexed)) +
+  geom_col(alpha = 0.8, position = position_stack(reverse = TRUE)) +
+  ylab("% specimens") +
+  xlab("") +
+  geom_abline(slope = 0, intercept = 50, linetype = 2) +
+  theme_bw(base_size = 14) +
+  scale_fill_manual(values = c(cbPalette[2], cbPalette[1]),
+                    name = "Sexed") +
+  coord_flip() +
+  ylim(0, 101) +
+  theme(legend.position = "top") +
+  remove_y+
+  theme(axis.text.y = element_text(size = 5)) +
+  facet_wrap(~order, scales = "free") +
+  theme(strip.background = element_rect(fill = "white"))
+
+#---------------
+# Plot and save
+#---------------
+
+#ggsave(plot_all_family_r, file = here("figures/all-family-reptiles.png"), width = 7)
+#ggsave(plot_all_unsexed_family_r, file = here("figures/all-unsexed-family-reptiles.png"), width = 7)
+
+#---------------
+# Higher for squamata
+#------------------
+
+plot_squamata <-
+  ggplot(ds_squamata, aes(y = percent, x = higher2, fill = sex)) +
+  geom_col(alpha = 0.8, position = position_stack(reverse = TRUE)) +
+  ylab("% specimens") +
+  xlab("") +
+  geom_abline(slope = 0, intercept = 50, linetype = 2) +
+  theme_bw(base_size = 14) +
+  scale_fill_manual(values = c(cbPalette[3], cbPalette[4]),
+                    name = "Sex",
+                    breaks = c("Female", "Male"),
+                    labels = c("Female", "Male")) +
+  coord_flip() +
+  ylim(0, 101) +
+  theme(legend.position = "top") +
+  theme(axis.text.y = element_text(size = 10))
+
+# Unsexed
+plot_unsexed_squamata <-
+  ggplot(ds_unsexed_squamata, aes(y = percent, x = higher2, fill = sexed)) +
+  geom_col(alpha = 0.8, position = position_stack(reverse = TRUE)) +
+  ylab("% specimens") +
+  xlab("") +
+  geom_abline(slope = 0, intercept = 50, linetype = 2) +
+  theme_bw(base_size = 14) +
+  scale_fill_manual(values = c(cbPalette[2], cbPalette[1]),
+                    name = "Sexed") +
+  coord_flip() +
+  ylim(0, 101) +
+  theme(legend.position = "top") +
+  remove_y+
+  theme(axis.text.y = element_text(size = 5)) +
+  facet_wrap(~order, scales = "free") +
+  theme(strip.background = element_rect(fill = "white"))
+
+#---------------
+# Plot and save
+#---------------
+
+#ggsave(plot_all_family_r, file = here("figures/all-family-reptiles.png"), width = 7)
+#ggsave(plot_all_unsexed_family_r, file = here("figures/all-unsexed-family-reptiles.png"), width = 7)
