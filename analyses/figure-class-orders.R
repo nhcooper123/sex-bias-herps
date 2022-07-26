@@ -44,7 +44,7 @@ specimens <- read_csv(here("data/all-specimen-data-2021-07.csv"))
 #------------------------
 ds_orders <-
   specimens %>%
-  group_by(class) %>%
+  #group_by(class) %>%
   add_count(binomial, name = "n") %>%
   add_count(binomial, sex, name = "nn") %>%
   select(class, order, binomial, sex, n, nn) %>%
