@@ -33,10 +33,6 @@ ggplot(ds, aes(x = skew, y = female, colour = class))+
   scale_y_continuous(labels = c(0,25,50,75,100)) +
   theme(legend.position = "none",
         strip.background = element_rect(fill="white")) +
-  facet_wrap(~class, ncol = 1)
+  facet_wrap(~class, ncol = 2)
 
-#ggsave("figures/wild-sex-ratios.png", width = 4)
-
-ds %>% group_by(class, skew) %>% summarise(n())
-
-ds %>% summarise(n())
+#ggsave("figures/wild-sex-ratios.png", height = 4)
