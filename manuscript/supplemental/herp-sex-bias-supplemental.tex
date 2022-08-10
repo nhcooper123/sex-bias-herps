@@ -55,15 +55,54 @@
 % Supplementary materials
 %-------------------------------------------------------------------------------
 \newpage
+\section{Numbers of species in each analysis}
+%-------------------------------------------------------------------------------
+% A1
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+
+  \hline
+  \textbf{Model} & \textbf{Sexed only} & \textbf{All specimens}\\ 
+  \hline
+  \textbf{AMPHIBIANS} & &\\
+  \hline
+  order & 1143 & 4818\\
+  years & 1300 & 34320\\
+  max size & 229 & 232\\
+  female size & 181 & 184\\
+  male size & 181 & 184\\
+  SSD & 175 & 178\\
+  larger sex & 195 & 198\\
+  \hline
+  \textbf{REPTILES} & &\\
+  \hline
+  order & 2163 & 6727\\
+  years & 2816 & 44054\\
+  max size & 305 & 308\\
+  female size & 197 & 198\\
+  male size & 175 & 177\\
+  SSD & 162 & 163\\
+  larger sex & 235 & 236\\
+  \hline
+
+\label{table_numbers}
+\end{tabular}
+\caption{Numbers of species in each of our models, investigating males and females (sexed only) and sexed and unsexed (all specimens). Numbers in years analyses are species x year combinations. SSD is sexual size dimorphism. All species have order data.} 
+
+\end{table}
+
+%-------------------------------------------------------------------------------
+\newpage
 \section{Numbers of specimens for each species}
 %-------------------------------------------------------------------------------
 We expect large skews in the proportion of male or female specimens when sample size is low, but the ratio of male:female specimens should approach 50:50 as more specimens are added if there is no bias. 
-Most species in our dataset were represented by only a few specimens (Figure \ref{fig-histograms}; median of 8 specimens for each species), with large skews in the percentage of female specimens (in both directions) at low numbers (Figure \ref{fig-hex}).
+Most species in our dataset were represented by only a few specimens (Figure \ref{fig-histograms}; median of eight specimens for each species), with large skews in the percentage of female specimens (in both directions) at low numbers (Figure \ref{fig-hex}).
 To test whether this may influence our analyses, we used generalised linear models (GLM) with binomial errors, with the proportion of female specimens (success) and the proportion of male specimens (failure) for each species as the response variable, and the log number of specimens per species as the explanatory variable. 
 We then used standard model checks for GLMs (Q-Q plot, histogram of residuals, residuals vs. linear predictors, response vs. fitted values) to assess model fit. 
 The model showed massive heteroscedasticity in the residuals, due to the skew in proportions when sample size is low. 
 We therefore repeated the analysis, removing species with fewer than 10, 25, 50 and 100 specimens in turn. 
-The best fitting model, without losing too much data, was a model with species with more than 10 specimens. 
+The best fitting model, without losing too much data, was a model containing only species with more than 10 specimens. 
 There is no significant relationship between the number of specimens and the proportion of female specimens using a minimum of 10 specimens for each species (binomial GLM: $deviance = 0.741$, $df = 1,3306$, $p = 0.389$) so we exclude this variable from further analyses.
 
 % figure A1
@@ -87,7 +126,7 @@ There is no significant relationship between the number of specimens and the pro
 \newpage
 \section{Total numbers of female, male, sexed and unsexed specimen and name-bearing type records}
 %-------------------------------------------------------------------------------------------------
-% Table A1
+% Table A2
 \input{figures/table-numbers-A1}
 
 \newpage
@@ -184,157 +223,113 @@ There is no significant relationship between the number of specimens and the pro
 % Table A5
 \input{figures/table-worst}
 
-%-------------------------------------------------------------------------------
-\newpage
-\section{Numbers of species in each analysis}
-%-------------------------------------------------------------------------------
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lcccc}
-
-  \hline
-  \textbf{Model} & \textbf{Sexed only} & \textbf{All specimens}\\ 
-  \hline
-  \textbf{AMPHIBIANS} & &\\
-  \hline
-  orders & 1143 & 4818\\
-  years & 1300 & 34320\\
-  max size & 229 & 232\\
-  female size & 181 & 184\\
-  male size & 181 & 184\\
-  SSD & 175 & 178\\
-  larger sex & 195 & 198\\
-  \hline
-  \textbf{REPTILES} & &\\
-  \hline
-  orders & 2163 & 6727\\
-  years & 2816 & 44054\\
-  max size & 305 & 308\\
-  female size & 197 & 198\\
-  male size & 175 & 177\\
-  SSD & 162 & 163\\
-  larger sex & 235 & 236\\
-  \hline
-
-\label{table_numbers}
-\end{tabular}
-\caption{Numbers of species in each of our models, investigating males and females (sexed only) and sexed and unsexed (all specimens). Numbers in years analyses are species x year combinations. SSD is sexual size dimorphism. All species have order data.} 
-
-\end{table}
 
 %-------------------------------------------------------------------------------
 \newpage
-\section{More inclusive taxonomic groupings for Squamata}
+\section{Comparing specimen record sex ratios to wild adult sex skew data}
+%-------------------------------------------------------------------------------
+
+There is very little available data on sex ratios in wild amphibian and reptile populations, instead we collated data on sex skew; i.e whether species in the wild tend to have more females, more males, or have a variable or roughly equal number of females and males. We collated available data (n = 76 species) and compared the wild adult sex skew to the number of female and male specimens of the matching species in our dataset using quasibinomial GLMs. 
+
+We found that skew was significantly correlated with the proportion of female and male specimens ($F_{2,73} = 18.398, p < 0.001$), with species that are female skewed in the wild having significantly more female specimens than those with more males in the wild (Figure \ref{fig-wild}). We caution against drawing firm conclusions from this analysis due to the very low sample size: we have only three female biased amphibian species and 15 female biased reptile species. This result is strongly related to the eight parthenogenetic lineages of reptiles which have no males and are over represented in our wild sex skew data.  
+
+% figure A9
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/wild-sex-ratios.png}
+  \caption{Adult sex ratio (ASR) in wild populations against \% female specimens in our dataset for 26 amphibian and 51 reptile species. The dotted lines represents 50\% female specimens in either the wild or museum ASR data.}
+  \label{fig-wild}
+\end{figure}
+
+
+%-------------------------------------------------------------------------------
+%\newpage
+%\section{More inclusive taxonomic groupings for Squamata}
 %-------------------------------------------------------------------------------
 %\input{figures/table-best}
 
-\begin{longtable}{lll}
-\caption{} 
+%\begin{longtable}{lll}
+%\caption{} 
 
-\hline
-\textbf{Family} & \textbf{Grouping 1} & \textbf{Grouping 2}\\ 
-\hline
-Anguidae & Anguiformes & Anguiformes \\
-Diploglossidae & Anguiformes & Anguiformes \\
-Helodermatidae & Anguiformes & Anguiformes \\
-Lanthanotidae & Anguiformes & Anguiformes \\
-Shinisauridae & Anguiformes & Anguiformes \\
-Varanidae & Anguiformes & Anguiformes \\
-Xenosauridae & Anguiformes & Anguimorpha \\
-Dibamidae & Dibamia & Dibamia \\
-Carphodactylidae & Gekkota & Gekkota \\
-Dactyloidae & Gekkota & Gekkota \\
-Diplodactylidae & Gekkota & Gekkota \\
-Eublepharidae & Gekkota & Gekkota \\
-Gekkonidae & Gekkota & Gekkota \\
-Phyllodactylidae & Gekkota & Gekkota \\
-Pygopodidae & Gekkota & Gekkota \\
-Sphaerodactylidae & Gekkota & Gekkota \\
-Agamidae & Iguania & Acrodonta \\
-Chamaeleonidae & Iguania & Acrodonta \\
-Corytophanidae & Iguania & Pleurodonta \\
-Crotaphytidae & Iguania & Pleurodonta \\
-Hoplocercidae & Iguania & Pleurodonta \\
-Iguanidae & Iguania & Pleurodonta \\
-Leiocephalidae & Iguania & Pleurodonta \\
-Leiosauridae & Iguania & Pleurodonta \\
-Liolaemidae & Iguania & Pleurodonta \\
-Opluridae & Iguania & Pleurodonta \\
-Phrynosomatidae & Iguania & Pleurodonta \\
-Polychrotidae & Iguania & Pleurodonta \\
-Tropidophiidae & Iguania & Pleurodonta \\
-Tropiduridae & Iguania & Pleurodonta \\
-Alopoglossidae & Laterata & Laterata \\
-Amphisbaenidae & Laterata & Laterata \\
-Bipedidae & Laterata & Laterata \\
-Blanidae & Laterata & Laterata \\
-Gymnophthalmidae & Laterata & Laterata \\
-Lacertidae & Laterata & Laterata \\
-Rhineuridae & Laterata & Laterata \\
-Teiidae & Laterata & Laterata \\
-Trogonophidae & Laterata & Laterata \\
-Cordylidae & Scincomorpha & Scincomorpha \\
-Gerrhosauridae & Scincomorpha & Scincomorpha \\
-Scincidae & Scincomorpha & Scincomorpha \\
-Xantusiidae & Scincomorpha & Scincomorpha \\
-Aniliidae & Serpentes & Amerophidia \\
-Anomalepididae & Serpentes & Anomalepididae \\
-Boidae & Serpentes & Booidae \\
-Acrochordidae & Serpentes & Caenophidia \\
-Atractaspididae & Serpentes & Caenophidia \\
-Colubridae & Serpentes & Caenophidia \\
-Cyclocoridae & Serpentes & Caenophidia \\
-Elapidae & Serpentes & Caenophidia \\
-Homalopsidae & Serpentes & Caenophidia \\
-Lamprophiidae & Serpentes & Caenophidia \\
-Pareidae & Serpentes & Caenophidia \\
-Prosymnidae & Serpentes & Caenophidia \\
-Psammophiidae & Serpentes & Caenophidia \\
-Pseudaspididae & Serpentes & Caenophidia \\
-Pseudoxyrhophiidae & Serpentes & Caenophidia \\
-Viperidae & Serpentes & Caenophidia \\
-Xenodermidae & Serpentes & Caenophidia \\
-Leptotyphlopidae & Serpentes & Leptotyphlopidae \\
-Bolyeriidae & Serpentes & Pythonidea \\
-Loxocemidae & Serpentes & Pythonidea \\
-Pythonidae & Serpentes & Pythonidea \\
-Xenopeltidae & Serpentes & Pythonidea \\
-Xenophidiidae & Serpentes & Pythonidea \\
-Typhlopidae & Serpentes & Typhlopidae \\
-Gerrhopilidae & Serpentes & Typhlopidea \\
-Anomochilidae & Serpentes & Uropeltoidea \\
-Cylindrophiidae & Serpentes & Uropeltoidea \\
-Uropeltidae & Serpentes & Uropeltoidea \\
-\hline
+%\hline
+%\textbf{Family} & \textbf{Grouping 1} & \textbf{Grouping 2}\\ 
+%\hline
+%Anguidae & Anguiformes & Anguiformes \\
+%Diploglossidae & Anguiformes & Anguiformes \\
+%Helodermatidae & Anguiformes & Anguiformes \\
+%Lanthanotidae & Anguiformes & Anguiformes \\
+%Shinisauridae & Anguiformes & Anguiformes \\
+%Varanidae & Anguiformes & Anguiformes \\
+%Xenosauridae & Anguiformes & Anguimorpha \\
+%Dibamidae & Dibamia & Dibamia \\
+%Carphodactylidae & Gekkota & Gekkota \\
+%Dactyloidae & Gekkota & Gekkota \\
+%Diplodactylidae & Gekkota & Gekkota \\
+%Eublepharidae & Gekkota & Gekkota \\
+%Gekkonidae & Gekkota & Gekkota \\
+%Phyllodactylidae & Gekkota & Gekkota \\
+%Pygopodidae & Gekkota & Gekkota \\
+%Sphaerodactylidae & Gekkota & Gekkota \\
+%Agamidae & Iguania & Acrodonta \\
+%Chamaeleonidae & Iguania & Acrodonta \\
+%Corytophanidae & Iguania & Pleurodonta \\
+%Crotaphytidae & Iguania & Pleurodonta \\
+%Hoplocercidae & Iguania & Pleurodonta \\
+%Iguanidae & Iguania & Pleurodonta \\
+%Leiocephalidae & Iguania & Pleurodonta \\
+%Leiosauridae & Iguania & Pleurodonta \\
+%Liolaemidae & Iguania & Pleurodonta \\
+%Opluridae & Iguania & Pleurodonta \\
+%Phrynosomatidae & Iguania & Pleurodonta \\
+%Polychrotidae & Iguania & Pleurodonta \\
+%Tropidophiidae & Iguania & Pleurodonta \\
+%Tropiduridae & Iguania & Pleurodonta \\
+%Alopoglossidae & Laterata & Laterata \\
+%Amphisbaenidae & Laterata & Laterata \\
+%Bipedidae & Laterata & Laterata \\
+%Blanidae & Laterata & Laterata \\
+%Gymnophthalmidae & Laterata & Laterata \\
+%Lacertidae & Laterata & Laterata \\
+%Rhineuridae & Laterata & Laterata \\
+%Teiidae & Laterata & Laterata \\
+%Trogonophidae & Laterata & Laterata \\
+%Cordylidae & Scincomorpha & Scincomorpha \\
+%Gerrhosauridae & Scincomorpha & Scincomorpha \\
+%Scincidae & Scincomorpha & Scincomorpha \\
+%Xantusiidae & Scincomorpha & Scincomorpha \\
+%Aniliidae & Serpentes & Amerophidia \\
+%Anomalepididae & Serpentes & Anomalepididae \\
+%Boidae & Serpentes & Booidae \\
+%Acrochordidae & Serpentes & Caenophidia \\
+%Atractaspididae & Serpentes & Caenophidia \\
+%Colubridae & Serpentes & Caenophidia \\
+%Cyclocoridae & Serpentes & Caenophidia \\
+%Elapidae & Serpentes & Caenophidia \\
+%Homalopsidae & Serpentes & Caenophidia \\
+%Lamprophiidae & Serpentes & Caenophidia \\
+%Pareidae & Serpentes & Caenophidia \\
+%Prosymnidae & Serpentes & Caenophidia \\
+%Psammophiidae & Serpentes & Caenophidia \\
+%Pseudaspididae & Serpentes & Caenophidia \\
+%Pseudoxyrhophiidae & Serpentes & Caenophidia \\
+%Viperidae & Serpentes & Caenophidia \\
+%Xenodermidae & Serpentes & Caenophidia \\
+%Leptotyphlopidae & Serpentes & Leptotyphlopidae \\
+%Bolyeriidae & Serpentes & Pythonidea \\
+%Loxocemidae & Serpentes & Pythonidea \\
+%Pythonidae & Serpentes & Pythonidea \\
+%Xenopeltidae & Serpentes & Pythonidea \\
+%Xenophidiidae & Serpentes & Pythonidea \\
+%Typhlopidae & Serpentes & Typhlopidae \\
+%Gerrhopilidae & Serpentes & Typhlopidea \\
+%Anomochilidae & Serpentes & Uropeltoidea \\
+%Cylindrophiidae & Serpentes & Uropeltoidea \\
+%Uropeltidae & Serpentes & Uropeltoidea \\
+%\hline
 
-\label{table_higher-definitions}
-\end{longtable}
+%\label{table_higher-definitions}
+%\end{longtable}
 
-
-%-------------------------------------------------------------------------------
-\newpage
-%\section{Comparing our sex ratios to wild adult sex ratio data for birds}
-
-%There is very little available data on sex ratios in wild bird populations. The study which has collated the most data so far is Szekely et al. (2014). We took their data and compared the wild adult sex ratios (number of males/ number of males + number of females) to the sex ratios of the matching species in our dataset.
-
-%Overall we found 119 overlapping species out of the 187 in Szekely et al. (2014)\cite{szekely2014sex}.
-%Of these 88 (74\%) have less male biased sex ratios in the wild compared to museums, while the remaining 31 (26\%) have more male biased sex ratios in the wild compared to museums. 
-%This difference was significant (paired t-test: $t_{118} = -6.768$, $p < 0.001$; Figure \ref{fig-asr})
-
-% figure A7
-%\begin{figure}[H]
-% \centering
-%  \includegraphics[width = \linewidth]{figures/wild-sex-ratios.png}
-%  \caption{Adult sex ratio (ASR) in wild populations versus ASR in our museum dataset for 119 bird species. 
-%  Wild ASR values come from Szekely et al. (2014)\cite{szekely2014sex}. 
-%  For the museum dataset only species with at least 100 specimens are included. 
-%  The dotted lines represents 50\% female specimens in either the wild or museum ASR data. 
-%  The red dashed line is the 1:1 line representing where points would sit of wild ASR and museum ASR are identical for a given %species.
-%  Points above this line indicate species where museum ASR is more male biased than in wild populations.
-%}
-%  \label{fig-asr}
-%\end{figure}
 
 %-------------------------------------------------------------------------------
 
