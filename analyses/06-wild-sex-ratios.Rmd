@@ -1,0 +1,81 @@
+---
+title: "Wild sex ratios"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r, message = FALSE}
+# Preliminaries
+
+# Load libraries
+library(tidyverse)
+library(knitr)
+library(broom)
+library(here)
+library(ggfortify)
+library(car)
+```
+
+```{r, message = FALSE, warning = FALSE}
+# Read in data
+ds_wild <- read_csv(here("data/wild-sex-ratios.csv"))
+ds <- read_csv(here("data/all-specimen-data-2021-07.csv"))
+```
+
+## Are wild ratios related to specimen ratios?
+
+```{r}
+# Merge
+ds_wild <- left_join(ds_wild, ds, by = c("binomial", "order", "family", "class"))
+
+# Reformat data
+ds_wild2 <-
+  ds_wild %>%
+  add_count(binomial, name = "n") %>%
+  add_count(binomial, sex, name = "nn") %>%
+  select(class, order, binomial, sex, n, nn, skew) %>%
+  # Add in data for species with no males or no females
+  complete(sex, nesting(order, class, binomial, n), fill = list(nn = 0)) %>%
+  filter(sex == "Female") %>%
+  rename(female = nn) %>%
+  mutate(male = n - female) %>%
+  mutate(percentf = (female/n) * 100) %>%
+  distinct()
+```
+
+## How many for each group do we have?
+```{r}
+ds_wild2 %>% group_by(class, skew) %>% summarise(n())
+
+# Totals
+ds_wild2 %>% summarise(n())
+```
+## Fitting models
+
+```{r}
+# Fitting the model
+model1 <- glm(cbind(female, male) ~ skew, data = ds_wild2, family = "binomial")
+# Check for overdispersion
+summary_model1 <- summary(model1)
+summary_model1$deviance / summary_model1$df.resid 
+
+# quasibinomial
+model1 <- glm(cbind(female, male) ~ skew, data = ds_wild2, family = "quasibinomial")
+
+# Look at model diagnostics
+autoplot(model1)
+
+# Look at outputs
+Anova(model1, test = "F")
+summary(model1)
+```
+
+## Plotting
+
+See `figure-wild-sex-ratios.R`
