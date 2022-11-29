@@ -25,15 +25,15 @@
 
 \author{
    
-Tara Wainwright$^{1,2}$, Morwenna Trevenna$^{1,2}$, Sarah R. Alewijnse$^{1,3}$,\\
- Patrick Campbell$^{1}$, Marc E.H. Jones$^{1}$, Jeff W. Streicher$^{1}$\\
+Tara Wainwright$^{1,2}$, Morwenna Trevena$^{1,2}$, Sarah R. Alewijnse$^{1,3}$,\\
+ Patrick D. Campbell$^{1}$, Marc E.H. Jones$^{1}$, Jeff W. Streicher$^{1}$\\
   and Natalie Cooper$^{1*}$,
 
 }
 \date{}
 \affiliation{\noindent{\footnotesize
  $^1$Science Group, Natural History Museum, Cromwell Road, London, SW7 5BD, UK.\\
- $^2$Department of Life Sciences (Silwood Park), Imperial College London, Ascot, UK.
+ $^2$Department of Life Sciences (Silwood Park), Imperial College London, Ascot, UK.\\
  $^3$School of Ocean and Earth Science, University of Southampton, Southampton, UK.
 
   $*$Email address: natalie.cooper@nhm.ac.uk
@@ -41,7 +41,7 @@ Tara Wainwright$^{1,2}$, Morwenna Trevenna$^{1,2}$, Sarah R. Alewijnse$^{1,3}$,\
 
 \vfill
 
-\runninghead{Sex biases in collections}
+\runninghead{Sex biases in herpetology}
 %\keywords{}
 %}
 
@@ -117,7 +117,7 @@ We downloaded all herpetology specimen records from the Global Biodiversity Info
 These specimens were collected between the years 1800 and 2021, and came from 341 natural history collections across six continents. 
 Prior to analyses we excluded all juveniles, young and embryos (if that information was available) from the dataset as these are harder to sex. 
 We standardised species names using Amphibian Species of the World\cite{frost2021} and The Reptile Database\cite{uetz2021}. 
-Although biological sex is a spectrum\cite{sciam2017}, and many reptiles have intersex and hermaphroditic forms (REFS FROM JEFFS), we focus on specimens identified as females and males for simplicity and because most records use this bimodal coding. 
+Although biological sex is a spectrum\cite{sciam2017}, and many reptiles have intersex and hermaphroditic forms\cite{stock2021brief}, we focus on specimens identified as females and males for simplicity and because most records use this bimodal coding. 
 We standardized sex to either female, male or non-sexed. 
 The final dataset contained 5,937,255 specimens (2,753,451 amphibians and 3,183,804 reptiles), 277,073 (82,577 amphibians and 194,496 reptiles) of which were sexed. 
 To determine whether name-bearing types had different sex ratios compared to all specimens, we identified name-bearing types (holotypes, syntypes, lectotypes, and neotypes\cite{schuchert1897type}) within our dataset.
@@ -125,18 +125,18 @@ The dataset contained 14,260 types (5,062 amphibian types and 9,198 reptile type
 Note that throughout we refer to 'specimens' and 'sexed specimens' as a shorthand, but we are technically dealing with 'specimen records' and 'specimen records with sex information'. 
 
 \subsubsection{Size and sexual size dimorphism data}
-Body size data were taken from the literature and represent the maximum body size for each species and for females and males separately (NHM Data Portal TO ADD). 
+Body size data were taken from the literature and represent the maximum body size for each species and for females and males separately\cite{herp-data}. 
 Note that the sample size for these variables is lower because sex disaggregated body size data are rare (see Table A1).
 We used snout-vent-length (SVL; mm) as our measure of body size except in Testudines where we used carapace length (CL; mm) as SVL measurements were not available.
 We calculated sexual size dimorphism (SSD) by dividing maximum male body size by maximum female body size (SSD $>$ 1 indicates species where males are larger, SSD $<$ 1 indicates species where females are larger). 
 Sex disaggregated body size data were not available for all species so we additionally recorded which sex was larger (females, males, or neither). 
  
-The final cleaned data are available on the NHM Data Portal (TO ADD). 
+The final cleaned data are available on the NHM Data Portal\cite{herp-data}. 
 
 \subsection{Analyses}
 
 We performed all analyses in R version 4.1.0\cite{R}. 
-Reproducible scripts are available on GitHub at https://github.com/nhcooper123/sex-bias-herps [\cite{coopercode2022} we will add a zenodo link on acceptance].
+Reproducible scripts are available on GitHub at https://github.com/nhcooper123/sex-bias-herps \cite{herp-code2022} [we will add a Zenodo DOI on acceptance].
 
 \subsubsection{Overall percentage of female, male, sexed and unsexed specimens and name-bearing types}
 We first calculated the overall percentage of sexed and unsexed specimen records, and within sexed specimens, the proportion of female and male specimen records, for amphibians and reptiles, across orders, and for name-bearing types separately. 
@@ -201,7 +201,8 @@ For reptiles, the proportion of sexed and unsexed specimens within each species 
 
 The most striking result of our study is that ~95\% of our nearly six million amphibian and reptile specimen records had no associated sex data. 
 Most specimens were unsexed across almost all orders and families, even within name bearing types. 
-This is not just a historical effect; even in the most recent time bin (2021), 76\% of specimens were unsexed. This lack of sex data may be harming herpetological research in myriad ways.
+This is not just a historical effect; even in the most recent time bin (2021), 76\% of specimens were unsexed. 
+This lack of sex data may be harming herpetological research in myriad ways.
 
 There are three main possibilities for why a specimen record may not have sex information: (i) the specimens themselves have not been sexed; (ii) the specimens have been sexed but the data have not been recorded; or (iii) the specimens have been sexed and the data recorded, but the data were not added to the online databases that contribute to GBIF.  
 Our results likely reflect a combination of these mechanisms. 
@@ -214,7 +215,7 @@ Within amphibians, Anura contained the most sexed individuals (1.24\%), Gymnophi
 Two families of amphibians are 100\% sexed: Nasikabatrachidae within Anura (represented by only one specimen), and Chikilidae within Gymnophiona where all 120 specimens are sexed.
 This is a recently discovered family, and this reflects the work of just a small number of herpetologists (e.g.\cite{kamei2012discovery}).
 Except for Gymnophiona, where males have an intromittent organ (a phallodeum), amphibian sex is confirmed through examination of internal gonads, meaning that sex determination for most amphibians requires dissection.
-Some anurans have clear secondary sexual characteristics externally (e.g. stapes projections [\textit{Petropedates}]), but this is rare, so dissection is still required in most cases. 
+Some anurans have clear secondary sexual characteristics externally (e.g. stapes projections in \textit{Petropedates}), but this is rare, so dissection is still required in most cases. 
 This is likely a (if not the) major contributing factor to why so many amphibians lack sex information in online databases.  
 
 Although reptiles were more likely to be sexed than amphibians, no reptile families were more than 50\% sexed.
@@ -231,38 +232,51 @@ Similarly, the diagnostic snout bulge of the male gharial can take 10 years to d
 
 It is likely many specimens have never been sexed at all, but it is also possible that many have been sexed but these data were unavailable for our study, either because they are not in local collections databases or because they have not been added to GBIF. 
 Sexing amphibians and reptiles is so fraught with difficulties (see above) that in some cases field workers may not be confident in adding sex data to records when collecting specimens. 
-Likewise, researchers, curators and collections managers may not trust rapid assessments done in the field, preferring to sex the specimens later. 
-Indeed, many sexed specimens in NHM collections have been misidentified in the field. 
-Historical collections often have poor metadata, in part because no-one imagined a time when you might examine the records without the specimen in front of you. 
-Thus, many obviously male and female specimens are not recorded as such in specimen catalogues (this is common in the NHM collections; Streicher 2022 \textit{pers. comm.}), even if these data are recorded on specimen labels, and/or external jar labels in some cases. 
+Likewise, researchers, curators and collections managers may not trust rapid assessments done in the field, preferring to sex the specimens later.
+Indeed, many sexed specimens in museum collections have been misidentified in the field. 
+Historical collections often have poor metadata, in part because no-one imagined a time when you might examine the records without the specimen in front of you.
+Thus, many obviously male and female specimens are not recorded as such in specimen catalogues (this is common in the Natural History Museum's collections; Streicher 2022 \textit{pers. comm.}), even if these data are recorded on specimen labels, and/or external jar labels in some cases.
 Surveying collections and adding this information to collections databases may be a quick way to judge the extent of this issue.
 
-Correlates of sex bias in amphibians and reptiles
-Although sexed specimens were a small minority of our sample, we can still make some preliminary conclusions about sex biases in herpetology collections. Within the sexed specimens, 39\% of amphibian and 47\% of reptile specimens were female. The same trend has been observed in studies of other taxonomic groups, with male biases evident in collections of birds (Cooper et al., 2019), mammals (Machin, 2008; Cooper et al., 2019), mammalian fossils (Gower et al., 2019), and moths (Plotkin et al., 2018). The percentage of females in amphibian and reptile collections is very similar to numbers in birds (40\%) and mammals (48\%; Cooper et al. 2019). In birds, the most male-biased orders were also those with showy males and in mammals the most male-biased orders were those with large males and extreme sexual size dimorphism, such as carnivores and artiodactyls, long-favoured by collectors. In amphibians and reptiles, the mechanisms underlying the pattern are likely different. 
+\subsection{Correlates of sex bias in amphibians and reptiles}
+Although sexed specimens were a small minority of our sample, we can still make some preliminary conclusions about sex biases in herpetology collections. Within the sexed specimens, 39\% of amphibian and 47\% of reptile specimens were female.
+The same trend has been observed in studies of other taxonomic groups, with male biases evident in collections of birds\cite{cooper2019sex}, mammals\cite{machin2008,cooper2019sex}, mammalian fossils\cite{gower2019}, moths\cite{plotkin2018large}, and parasite type specimens\cite{poulin2022male}.
+The percentage of females in amphibian and reptile collections is very similar to numbers in birds (40\%) and mammals (48\%\cite{cooper2019sex}).
+In birds, the most male-biased orders were also those with showy males and in mammals the most male-biased orders were those with large males and extreme sexual size dimorphism, such as carnivores and artiodactyls, long-favoured by collectors.
+In amphibians and reptiles, the mechanisms underlying the pattern are likely different.
 
-In amphibians, size and sexual size dimorphism had little influence on the proportion of female specimens. In Anura, for example, females are generally larger than males, but there are still more males within collections, even within species with no marked sexual dichromatism. Instead this bias may be related to collecting methods for frogs. Previous research has noted that male frogs were more easily detected due to their territorial and/or mating calls, and thus are sampled more frequently (Green, 2013). Female acoustic communication is much less common (Prehinger et al., 2016). In reptiles, we found a weak effect of male body size and sexual size dimorphism, such that species where males are larger had fewer female specimens than those where females or neither females or males were larger. 
+In amphibians, size and sexual size dimorphism had little influence on the proportion of female specimens.
+In Anura, for example, females are generally larger than males, but there are still more males within collections, even within species with no marked sexual dichromatism. Instead this bias may be related to collecting methods for frogs.
+Previous research has noted that male frogs were more easily detected due to their territorial and/or mating calls, and thus are sampled more frequently\cite{green2013sex}.
+Female acoustic communication is much less common\cite{preininger2016comparison}.
+In reptiles, we found a weak effect of male body size and sexual size dimorphism, such that species where males are larger had fewer female specimens than those where females or neither females or males were larger. 
 
-For name-bearing types, herpetological collections are less male biased than birds and mammals, with 43\% of amphibian and 43\% of reptile female name-bearing types, compared with 25\% and 39\% female in birds and mammals respectively (Cooper et al. 2019). This difference may reflect diagnostic features - in birds at least plumage patterns contribute to species assignment and often male plumage is used. 
+For name-bearing types, herpetological collections are less male biased than birds and mammals, with 43\% of amphibian and 43\% of reptile female name-bearing types, compared with 25\% and 39\% female in birds and mammals respectively\cite{cooper2019sex}.
+This difference may reflect diagnostic features - in birds at least plumage patterns contribute to species assignment and often male plumage is used. 
 
-Although there is an overall male skew in our data, there are groups which are female biased. Female turtle specimens outnumber males, and this female bias was greater in sea turtles compared to non-sea turtles. This is likely because sampling of sea turtles primarily focuses on nesting females, as they return to the land at predictable periods and locations to lay eggs (Pike, 2013), while males remain in the open ocean (Cuevas et al., 2020). Some species had 100% female specimens. In reptiles, extreme female skews often correlate to parthenogenesis, an asexual mode of reproduction in which females reproduce without male involvement, producing genetic clones (Booth & Schuett, 2016). Parthenogenesis has been widely observed in Aspidoscelis whiptails (Barley et al., 2019), the blind snake Indotyphlops braminus (Allen, Sanders & Thomson, 2018), the mourning gecko Lepidodactylus lugubris (Griffing et al., 2019), and recently in pythons (Booth et al.), all of which were strongly female biased in our dataset. 
+Although there is an overall male skew in our data, there are groups which are female biased.
+Female turtle specimens outnumber males, and this female bias was greater in sea turtles compared to non-sea turtles.
+This is likely because sampling of sea turtles primarily focuses on nesting females, as they return to the land at predictable periods and locations to lay eggs\cite{pike2013climate}, while males remain in the open ocean\cite{cuevas2020first}.
+Some species had 100\% female specimens. 
+In reptiles, extreme female skews often correlate to parthenogenesis, an asexual mode of reproduction in which females reproduce without male involvement, producing genetic clones\cite{booth2016emerging}. 
+Parthenogenesis has been widely observed in \textit{Aspidoscelis} whiptails\cite{barley2019complex}, the blind snake \textit{Indotyphlops braminus}\cite{allen2018molecular}, the mourning gecko \textit{Lepidodactylus lugubris}\cite{griffing2019embryonic}, and Burmese pythons \textit{Python bivittatus}\cite{booth2014new}, all of which were strongly female biased in our dataset. 
 
-Conclusions and recommendations
+\subsection{Conclusions and recommendations}
 
-The main finding of our study is that most herpetology specimen records in online databases do not have accompanying metadata on the sex of the specimen. The ideal solution to this problem would be to sex the unsexed specimens in collections. However, this would be a massive task, and globally museum collections need much care and attention, limiting the capacity of curators and collections managers to take on additional projects. Even if the time were available, not all curators or collections managers will have the skills to make these decisions. One potential solution for reptiles might be new high throughput molecular methods for genetically sexing species (e.g. Rovatsos and Kratochivíl 2017) in concert with ancient DNA techniques to extract DNA from historical specimens (Jeff paper?). But this again requires funding, expertise, and time, and is unlikely to work for amphibians because they do not have differentiated sex chromosomes. Focus on important specimens, such as name bearing types, might be a good place to start. Another sensible solution would be to increase funding to hire and train taxonomic specialists and support their careers. These efforts would unlock the potential of sex-based research using museum collections and their associated public databases.
-
-NATALIE TO FINISH WRITING THIS INCORPORATING THESE COMMENTS!
-Jeff: Here you should list all of the things that sex ratios can be used for + the ability to track sex ratios or sex traits through time!
-
-Patrick: In as far as completeness of museum specimen data is concerned which ultimately ought to be long term goal, also that sex determination is a common requirement along with standard measurements, photographs etc for most reptile specimen enquiries nowadays, plus it would help to answer some of the type of questions posed by this manuscript, and would ultimately save on curators time if sex were recorded for all specimens, along with photographs. Alas, this would only be possible given multiple streams of funding.  
-
-
+The main finding of our study is that most herpetology specimen records in online databases do not have accompanying metadata on the sex of the specimen. The ideal solution to this problem would be to sex the unsexed specimens in collections. 
+However, this would be a massive task, and globally museum collections need much care and attention, limiting the capacity of curators and collections managers to take on additional projects. 
+Even if the time were available, not all curators or collections managers will have the skills to make these decisions. One potential solution for reptiles might be new high throughput molecular methods for genetically sexing species (e.g.\cite{rovatsos2017molecular}).
+But this again requires funding, expertise, and time, and is unlikely to work for amphibians because they do not have differentiated sex chromosomes. 
+Focus on important specimens, such as name bearing types, might be a good place to start.
+Another sensible solution would be to increase funding to hire and train taxonomic specialists and support their careers.
+These efforts would unlock the potential of sex-based research using museum collections and their associated public databases.
 
 \section{Acknowledgments}
 We thank all collection managers and curators for inputting specimen data to GBIF.
 
 \section{Data accessibility}\label{data-code-and-materials}
-Data are available from the NHM Data Portal \cite{sex-bias-data-herps} and GBIF\cite{gbif-amphibians,gbif-reptiles}. 
-R code is available from GitHub (https://github.com/nhcooper123/sex-bias-herps; Zenodo DOI: TO ADD \cite{coopercode2022}).
+Data are available from the NHM Data Portal\cite{herp-data} and GBIF\cite{gbif-amphibians,gbif-reptiles}. 
+R code is available from GitHub (https://github.com/nhcooper123/sex-bias-herps; Zenodo DOI: TO ADD \cite{herp-code2022}).
 
 \section{Funding}
 This work was not supported by any grant funding.
@@ -295,7 +309,9 @@ Figure 5: Plots showing the relationships between \% sexed specimen records and 
 \newpage
 \section{Figures and Tables}
 
+\begin{landscape}
 \input{figures/table-percents}
+\end{landscape}
 
 % figure 1
 \newpage
@@ -331,7 +347,7 @@ Figure 5: Plots showing the relationships between \% sexed specimen records and 
 \begin{figure}[h]
  \centering
   \includegraphics[width = \linewidth]{figures/size-combined.png}
-  \caption{Plots showing the relationships between \% female specimen records and body size or sexual size dimorphism (SSD), for amphibians and reptiles. The x-axes in the plots are (A) overall maximum body size (mm); (B) female maximum body size (mm); (C) male maximum body size (mm); (D) SSD (male body size divided by female body size); (E) larger sex. The dashed lines represent 50\% female specimens.
+  \caption{Plots showing the relationships between \% female specimen records and body size or sexual size dimorphism (SSD), for amphibians and reptiles. SSD $>$ 1 indicates species where males are larger, SSD $<$ 1 indicates species where females are larger. The x-axes in the plots are (A) overall maximum body size (mm); (B) female maximum body size (mm); (C) male maximum body size (mm); (D) SSD (male body size divided by female body size); (E) larger sex. The dashed lines represent 50\% female specimens.
 }
   \label{fig-ssd-female}
 \end{figure}
@@ -341,7 +357,7 @@ Figure 5: Plots showing the relationships between \% sexed specimen records and 
 \begin{figure}[h]
  \centering
   \includegraphics[width = \linewidth]{figures/size-combined-unsexed.png}
-  \caption{Plots showing the relationships between \% sexed specimen records and body size or sexual size dimorphism (SSD), for amphibians and reptiles. The x-axes in the plots are (A) overall maximum body size (mm); (B) female maximum body size (mm); (C) male maximum body size (mm); (D) SSD (male body size divided by female body size); (E) larger sex. The dashed lines represent 50\% sexed specimens. 
+  \caption{Plots showing the relationships between \% sexed specimen records and body size or sexual size dimorphism (SSD), for amphibians and reptiles. SSD $>$ 1 indicates species where males are larger, SSD $<$ 1 indicates species where females are larger. The x-axes in the plots are (A) overall maximum body size (mm); (B) female maximum body size (mm); (C) male maximum body size (mm); (D) SSD (male body size divided by female body size); (E) larger sex. The dashed lines represent 50\% sexed specimens. 
 }
   \label{fig-ssd-sex}
 \end{figure} 
