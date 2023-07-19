@@ -158,7 +158,7 @@ ds_size_larger %>% ungroup() %>% summarise(n())
 (plot_size + plot_size_females + plot_size_males) / 
   (plot_size_ssd + plot_size_larger) + plot_annotation(tag_levels = 'A')
    
-#ggsave("figures/size-combined.png", height = 7, width = 9)
+#ggsave("manuscript/figures/size-combined.tiff", height = 7, width = 9, dpi = 900)
 
 
 #---------------------
@@ -305,6 +305,6 @@ ds_size_larger %>% ungroup() %>% summarise(n())
 (plot_size + plot_size_females + plot_size_males) / 
   (plot_size_ssd + plot_size_larger) + plot_annotation(tag_levels = 'A')
 
-#ggsave("figures/size-combined-unsexed.png", height = 7, width = 9)
+#ggsave("manuscript/figures/size-combined-unsexed.tiff", height = 7, width = 9, dpi = 900)
 
    

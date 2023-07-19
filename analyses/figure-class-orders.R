@@ -113,4 +113,4 @@ turtle <- annotation_custom2(rasterGrob(img_turtle, interpolate=TRUE, height = 0
 class + order + frog + salamander + croc + lizard + turtle
 
 # Save
-#ggsave("figures/class-order-density.png")
+#ggsave("manuscript/figures/class-order-density.tiff", dpi = 900)
