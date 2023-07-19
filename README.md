@@ -8,7 +8,9 @@ To cite the paper:
 >  Tara Wainwright, Morwenna Trevena, Sarah R. Alewijnse, Patrick D. Campbell, Marc E.H. Jones, Jeffrey W. Streicher and Natalie Cooper. Sex biases and the scarcity of sex metadata in global herpetology collections. Biological Journal of the Linnean Society. In press.
 
 To cite this repo: 
->  Cooper, N., 2022. Code for the paper v1.0. GitHub: nhcooper123/sex-bias-herps. Zenodo. DOI: TBC.
+>  Cooper, N., 2023. Code for the paper v1.0. GitHub: nhcooper123/sex-bias-herps. Zenodo. DOI: 10.5281/zenodo.8164786
+
+[![DOI](https://zenodo.org/badge/252140231.svg)](https://zenodo.org/badge/latestdoi/252140231)
 
 ![alt text](https://github.com/nhcooper123/sex-bias-herps/raw/master/figures/class-order-density.png)
 
