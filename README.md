@@ -10,7 +10,7 @@ To cite the paper:
 To cite this repo: 
 >  Cooper, N., 2022. Code for the paper v1.0. GitHub: nhcooper123/sex-bias-herps. Zenodo. DOI: TBC.
 
-![alt text](https://github.com/nhcooper123/sex-bias-herps/raw/master/manuscript/figures/class-order-density.png)
+![alt text](https://github.com/nhcooper123/sex-bias-herps/raw/master/figures/class-order-density.png)
 
 ## Data
 All cleaned data are available from the [NHM Data Portal](https://doi.org/10.5519/8o9v9349).
@@ -102,19 +102,19 @@ For reproducibility purposes, here is the output of `devtools::session_info()` u
      rstudio  2023.06.1+524 Mountain Hydrangea (desktop)
      pandoc   3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
 
-─ Packages ────────────────────────────────────────────────────────────────────────
- package     * version date (UTC) lib source
- abind         1.4-5   2016-07-21 [1] CRAN (R 4.2.0)
- backports     1.4.1   2021-12-13 [1] CRAN (R 4.2.0)
- bit           4.0.5   2022-11-15 [1] CRAN (R 4.2.0)
- bit64         4.0.5   2020-08-30 [1] CRAN (R 4.2.0)
- broom       * 1.0.3   2023-01-25 [1] CRAN (R 4.2.0)
- cachem        1.0.6   2021-08-19 [1] CRAN (R 4.2.0)
- callr         3.7.3   2022-11-02 [1] CRAN (R 4.2.0)
- car         * 3.1-0   2022-06-15 [1] CRAN (R 4.2.0)
- carData     * 3.0-5   2022-01-06 [1] CRAN (R 4.2.0)
- cli           3.6.1   2023-03-23 [1] CRAN (R 4.2.0)
- colorspace    2.1-0   2023-01-23 [1] CRAN (R 4.2.0)
+   ─ Packages ────────────────────────────────────────────────────────────────────────
+     package     * version date (UTC) lib source
+     abind         1.4-5   2016-07-21 [1] CRAN (R 4.2.0)
+     backports     1.4.1   2021-12-13 [1] CRAN (R 4.2.0)
+     bit           4.0.5   2022-11-15 [1] CRAN (R 4.2.0)
+     bit64         4.0.5   2020-08-30 [1] CRAN (R 4.2.0)
+     broom       * 1.0.3   2023-01-25 [1] CRAN (R 4.2.0)
+     cachem        1.0.6   2021-08-19 [1] CRAN (R 4.2.0)
+     callr         3.7.3   2022-11-02 [1] CRAN (R 4.2.0)
+     car         * 3.1-0   2022-06-15 [1] CRAN (R 4.2.0)
+     carData     * 3.0-5   2022-01-06 [1] CRAN (R 4.2.0)
+     cli           3.6.1   2023-03-23 [1] CRAN (R 4.2.0)
+     colorspace    2.1-0   2023-01-23 [1] CRAN (R 4.2.0)
  crayon        1.5.2   2022-09-29 [1] CRAN (R 4.2.0)
  crul          1.2.0   2021-11-22 [1] CRAN (R 4.2.0)
  curl          5.0.0   2023-01-12 [1] CRAN (R 4.2.0)
