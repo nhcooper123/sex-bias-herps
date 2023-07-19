@@ -46,7 +46,7 @@ specimens_all <-
 # Extract required data
 ds_orders <-
   specimens_all %>%
-  group_by(class) %>%
+  #group_by(class) %>%
   # Remove Rhynchocephalia as they only have one species 
   filter(order != "Rhynchocephalia") %>%
   add_count(binomial, name = "n") %>%
@@ -124,4 +124,4 @@ caecilian <- annotation_custom2(rasterGrob(img_caecilian, interpolate=TRUE, heig
 class / (order + frog + salamander + caecilian + croc + lizard + turtle)
 
 # Save
-#ggsave("figures/unsexed-class-order-density.png")
+#ggsave("manuscript/figures/unsexed-class-order-density.tiff", dpi = 900)

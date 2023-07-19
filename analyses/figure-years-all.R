@@ -29,7 +29,7 @@ specimens <- read_csv(here("data/all-specimen-data-2021-07.csv"))
 ds_years <-
   specimens %>%
   filter(!is.na(year)) %>%
-  group_by(class) %>%
+  #group_by(class) %>%
   add_count(binomial, year, name = "n") %>%
   add_count(binomial, year, sex, name = "nn") %>%
   select(class, order, binomial, year, sex, n, nn) %>%
@@ -49,7 +49,7 @@ ggplot(ds_years, aes(x = year, y = percentf/100, colour = class)) +
   geom_point(alpha = 0.6, size = 0.8) +
   geom_smooth(method = "glm",
               method.args = list(family = "quasibinomial"), 
-              col = "darkgrey", size = 0.5) +
+              col = "darkgrey", linewidth = 0.5) +
   geom_abline(slope = 0, intercept = 0.5, linetype = 2) +
   theme_bw(base_size = 14) +
   ylab("% female specimens") +
@@ -80,7 +80,7 @@ specimens_all <-
 ds_years_all <-
   specimens_all %>%
   filter(!is.na(year)) %>%
-  group_by(class) %>%
+  #group_by(class) %>%
   add_count(binomial, year, name = "n") %>%
   add_count(binomial, year, sexed, name = "nn") %>%
   select(class, order, binomial, year, sexed, n, nn) %>%
@@ -99,7 +99,7 @@ plot_year_sex <-
   geom_point(alpha = 0.6, size = 0.8) +
   geom_smooth(method = "glm",
               method.args = list(family = "quasibinomial"), 
-              col = "darkgrey", size = 0.5) +
+              col = "darkgrey", linewidth = 0.5) +
   theme_bw(base_size = 14) +
   ylab("% sexed specimens") +
   xlab("Collection year") +
@@ -168,7 +168,7 @@ plot_year_totals_sexed + plot_year_totals
 
 (plot_year_totals_sexed + plot_year_totals) / (plot_year + plot_year_sex) + plot_annotation(tag_levels = 'A')
 
-#ggsave("figures/years-combined-totals.png", height = 7)
+#ggsave("manuscript/figures/years-combined-totals.tiff", height = 7, dpi = 900)
 
 plot_year + plot_year_sex + plot_annotation(tag_levels = 'A')
 
