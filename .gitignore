@@ -1,3 +1,7 @@
+# large files
+*.tiff
+
+# R stuff
 .Rproj.user
 .Rhistory
 .RData
