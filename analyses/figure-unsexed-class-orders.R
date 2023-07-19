@@ -124,4 +124,4 @@ caecilian <- annotation_custom2(rasterGrob(img_caecilian, interpolate=TRUE, heig
 class / (order + frog + salamander + caecilian + croc + lizard + turtle)
 
 # Save
-#ggsave("manuscript/figures/unsexed-class-order-density.tiff", dpi = 900)
+#ggsave("manuscript/figures/unsexed-class-order-density.pdf", dpi = 900)

@@ -168,7 +168,7 @@ plot_year_totals_sexed + plot_year_totals
 
 (plot_year_totals_sexed + plot_year_totals) / (plot_year + plot_year_sex) + plot_annotation(tag_levels = 'A')
 
-#ggsave("manuscript/figures/years-combined-totals.tiff", height = 7, dpi = 900)
+#ggsave("manuscript/figures/years-combined-totals.pdf", height = 7, dpi = 900)
 
 plot_year + plot_year_sex + plot_annotation(tag_levels = 'A')
 
