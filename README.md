@@ -5,7 +5,7 @@ Author(s): [Natalie Cooper](mailto:natalie.cooper.@nhm.ac.uk)
 This repository contains all the code and some data used in the [paper](https://10.1093/biolinnean/blad129). 
 
 To cite the paper: 
->  Tara Wainwright, Morwenna Trevena, Sarah R. Alewijnse, Patrick D. Campbell, Marc E.H. Jones, Jeffrey W. Streicher and Natalie Cooper. Sex biases and the scarcity of sex metadata in global herpetology collections. Biological Journal of the Linnean Society. In press. DOI: 10.1093/biolinnean/blad129.
+>  Tara Wainwright, Morwenna Trevena, Sarah R. Alewijnse, Patrick D. Campbell, Marc E.H. Jones, Jeffrey W. Streicher and Natalie Cooper. 2024. Sex biases and the scarcity of sex metadata in global herpetology collections. Biological Journal of the Linnean Society. 142, 308-318. DOI: 10.1093/biolinnean/blad129.
 
 To cite this repo: 
 >  Cooper, N., 2023. Code for the paper v1.0. GitHub: nhcooper123/sex-bias-herps. Zenodo. DOI: 10.5281/zenodo.8164786.
